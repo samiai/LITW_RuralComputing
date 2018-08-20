@@ -294,12 +294,12 @@ module.exports = (function() {
 			bothCats: (whichCat.length === 2)
 		}));
 
-		LITW.results.showFinalPage("#footer",
+		showFinalPage("#more_studies_footer",
 			LITW.data.getParticipantId(),
 			"template",
 			$("meta[property='og:title']").attr('content'),
 			$("meta[property='og:description']").attr('content'),
-			['thinking_style', 'color_age'],
+			['perceptual-models', 'privacy-iot'],
 			finalTemplate);
 	};
 
