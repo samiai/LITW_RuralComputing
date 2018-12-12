@@ -13,9 +13,17 @@ module.exports = jsPsych.plugins["display-slide"] = (function() {
 
     var plugin = {};
 
+    plugin.info = {
+        name: 'display-slide',
+        parameters: {
+        }
+    }
+
     plugin.trial = function(display_element, trial) {
-        display_element.html(trial.template);
-        display_element.i18n();
+        //x=$('#'+display_element)
+        display_element.innerHTML = trial.templates;
+        // display_element.innerHTML = '<p>This is the first paragraph</p>';
+        //display_element.i18n();
 
         LITW.utils.showNextButton(function() {
             if(trial.finish) trial.finish();
@@ -23,8 +31,8 @@ module.exports = jsPsych.plugins["display-slide"] = (function() {
             jsPsych.finishTrial();
         });
 
-        LITW.utils.showSlide(display_element[0].id);
-        LITW.tracking.recordCheckpoint(display_element[0].id);
+        LITW.utils.showSlide(display_element.id);
+        LITW.tracking.recordCheckpoint(display_element.id);
     };
 
     return plugin;

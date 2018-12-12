@@ -56,7 +56,7 @@ module.exports = (function() {
 		});
 
 		// show the introductory splash screen
-		$("#splash-screen").modal({backdrop: "static"});
+		// $("#splash-screen").modal({backdrop: "static"});
 	},
 
 	demographics = function() {
@@ -65,7 +65,7 @@ module.exports = (function() {
 			autocomplete: true
 		})
 		.add("retake", {
-			required: true
+			required: false
 		})
 		.add("gender")
 		.add("age", { 
@@ -95,11 +95,11 @@ module.exports = (function() {
 		// 1. GENERAL INSTRUCTIONS PAGE
 		timeline.push({
 			type: "display-slide",
-            display_element: $("#instructions"),
+            display_element: "instructions",
 			name: "instructions",
             template: instructionsTemplate({withTouch: window.litwWithTouch})
 		});
-
+/*
 		// 2. PRACTICE STIMS
 		// loop through all practice stims and register
 		// them with the jsPsych timeline
@@ -131,7 +131,7 @@ module.exports = (function() {
 				func: submitData
 			});
 		});
-		
+	
 		// 3. PRE-TRIAL BREAK
 		timeline.push({
 			type: "call-function",
@@ -226,7 +226,7 @@ module.exports = (function() {
 				func: submitData
 			});
 		});
-
+*/
 		// ******* END STUDY PROGRESSION ******** //
 	},
 
@@ -243,7 +243,8 @@ module.exports = (function() {
 		jsPsych.init({
 		  timeline: timeline,
 		  on_finish: comments,
-		  display_element: $("#trials")
+		  // display_element: $("#trials")
+		  display_element: "trials"
 		});
 	},
 
@@ -353,9 +354,15 @@ module.exports = (function() {
 		params.stims = LITW.utils.shuffleArrays(params.stims);
 		
 		LITW.utils.showSlide("img-loading");
-		
+
+		//preloading imgs
+		var imgs = [];
+		for (var i = 1; i <= 10; i++) { 
+  			imgs.push('img/stim-img/cat'+ i + '.jpg' );
+  		}
+
 		// preload images
-		jsPsych.pluginAPI.preloadImages(params.stims,
+		jsPsych.pluginAPI.preloadImages(imgs,
 			
 			// initialize the jsPsych timeline and
 			// proceed to IRB page when loading has finished
