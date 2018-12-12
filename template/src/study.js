@@ -31,7 +31,7 @@ require("./jspsych-display-info");
 require("./jspsych-display-slide");
 
 /* Added debug mode -- Tal */
-var DEBUG = false;
+var DEBUG = true;
 
 
 module.exports = (function() {
@@ -302,7 +302,6 @@ module.exports = (function() {
 		/* Slogan a/b testing footer insertion */
 		/**********************************************/
 
-		console.log
 		LITW.load_slogans.showFinalPage("#footer",
 			LITW.data.getParticipantId(),
 			"template",

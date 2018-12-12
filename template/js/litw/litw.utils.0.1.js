@@ -164,6 +164,8 @@
     });
 	},
 
+
+
 	/**
 	 * Fades out properties.fadeElt and displays the ajax spinner
 	 * 
