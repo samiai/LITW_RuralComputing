@@ -167,6 +167,8 @@ textarea.comments-box, textarea.comments_box {
 	min-height: 105px;
 }
 .litw-study-link-img {
+	height:auto;
+	width:150px;
 }
 .litw-study-link-description {
 }

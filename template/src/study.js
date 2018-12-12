@@ -23,9 +23,16 @@ var instructionsTemplate = require("../templates/instructions.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
+
+var finalTemplate = require("../templates/final.html");
+
 var i18n = require("../js/i18n");
 require("./jspsych-display-info");
 require("./jspsych-display-slide");
+
+/* Added debug mode -- Tal */
+var DEBUG = false;
+
 
 module.exports = (function() {
 
@@ -292,7 +299,17 @@ module.exports = (function() {
 			bothCats: (whichCat.length === 2)
 		}));
 
-		LITW.results.insertFooter();
+		/* Slogan a/b testing footer insertion */
+		/**********************************************/
+
+		console.log
+		LITW.load_slogans.showFinalPage("#footer",
+			LITW.data.getParticipantId(),
+			"template",
+			$("meta[property='og:title']").attr('content'),
+			$("meta[property='og:description']").attr('content'),
+			[],
+			finalTemplate);
 	};
 
 	summaryInitialData = function(json_data){
@@ -361,7 +378,7 @@ module.exports = (function() {
 			// proceed to IRB page when loading has finished
 			function() { 
 				initJsPsych();
-				irb(); 
+				DEBUG? results({}): irb();
 			},
 			
 			// update loading indicator as stims preload
