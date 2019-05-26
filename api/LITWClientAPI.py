@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import jsonify
+from flask import Flask, jsonify, request
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import BackendApplicationClient
 import requests
@@ -30,10 +29,18 @@ def hello(name):
     return 'Hello {0}!'.format(name)
 
 
-@app.route('/localize/<string:ip>/')
-def localize(ip):
+@app.route('/localize/')
+def localize():
+    ip = get_client_ip(request)
     auth = 'Bearer {}'.format(token['access_token'])
     header = {'Authorization': auth}
     endpoint = localize_url + ip  # ''205.175.107.21/'
     r_yes = requests.get(endpoint, headers=header)
     return jsonify(r_yes.json())
+
+
+def get_client_ip(req):
+    if req.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        return req.environ['REMOTE_ADDR']
+    else:
+        return req.environ['HTTP_X_FORWARDED_FOR']
