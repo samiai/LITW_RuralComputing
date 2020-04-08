@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Card Pages </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="deckstyle.css">
+    </head>
+    <body>
+        <script>
+            function card1Click()
+            {
+                alert("Card 1 was clicked!");
+                document.getElementById('card1box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card1Flip').style.transform = "rotateY(0deg)";
+                //document.getElementById('card1box').style.display = "block";
+                //document.getElementById('Card1Flip').style.display = "none";
+                document.getElementById('card1box').style.opacity = 0;
+                document.getElementById('Card1Flip').style.opacity = 1;
+            }
+            function card1Flip()
+            {
+                alert("Card 1 is going to be flipped back .. !");
+                document.getElementById('card1box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card1Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('Card1Flip').style.opacity = 0;
+            }
+            function card2Click()
+            {
+                alert("Card 2 was clicked!");
+                document.getElementById('card2box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card2Flip').style.transform = "rotateY(0deg)";
+                //document.getElementById('card1box').style.display = "block";
+                //document.getElementById('Card1Flip').style.display = "none";
+                document.getElementById('card2box').style.opacity = 0;
+                document.getElementById('Card2Flip').style.opacity = 1;
+            }
+            function card2Flip()
+            {
+                alert("Card 2 is going to be flipped back .. !");
+                document.getElementById('card2box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card2Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('Card2Flip').style.opacity = 0;
+            }
+            function card3Flip()
+            {
+                alert("Card 3 is going to be flipped back .. !");
+                document.getElementById('card3box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('Card3Flip').style.opacity = 0;
+            }
+            function card4Click()
+            {
+                alert("Card 4 was clicked!");
+                document.getElementById('card4box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card4Flip').style.transform = "rotateY(0deg)";
+                //document.getElementById('card1box').style.display = "block";
+                //document.getElementById('Card1Flip').style.display = "none";
+                document.getElementById('card4box').style.opacity = 0;
+                document.getElementById('Card4Flip').style.opacity = 1;
+            }
+            function card4Flip()
+            {
+                alert("Card 4 is going to be flipped back .. !");
+                document.getElementById('card4box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card4Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card4box').style.opacity = 1;
+                document.getElementById('Card4Flip').style.opacity = 0;
+            }
+
+            /*document.getElementById("Card4Flip").addEventListener("webkitTransitionEnd", myFunction);
+            // Standard syntax
+            document.getElementById("Card4Flip").addEventListener("click", myFunction);
+
+            function myFunction(event) {
+                alert("Card 4 was clicked!");
+                document.getElementById('nature').style.opacity = 1;
+                document.getElementById('Card1Flip').style.opacity = 0;
+            }*/
+
+            //function for href click even 
+            document.getElementById("demo").onclick = function() {card3Click()};
+
+            function card3Click() {
+                alert("Card 3 was clicked!");
+                document.getElementById('card3box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(0deg)";
+                document.getElementById('card3box').style.opacity = 0;
+                document.getElementById('Card3Flip').style.opacity = 1;
+
+                //document.getElementById("Card3Flip").style.transform = "rotateY(180deg)";
+                //document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+            }
+        </script>
+        <div class="bigcontainer">
+            <div id="Card1Flip" class="bigbox">
+                <div id="Card1Flipper" class="bigdetails" onclick="card1Flip()">
+                    <h3> Nature Selected</h3>
+                </div>
+            </div>
+            <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
+                <div id="Card2Flipped" class="bigdetails">
+                    <h2> The Card 2 tEXt 
+                    </h2>
+                </div>
+            </div>
+            <div id="Card3Flip" class="bigbox">
+                <div class="bigdetails" onclick="card3Flip()">
+                    <h2> The card 3 tEXt 
+                    </h2>
+                </div>
+                
+            </div>
+            <div id="Card4Flip" class="bigbox" onclick="card4Flip()">
+                <div class="bigdetails">
+                    <h2> The card 4 tEXt 
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="box" id="card1box">
+                <div class="thumb">
+                    <img src="image3.jpg">
+                </div>
+                <div id="Ndetails" class="details">
+                    <div class="content">
+                        <h3>Mother Nature</h3>
+                        <button class="button" onclick="card1Click()"> Select Card</button>
+                    </div>
+                </div>
+                <div class="card4Back">
+                    <h1> Card 4 Back</h1>
+                    <p> I have no questions </p>
+                    <p> Thank you for participating!</p>
+                </div>
+            </div>
+            <div class="box" id="card2box">
+                <div class="thumb">
+                    <img src="image3.jpg">
+                </div>
+                <div class="details">
+                    <div class="content">
+                        <h3>The Scandal</h3>
+                        <a href="#" onclick="card2Click()">Select Card </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="box" id="card3box">
+                <div class="thumb">
+                    <img src="image1.jpg">
+                </div>
+                <div class="details">
+                    <div class="content">
+                        <h3>The Forgotten</h3>
+                        <a id="demo" href="#" onclick="card3Click()">Select Card</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box" id="card4box">
+                <div class="thumb">
+                    <img src="image3.jpg">
+                </div>
+                <div class="details">
+                    <div class="content">
+                        <h3>The Forgotten</h3>
+                        <a href="#" onclick="card4Click()">Select Card</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
