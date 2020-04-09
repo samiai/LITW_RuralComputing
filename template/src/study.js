@@ -19,7 +19,6 @@ require("bootstrap");
 require("jquery-ui-bundle");
 var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
-var motivationSurveyTemplate = require("../templates/motivationSurvey.html");
 var instructionsTemplate = require("../templates/instructions.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
@@ -69,6 +68,7 @@ module.exports = (function() {
 			required: true
 		})
 		.add("gender")
+		.add("race")
 		.add("age", { 
 			style: "numericalFreeText", 
 			prompt: "How old are you? (Please type a number)",
@@ -76,9 +76,16 @@ module.exports = (function() {
 			minValue: 6,
 			maxValue: 99
 		})
-		.add("race")
+		.add("multinational")
 		.add("country")
-		.add("education")
+		.add("education", {
+			style: "numericalFreeText",
+			prompt: "How many years of education have you completed, starting from primary school?",
+			boundsMessage: "Have you really completed %s years of education? If not, please make sure to enter the correct value so that your data contributes to our research.",
+			minValue: 6,
+			maxValue: 30
+		})
+		.add("affluent")
 		.render(startTrials);
 
 		LITW.utils.showSlide("demographics");
@@ -86,16 +93,7 @@ module.exports = (function() {
 
 	initJsPsych = function() {
 		// ******* BEGIN STUDY PROGRESSION ******** //
-		//
-		// A MOTIVATION SURVEY
-		//
-		timeline.push({
-			type: "display-slide",
-			display_element: $("#motivationsurvey"),
-			name: "motivationsurvey",
-			template: motivationSurveyTemplate({withTouch: window.litwWithTouch})
-		});
-				
+		
 		// 1. GENERAL INSTRUCTIONS PAGE
 		timeline.push({
 			type: "display-slide",
