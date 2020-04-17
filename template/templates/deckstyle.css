@@ -7,7 +7,7 @@ body
 .container
 {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1200px;
@@ -165,22 +165,23 @@ body
 .bigcontainer
 {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1200px;
-    height: 500px;
+    height: 550px;
     display: flex;
 }
 .bigcontainer .bigbox
 {
     position: relative;
     width: 300px;
-    height: 500px;
+    height: 550px;
     background: #ccc;
     transition: 1.2s;
     margin: 20px;
     opacity: 0;
+    text-align: center;
 }
 .bigcontainer .bigbox .bigcontent 
 {
@@ -195,9 +196,10 @@ body
 }
 .bigcontainer .bigbox .bigdetails
 {
+    vertical-align: middle;
     position: absolute;
     width: 100%;
-    height: 500px;
+    height: 550px;
     overflow: hidden;
     padding: 10px;
     text-align: center;
