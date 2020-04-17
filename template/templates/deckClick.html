@@ -4,37 +4,154 @@
         <title> Card Pages </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="deckstyle.css">
+        <link rel="stylesheet" type="text/css" href="deckflip.css">
     </head>
-    <body>
+    <body onload="myFunction()">
         <script>
-            function card1Click()
+            function myFunction() {
+                var x = document.getElementById("smallContainer").style.pointerEvents
+                //alert("Page is loaded");
+                //alert(x.valueOf);
+            }
+                        //all click functions 
+            val = document.getElementById('smallContainer').style.pointerEvents;
+            alert("print this")
+
+            function card1Click() //card is Clicked 
             {
                 alert("Card 1 was clicked!");
                 document.getElementById('card1box').style.transform = "rotateY(180deg)";
                 document.getElementById('Card1Flip').style.transform = "rotateY(0deg)";
-                //document.getElementById('card1box').style.display = "block";
-                //document.getElementById('Card1Flip').style.display = "none";
+                
                 document.getElementById('card1box').style.opacity = 0;
                 document.getElementById('Card1Flip').style.opacity = 1;
+                document.getElementById('Card1Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+
+                //Makes everything except this card unclickable
+                document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                //document.getElementById('card1box').style.pointerEvents  = "none";
+                //document.getElementById('card2box').style.pointerEvents  = "none";
+                //document.getElementById('card3box').style.pointerEvents  = "none";
+                //document.getElementById('card4box').style.pointerEvents  = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+                document.getElementById('Card3Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+
+                // Dim the color of other cards
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card3box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
             }
+
+            function card2Click() //card is Clicked 
+            {
+                alert("Card 2 was clicked!");
+                document.getElementById('card2box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card2Flip').style.transform = "rotateY(0deg)";
+                document.getElementById('Card2Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                
+                //Makes everything except this card unclickable
+                document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card3Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+
+                document.getElementById('card2box').style.opacity = 0;
+                document.getElementById('Card2Flip').style.opacity = 1;
+
+                // Dim the color of other cards
+                document.getElementById('card1box').style.opacity = 0.3;
+                document.getElementById('card3box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+            }
+            function card4Click() //card is Clicked 
+            {
+                alert("Card 4 was clicked!");
+                document.getElementById('card4box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card4Flip').style.transform = "rotateY(0deg)";
+
+               //Makes everything except this card unclickable
+               document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card3Flip').style.pointerEvents = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+
+                document.getElementById('Card4Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                document.getElementById('card4box').style.opacity = 0;
+                document.getElementById('Card4Flip').style.opacity = 1;
+                // Dim the color of other cards
+                document.getElementById('card1box').style.opacity = 0.3;
+                document.getElementById('card3box').style.opacity = 0.3;
+                document.getElementById('card2box').style.opacity = 0.3;
+            }
+            
+            function card33Click() //card is Clicked 
+            {
+                alert("Card 3 was clicked!");
+                document.getElementById('card3box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(0deg)";
+
+               //Makes everything except this card unclickable
+               document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+
+                document.getElementById('Card3Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                document.getElementById('card3box').style.opacity = 0;
+                document.getElementById('Card3Flip').style.opacity = 1;
+                // Dim the color of other cards
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+                document.getElementById('card1box').style.opacity = 0.3;
+            }
+
+           // document.getElementById("demo").onclick = function() {card3Click()};  //function for href click even 
+            function card3Click() //card is Clicked 
+            {
+                alert("Card 3 was clicked!");
+                document.getElementById('card3box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(0deg)";
+                
+                //Makes everything except this card unclickable
+                document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+
+                document.getElementById('Card3Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                document.getElementById('card3box').style.opacity = 0;
+                document.getElementById('Card3Flip').style.opacity = 1;
+                // Dim the color of other cards
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+                document.getElementById('card1box').style.opacity = 0.3;
+            }
+
+            //All Flip functions below
             function card1Flip()
             {
                 alert("Card 1 is going to be flipped back .. !");
                 document.getElementById('card1box').style.transform = "rotateY(0deg)";
                 document.getElementById('Card1Flip').style.transform = "rotateY(180deg)";
+                
                 document.getElementById('card1box').style.opacity = 1;
                 document.getElementById('Card1Flip').style.opacity = 0;
-            }
-            function card2Click()
-            {
-                alert("Card 2 was clicked!");
-                document.getElementById('card2box').style.transform = "rotateY(180deg)";
-                document.getElementById('Card2Flip').style.transform = "rotateY(0deg)";
-                //document.getElementById('card1box').style.display = "block";
-                //document.getElementById('Card1Flip').style.display = "none";
-                document.getElementById('card2box').style.opacity = 0;
-                document.getElementById('Card2Flip').style.opacity = 1;
+
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "all";  //moves the clickables to the smaller container below
+                document.getElementById('Card3Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('card4box').style.opacity = 1;
+                //document.getElementById('card1box').style.pointerEvents  = "auto";
+                //document.getElementById('card2box').style.pointerEvents  = "auto";
+                //document.getElementById('card3box').style.pointerEvents  = "inherit";
+                //document.getElementById('card4box').style.pointerEvents  = "all";
             }
             function card2Flip()
             {
@@ -43,6 +160,15 @@
                 document.getElementById('Card2Flip').style.transform = "rotateY(180deg)";
                 document.getElementById('card2box').style.opacity = 1;
                 document.getElementById('Card2Flip').style.opacity = 0;
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "auto";  //moves the clickables to the smaller container below
+                document.getElementById('Card1Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('card4box').style.opacity = 1;
             }
             function card3Flip()
             {
@@ -51,16 +177,15 @@
                 document.getElementById('Card3Flip').style.transform = "rotateY(180deg)";
                 document.getElementById('card3box').style.opacity = 1;
                 document.getElementById('Card3Flip').style.opacity = 0;
-            }
-            function card4Click()
-            {
-                alert("Card 4 was clicked!");
-                document.getElementById('card4box').style.transform = "rotateY(180deg)";
-                document.getElementById('Card4Flip').style.transform = "rotateY(0deg)";
-                //document.getElementById('card1box').style.display = "block";
-                //document.getElementById('Card1Flip').style.display = "none";
-                document.getElementById('card4box').style.opacity = 0;
-                document.getElementById('Card4Flip').style.opacity = 1;
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "auto";  //moves the clickables to the smaller container below
+                document.getElementById('Card1Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('card4box').style.opacity = 1;
             }
             function card4Flip()
             {
@@ -69,36 +194,29 @@
                 document.getElementById('Card4Flip').style.transform = "rotateY(180deg)";
                 document.getElementById('card4box').style.opacity = 1;
                 document.getElementById('Card4Flip').style.opacity = 0;
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "auto";  //moves the clickables to the smaller container below
+                document.getElementById('Card3Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('card1box').style.opacity = 1;
             }
 
-            /*document.getElementById("Card4Flip").addEventListener("webkitTransitionEnd", myFunction);
-            // Standard syntax
-            document.getElementById("Card4Flip").addEventListener("click", myFunction);
-
-            function myFunction(event) {
-                alert("Card 4 was clicked!");
-                document.getElementById('nature').style.opacity = 1;
-                document.getElementById('Card1Flip').style.opacity = 0;
-            }*/
-
-            //function for href click even 
-            document.getElementById("demo").onclick = function() {card3Click()};
-
-            function card3Click() {
-                alert("Card 3 was clicked!");
-                document.getElementById('card3box').style.transform = "rotateY(180deg)";
-                document.getElementById('Card3Flip').style.transform = "rotateY(0deg)";
-                document.getElementById('card3box').style.opacity = 0;
-                document.getElementById('Card3Flip').style.opacity = 1;
-
-                //document.getElementById("Card3Flip").style.transform = "rotateY(180deg)";
-                //document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
-            }
+            
         </script>
+        <!-- End of Scripts here -->
+        <!-- ------------ -->
+        <!-- Small container from from of cards starts here -->
         <div class="bigcontainer">
             <div id="Card1Flip" class="bigbox">
                 <div id="Card1Flipper" class="bigdetails" onclick="card1Flip()">
-                    <h3> Nature Selected</h3>
+                    <h2> Nature Selected</h2>
+                    <h3> If the environment was your client, how would your product change? </h3>
+                    <h3> What impact does [the product] have on the environment? </h3>
+                    <h3> What is the most unsustainable behavior your product encourages? </h3>
                 </div>
             </div>
             <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
@@ -121,7 +239,8 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <!-- Small container from from of cards starts here -->
+        <div class="container" id="smallContainer">
             <div class="box" id="card1box">
                 <div class="thumb">
                     <img src="image3.jpg">
@@ -148,7 +267,6 @@
                         <a href="#" onclick="card2Click()">Select Card </a>
                     </div>
                 </div>
-
             </div>
             <div class="box" id="card3box">
                 <div class="thumb">
@@ -173,6 +291,8 @@
                 </div>
             </div>
         </div>
-        
+        <!-- end of the small container-->
+        <div>
+        </div>
     </body>
 </html>
