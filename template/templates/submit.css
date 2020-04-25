@@ -1,0 +1,44 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: Optima;
+}
+.container
+{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 1200px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    margin: 2px;
+}
+.container .box
+{
+    border-style: solid;
+    margin: 7px;
+    padding: 7px;
+}
+.textbox
+{
+    width: 900px;
+    height: auto;
+    vertical-align: middle;
+    letter-spacing: 1.5px;
+    font-size: 18px;
+}
+.label
+{
+    font-size: 18px;
+}
+#btn
+{
+    height: 30em;
+    margin: 3px;
+    width: 30em;
+}
+
+
