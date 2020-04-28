@@ -1,10 +1,11 @@
+<!-- This is the card flipping document that works -->
 <!DOCTYPE html>
 <html>
     <head>
         <title> Card Pages </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="deckstyle.css">
+        <link rel="stylesheet" type="text/css" href="deckflip.css">
     </head>
     <body onload="myFunction()">
         <script>
@@ -209,96 +210,100 @@
         </script>
         <!-- End of Scripts here -->
         <!-- ------------ -->
-        <!-- Small container from from of cards starts here -->
-        <div class="bigcontainer">
-            <div id="Card1Flip" class="bigbox">
-                <div id="Card1Flipper" class="bigdetails" onclick="card1Flip()">
-                    <h2> Nature Selected</h2>
-                    <h3> If the environment was your client, how would your product change? </h3>
-                    <h3> What impact does [the product] have on the environment? </h3>
-                    <h3> What is the most unsustainable behavior your product encourages? </h3>
+        <div>
+            
+            <!-- Small container from from of cards starts here -->
+            <div class="bigcontainer">
+                <div id="Card1Flip" class="bigbox">
+                    <div id="Card1Flipper" class="bigdetails" onclick="card1Flip()">
+                        <h2> Mother Nature</h2>
+                        <h3> If the environment was your client, how would your product change? </h3>
+                        <h3> What impact does [the product] have on the environment? </h3>
+                        <h3> What is the most unsustainable behavior your product encourages? </h3>
+                    </div>
+                </div>
+                <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
+                    <div id="Card2Flipped" class="bigdetails">
+                        <h2> The Bffs </h2>
+                        <h3> How does [the product] create new ways to interact? </h3>
+                        <h3> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </h3>
+                        <h3> Do you think it has the potential to enhance or detract you from your relationships in real life?</h3>
+                    </div>
+                </div>
+                <div id="Card3Flip" class="bigbox">
+                    <div class="bigdetails" onclick="card3Flip()">
+                        <h2> The Forgotten and Backstabber </h2>
+                        <h3> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose trust, exposed etc). </h3>
+                        <h3> What mechanisms are in place for listening to you as a user? </h3>
+                        <h3> How could a user be excluded from [the product] </h3>
+                    </div>
+                    
+                </div>
+                <div id="Card4Flip" class="bigbox" onclick="card4Flip()">
+                    <div class="bigdetails">
+                        <h2> The Smash Hit </h2>
+                        <h3> How might a community change if 80% of it are users of [the product]</h3>
+                        <h3> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)</h3>
+                        <h3> How can [the product] change people’s habits and norms - Individual behavior question </h3>
+                    </div>
                 </div>
             </div>
-            <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
-                <div id="Card2Flipped" class="bigdetails">
-                    <h2> The Bffs </h2>
-                    <h3> How does [the product] create new ways to interact? </h3>
-                    <h3> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </h3>
-                    <h3> Do you think it has the potential to enhance or detract you from your relationships in real life?</h3>
+            <!-- Small container from from of cards starts here -->
+            <div class="container" id="smallContainer">
+                <div class="box" id="card1box">
+                    <div class="thumb">
+                        <img src="image3.jpg">
+                    </div>
+                    <div id="Ndetails" class="details">
+                        <div class="content">
+                            <h3>The Mother Nature</h3>
+                            <button class="button" onclick="card1Click()"> Select Card</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="Card3Flip" class="bigbox">
-                <div class="bigdetails" onclick="card3Flip()">
-                    <h2> The Forgotten and Backstabber </h2>
-                    <h3> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose trust, exposed etc). </h3>
-                    <h3> What mechanisms are in place for listening to you as a user? </h3>
-                    <h3> How could a user be excluded from [the product] </h3>
+                <div class="box" id="card2box">
+                    <div class="thumb">
+                        <img src="image3.jpg">
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                            <h3>The Bffs </h3>
+                            <a href="#" onclick="card2Click()">Select Card </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" id="card3box">
+                    <div class="thumb">
+                        <img src="image1.jpg">
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                            <h3>The Forgotten and Backstabber </h3>
+                            <a id="demo" href="#" onclick="card3Click()">Select Card</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" id="card4box">
+                    <div class="thumb">
+                        <img src="image3.jpg">
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                            <h3>The Smash Hit </h3>
+                            <a href="#" onclick="card4Click()">Select Card</a>
+                        </div>
+                    </div>
                 </div>
                 
             </div>
-            <div id="Card4Flip" class="bigbox" onclick="card4Flip()">
-                <div class="bigdetails">
-                    <h2> The Smash Hit </h2>
-                    <h3> How might a community change if 80% of it are users of [the product]</h3>
-                    <h3> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)</h3>
-                    <h3> How can [the product] change people’s habits and norms - Individual behavior question </h3>
-                </div>
+            <!-- end of the small container-->
+            <div class="box4text">
+                <textarea class= "textbox" type="text" id="nature" name="nature" rows="10" cols="30"> </textarea>
             </div>
-        </div>
-        <!-- Small container from from of cards starts here -->
-        <div class="container" id="smallContainer">
-            <div class="box" id="card1box">
-                <div class="thumb">
-                    <img src="image3.jpg">
-                </div>
-                <div id="Ndetails" class="details">
-                    <div class="content">
-                        <h3>The Mother Nature</h3>
-                        <button class="button" onclick="card1Click()"> Select Card</button>
-                    </div>
-                </div>
-            </div>
-            <div class="box" id="card2box">
-                <div class="thumb">
-                    <img src="image3.jpg">
-                </div>
-                <div class="details">
-                    <div class="content">
-                        <h3>The Bffs </h3>
-                        <a href="#" onclick="card2Click()">Select Card </a>
-                    </div>
-                </div>
-            </div>
-            <div class="box" id="card3box">
-                <div class="thumb">
-                    <img src="image1.jpg">
-                </div>
-                <div class="details">
-                    <div class="content">
-                        <h3>The Forgotten and Backstabber </h3>
-                        <a id="demo" href="#" onclick="card3Click()">Select Card</a>
-                    </div>
-                </div>
-            </div>
-            <div class="box" id="card4box">
-                <div class="thumb">
-                    <img src="image3.jpg">
-                </div>
-                <div class="details">
-                    <div class="content">
-                        <h3>The Smash Hit </h3>
-                        <a href="#" onclick="card4Click()">Select Card</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end of the small container-->
-        <div>
-        </div>
+        </div>    
     </body>
 </html>
-
- <!--
+<!--
 ----A---- The Smash Hit 
 1. How might a community change if 80% of it are users of [the product]? - Collective behavior question - different than c!
 2. What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)
