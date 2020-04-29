@@ -5,7 +5,7 @@
         <title> Card Pages </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="deckflip.css">
+        <link rel="stylesheet" type="text/css" href="deckstyle.css">
     </head>
     <body onload="myFunction()">
         <script>
@@ -14,6 +14,12 @@
                 //alert("Page is loaded");
                 //alert(x.valueOf);
             }
+
+            //var cardName = "No Card Selected"
+            //p = document.getElementById('CardSelected');
+            //p.innerHTML = "Write your answer here for  "+cardName+" card ";
+            //document.getElementById('CardSelected').innerHTML = "Write your answer here for  "+cardName+" card ";
+
                         //all click functions 
             val = document.getElementById('smallContainer').style.pointerEvents;
             alert("print this")
@@ -42,6 +48,9 @@
                 document.getElementById('card2box').style.opacity = 0.3;
                 document.getElementById('card3box').style.opacity = 0.3;
                 document.getElementById('card4box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Mother Nature card ";
             }
 
             function card2Click() //card is Clicked 
@@ -64,6 +73,9 @@
                 document.getElementById('card1box').style.opacity = 0.3;
                 document.getElementById('card3box').style.opacity = 0.3;
                 document.getElementById('card4box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Bffs card ";
             }
             function card4Click() //card is Clicked 
             {
@@ -84,6 +96,9 @@
                 document.getElementById('card1box').style.opacity = 0.3;
                 document.getElementById('card2box').style.opacity = 0.3;
                 document.getElementById('card3box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Smash Hit card ";
             }
             
             function card33Click() //card is Clicked 
@@ -127,6 +142,9 @@
                 document.getElementById('card1box').style.opacity = 0.3;
                 document.getElementById('card2box').style.opacity = 0.3;
                 document.getElementById('card4box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Forgotten and Backstabber card ";
             }
 
             //All Flip functions below
@@ -153,6 +171,9 @@
                 //document.getElementById('card2box').style.pointerEvents  = "auto";
                 //document.getElementById('card3box').style.pointerEvents  = "inherit";
                 //document.getElementById('card4box').style.pointerEvents  = "all";
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
             }
             function card2Flip()
             {
@@ -170,6 +191,8 @@
                 document.getElementById('card1box').style.opacity = 1;
                 document.getElementById('card3box').style.opacity = 1;
                 document.getElementById('card4box').style.opacity = 1;
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
             }
             function card3Flip()
             {
@@ -187,6 +210,8 @@
                 document.getElementById('card1box').style.opacity = 1;
                 document.getElementById('card2box').style.opacity = 1;
                 document.getElementById('card4box').style.opacity = 1;
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
             }
             function card4Flip()
             {
@@ -204,6 +229,8 @@
                 document.getElementById('card1box').style.opacity = 1;
                 document.getElementById('card2box').style.opacity = 1;
                 document.getElementById('card3box').style.opacity = 1;
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
             }
 
             
@@ -244,7 +271,7 @@
                         <h2> The Smash Hit </h2>
                         <h3> How might a community change if 80% of it are users of [the product]</h3>
                         <h3> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)</h3>
-                        <h3> How can [the product] change people’s habits and norms - Individual behavior question </h3>
+                        <h3> How can [the product] change people's habits and norms - Individual behavior question </h3>
                     </div>
                 </div>
             </div>
@@ -298,7 +325,12 @@
             </div>
             <!-- end of the small container-->
             <div class="box4text">
-                <textarea class= "textbox" type="text" id="nature" name="nature" rows="10" cols="30"> </textarea>
+                <h4 id ="CardSelected"> </h4>  
+                <form action="Card2Submit.php" method="POST">
+                    <textarea class= "textbox" type="text" id="nature" name="nature" rows="10" cols="30"> </textarea>
+                    <br></br>
+                    <input type="submit" name="submit" style = "font-size:45px;" value="Submit"><br>
+                </form>
             </div>
         </div>    
     </body>
