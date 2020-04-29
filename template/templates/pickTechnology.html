@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color:black;
+  font-size: 10px;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+<div style="text-align:center">
+  <h2>We’d like to hear your experiences with different types of online platforms.  </h2>
+  <p>Click below to choose the online platform that you would like to draw tarot cards for. </p>
+</div>
+
+<!-- The four columns -->
+<div class="row">
+  <div class="column">
+    <img src="platform1.jpg" alt="Facebook Marketplace is an embedded Facebook app to buy and sell items or services." style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="platform2.jpg" alt="Youtube is a video- sharing platform allowing users to upload, view, rate, share, add to playlists, report, comment on videos, and subscribe to other users." style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="platform3.jpg" alt="Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by volunteer editors." style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="platform4.jpg" alt="Reddit is an American social news aggregation, web content rating, and discussion website." style="width:100%" onclick="myFunction(this);">
+  </div>
+</div>
+
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:50%">
+  <div id="imgtext"></div>
+  <div class="bottomleft">I chose the online platform, because <form action="/action_page.php">
+    <input type="checkbox" id="choice1" name="vehicle1" value="Bike">
+    <label for="vehicle1"> I am familiar with it</label><br>
+    <input type="checkbox" id="choice2" name="vehicle2" value="Car">
+    <label for="vehicle2"> I am not familiar with it, and would like to know more about it </label><br>
+    <input type="checkbox" id="choice3" name="vehicle3" value="Boat">
+    <label for="vehicle3"> I have strong opinions about it</label><br><br>
+    <input type="submit" value="Submit">
+  </form></div>
+</div>
+
+
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
+</body>
+</html>
