@@ -7,7 +7,7 @@ body
 .container
 {
     position: absolute;
-    top: 30%;
+    top: 32%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1200px;
@@ -165,7 +165,7 @@ body
 .bigcontainer
 {
     position: absolute;
-    top: 35%;
+    top: 32%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1200px;
@@ -179,7 +179,7 @@ body
     height: 490px;
     background: #ccc;
     transition: 1.2s;
-    margin: 20px;
+    margin: 10px;
     opacity: 0;
     text-align: center;
 }
@@ -234,16 +234,19 @@ body
 .box4text
 {
     position: absolute;
-    top: 70%;
+    top: 65%;
     padding-top: 5px;
-    border: #FF1493;
-    border-style: dashed;
     bottom: 20px;
     left: 15%;
-    margin: 10px;
+    margin: 15px;
     
 }
 .textbox
 {
     width: 1200px;
+    height: 140px;
+}
+.submission
+{
+    font-size: 16px;
 }
