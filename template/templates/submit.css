@@ -34,11 +34,16 @@ body
 {
     font-size: 18px;
 }
-#btn
+#buttonSubmit
 {
-    height: 30em;
+    height: 3em;
     margin: 3px;
-    width: 30em;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
 }
 
 
