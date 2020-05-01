@@ -1,1 +1,75 @@
-<!-- This page represents slide 8 to review and submit answers-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Confirm Your Answers </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="submit.css">
+        <script>
+            submitForms = function(){
+                document.getElementById('form1').submit();
+                document.getElementById("form2").submit();
+                document.getElementById('form3').submit();
+                document.getElementById("form4").submit();
+            }
+                    </script>
+        <!--<script src=/path/to/jquery.jeditable.min.js></script>   for editing in place -->
+        <!--<script type="text/javascript">
+            $(document).ready(function($)
+            {
+
+            }
+        </script> -->
+    </head>
+    <body>
+        <div id="header">
+            <a href='http://www.labinthewild.org'>
+                <img src='img/logo.png' alt='logo' id='logo'/>
+            </a>
+            <div id='header-share' class='sharing-buttons'></div>
+            <div class='separator'>&nbsp;</div>
+        </div>
+        <div class="container"> 
+            <div class="box" style="border-style: none; margin: 2px; padding: 2px;">
+                <h3> You have selected [The Product] </h3>
+                <h2> Below is a preview of your answers </h2>
+                <h3> Confirm or edit any of your questions below </h3>
+            </div>
+            <form action="/card2submit.php" id="form1" method="POST">
+                <div class="box" style="border-color: #00BFFF;">
+                    <h2> Mother Nature </h2>
+                    
+                        <label for="nature"> If the environment was your client, how would your product change? What impact does [the product] have on the environment? What is the most unsustainable behavior your product encourages? </label>
+                        <br><br>
+                        <textarea class= "textbox" type="text" id="nature" name="nature" rows="10" cols="30"> </textarea>
+                        <br>
+                    
+                </div>
+                <div class="box" style="border-color:#9ACD32;">
+                    <h2> The Bffs </h2>
+                        <label for="bff"> How does [the product] create new ways to interact? Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? Do you think it has the potential to enhance or detract you from your relationships in real life? </label>
+                        <br><br>
+                        <textarea class= "textbox" type="text" id="bff" name="bff" rows="10" cols="30"> </textarea>
+                        <br>
+                </div>
+                <div class="box" style="border-color: #00CED1;">
+                    <h2> The Forgotten and Backstabber </h2>
+                        <label for="forgotten"> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose trust, exposed etc). What mechanisms are in place for listening to you as a user? How could a user be excluded from [the product] </label>
+                        <br><br>
+                        <textarea class= "textbox" type="text" id="forgotten" name="forgotten" rows="10" cols="30"> </textarea>
+                        <br>
+                </div>
+                <div class="box" style="border-color:#FF1493;">
+                    <h2> The Smash Hit </h2>
+                        <label for="smash"> How might a community change if 80% of it are users of [the product]; What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...); How can [the product] change people's habits and norms.  </label>
+                        <br><br>
+                        <textarea class= "textbox" type="text" name="smash" rows="10" cols="30"> </textarea>
+                        <br>
+                </div>
+                <div class="box" style="border-style: none;">
+                    <input type="submit" id="buttonSubmit" name="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
