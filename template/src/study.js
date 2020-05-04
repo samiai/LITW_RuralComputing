@@ -19,7 +19,7 @@ require("bootstrap");
 require("jquery-ui-bundle");
 var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
-var instructionsTemplate = require("../templates/instructions.html");
+var pickTechnologyTemplate = require("../templates/pickTechnology.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
@@ -97,9 +97,9 @@ module.exports = (function() {
 		// 1. GENERAL INSTRUCTIONS PAGE
 		timeline.push({
 			type: "display-slide",
-            display_element: $("#instructions"),
-			name: "instructions",
-            template: instructionsTemplate({withTouch: window.litwWithTouch})
+            display_element: $("#pickTechnology"),
+			name: "pickTechnology",
+            template: pickTechnologyTemplate({withTouch: window.litwWithTouch})
 		});
 
 		// 2. PRACTICE STIMS
