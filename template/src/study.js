@@ -20,6 +20,7 @@ require("jquery-ui-bundle");
 var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
 var pickTechnologyTemplate = require("../templates/pickTechnology.html");
+var cardsDeckTemplate = require("../templates/cardsDeck1.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
@@ -97,10 +98,17 @@ module.exports = (function() {
 		// 1. GENERAL INSTRUCTIONS PAGE
 		timeline.push({
 			type: "display-slide",
-            display_element: $("#pickTechnology"),
+            		display_element: $("#pickTechnology"),
 			name: "pickTechnology",
-            template: pickTechnologyTemplate({withTouch: window.litwWithTouch})
+           		 template: pickTechnologyTemplate({withTouch: window.litwWithTouch})
 		});
+		//cards deck page
+		timeline.push({
+			type: "display-slide",
+			display_element: $("#cardsDeck"),
+			name: "cardsDeck",
+			template: cardsDeckTemplate({withTouch: window.litwWithTouch})
+	    	});
 
 		// 2. PRACTICE STIMS
 		// loop through all practice stims and register
