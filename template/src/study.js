@@ -57,7 +57,7 @@ module.exports = (function() {
 		});
 
 		// show the introductory splash screen
-		$("#splash-screen").modal({backdrop: "static"});
+		//$("#splash-screen").modal({backdrop: "static"});
 	},
 
 	demographics = function() {
