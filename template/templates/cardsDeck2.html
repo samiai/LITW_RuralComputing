@@ -1,4 +1,5 @@
-<!-- This is the card flipping document that works -->
+<!-- This is the card flipping document that works
+and it attached as a slide in index.html  -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -402,7 +403,8 @@
             });
 
             function myFunction() {
-                var x = document.getElementById("smallContainer").style.pointerEvents
+                alert("Pick a card to answer, click it again to flip it back!")
+                //var x = document.getElementById("smallContainer").style.pointerEvents
                 //alert("Page is loaded");
                 //alert(x.valueOf);
             }
@@ -413,8 +415,8 @@
             //document.getElementById('CardSelected').innerHTML = "Write your answer here for  "+cardName+" card ";
 
                         //all click functions 
-            val = document.getElementById('smallContainer').style.pointerEvents;
-            alert("print this")
+            //val = document.getElementById('smallContainer').style.pointerEvents;
+            //alert("print this")
 
             function card11Click() //card is Clicked 
             {
@@ -634,7 +636,9 @@
         <div>
             <div class="instruction" style="position:relative;">
                 <h4> Click on any card to select it. Click it again to flip it back.</h4>
+
                 <h4> You can move between cards after writing on any textbox, your answers will be saved.</h4>
+                <br></br>
             </div>
             <!-- Big container from from of cards starts here -->
             <div class="bigcontainer">
@@ -701,7 +705,7 @@
             <div class="container" id="smallContainer">
                 <div class="box" id="card1box">
                     <div class="thumb">
-                        <img src="image3.jpg">
+                        <img src="img/image3.jpg">
                     </div>
                     <div id="Ndetails" class="details">
                         <div class="content">
@@ -712,7 +716,7 @@
                 </div>
                 <div class="box" id="card2box">
                     <div class="thumb">
-                        <img src="image3.jpg">
+                        <img src="img/image3.jpg">
                     </div>
                     <div class="details">
                         <div class="content">
@@ -723,7 +727,7 @@
                 </div>
                 <div class="box" id="card3box">
                     <div class="thumb">
-                        <img src="image1.jpg">
+                        <img src="img/image1.jpg">
                     </div>
                     <div class="details">
                         <div class="content">
@@ -734,7 +738,7 @@
                 </div>
                 <div class="box" id="card4box">
                     <div class="thumb">
-                        <img src="image3.jpg">
+                        <img src="img/image3.jpg">
                     </div>
                     <div class="details">
                         <div class="content">
@@ -746,6 +750,7 @@
             </div>
             <!-- end of the small container-->
             <div class="instruction" style="position:absolute;">
+                <br></br>
                 <h4> Submit your answers for all cards by clicking Submit here <button id="btn3"> Submit </button> </h4>
                 <h4> Select another technology. Note, you cannot reselect this technology <button> Pick Technology Page </button> </ h4>
                 <h4> Go to see your Tarot Cards of Tech Prediction <button>Go to Results Page</button></h4>
