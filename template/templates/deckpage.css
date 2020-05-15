@@ -7,7 +7,7 @@ body
 .container
 {
     position: absolute;
-    top: 40%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1200px;
@@ -167,7 +167,7 @@ body
 .bigcontainer
 {
     position: absolute;
-    top: 40%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1200px;
@@ -262,12 +262,13 @@ body
     display: block;
     left: 20%;
     top: 80%;
-    padding: 2pt;
+    padding-bottom: 20%;
+    padding: 30pt;
 }
 .txtcontainer
 {
     position: absolute;
-    top: 40%;
+    top: 53%;
     left: 50%;
     width: 1200px;
     height: 500px;
