@@ -1,0 +1,801 @@
+<!-- This is the card flipping document that works -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Select Card to Answer </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="original.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body onload="myFunction()">
+        <header>
+            <h3 class="bolded-blue" data-i18n="litw-cardsurvey-header"></h3>
+            <h4 class="bolded-blue" data-i18n="litw-cardsurvey-subheader"></h4>
+        </header>
+        <script>
+            $(document).ready(function()
+            {
+                $('#btn-next-page').hide();
+                $("#btn1").click(function()
+                {
+                    alert("Card 1 jquery was clicked!");
+                    $('#card1box').css('transform', 'rotateY(180deg)');     //turn the face
+                    $('#Card1Flip').css('transform', 'rotateY(0deg)');      //show the face of the back of the card      
+                    
+                    //Hide the card's face and textbox
+                    $('#card1box').css('opacity', 0);       //hide the face
+                    $('#txt1box').css('opacity', 0);        //hide the txtbox at this place
+                    
+                    //show the cards' questions 
+                    $('#Card1Flip').css('opacity', 1);  
+                    $('#Card1Flip').css('transform', 'scale(1.05)');    //increases size in scale of selected card
+
+                    //bring textbox to top of all elements 
+                    $("#txt3box").css('z-index', 9998);
+                    $("#txt3").css('z-index', 9999);
+                    $("#card3box").css('z-index', -1);
+                    $("#card2box").css('z-index', -1);
+
+                    //show the textbox for this card 
+                    $("#txt3box").css('opacity', 1);
+                    $("#txt3").css('opacity', 1);
+                    $("#textboxArea").css('opacity', 1);
+                    
+                    //make this textbox clickable
+                    $("#txt3box").css('pointerEvents', 'auto');     
+
+                    //Makes everything except this card unclickable
+                    $('#smallContainer').css('pointerEvents', 'none');  //brings clickable events to the bigger container above
+                    $('#Card2Flip').css('pointerEvents', 'none');
+                    $('#Card3Flip').css('pointerEvents', 'none');
+                    $('#Card4Flip').css('pointerEvents', 'none');
+
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt3box").css('pointerEvents', 'auto');
+
+                    // Dim the color of other cards
+                    $('#card2box').css('opacity', 0);
+                    $('#card3box').css('opacity', 0);
+                    $('#card4box').css('opacity', 0.2);
+                });
+
+                $("#btn2").click(function()
+                {
+                    alert("Card 2 jquery was clicked!");
+                    $('#card2box').css('transform', 'rotateY(180deg)');     //turn the face
+                    $('#Card2Flip').css('transform', 'rotateY(0deg)');      //show the face of the back of the card      
+                    
+                    //Hide the card's face and textbox
+                    $('#card2box').css('opacity', 0);       //hide the face
+                    $('#txt2box').css('opacity', 0);        //hide the txtbox at this place
+                    
+                    //show the cards' questions 
+                    $('#Card2Flip').css('opacity', 1);  
+                    $('#Card2Flip').css('transform', 'scale(1.05)');    //increases size in scale of selected card
+
+                    //bring textbox to top of all elements 
+                    $("#txt4box").css('z-index', 9998);
+                    $("#txt4").css('z-index', 9999);
+                    $("#card3box").css('z-index', -1);
+                    $("#card4box").css('z-index', -1);
+
+                    //increase the length of textbox and bring it on top and forward and visible.
+                    //$("#txt4").width(2.0*$('textarea').width());
+                    //$("#txt4").width('500pt');
+                    //$("#txt4").height('440pt');
+                    //$("#txt4").height(4.0*$('textarea').height());
+                    //$("#txt4").css('transform','translate(-5%,0)');
+
+                    //show the textbox for this card 
+                    $("#txt4box").css('opacity', 1);
+                    $("#txt4").css('opacity', 1);
+                    $("#textboxArea").css('opacity', 1);
+                    
+                    //make this textbox clickable
+                    $("#txt4box").css('pointerEvents', 'auto');     
+
+                    //Makes everything except this card unclickable
+                    $('#smallContainer').css('pointerEvents', 'none');  //brings clickable events to the bigger container above
+                    $('#Card1Flip').css('pointerEvents', 'none');
+                    $('#Card3Flip').css('pointerEvents', 'none');
+                    $('#Card4Flip').css('pointerEvents', 'none');
+
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt4box").css('pointerEvents', 'auto');
+
+                    // Dim the color of other cards
+                    $('#card1box').css('opacity', 0.2);
+                    $('#card3box').css('opacity', 0);
+                    $('#card4box').css('opacity', 0);
+                });
+
+                $("#btn3").click(function()
+                {
+                    alert("Card 3 jquery was clicked!");
+                    $('#card3box').css('transform', 'rotateY(180deg)');     //turn the face
+                    $('#Card3Flip').css('transform', 'rotateY(0deg)');      //show the face of the back of the card      
+                    
+                    //Hide the card's face and textbox
+                    $('#card3box').css('opacity', 0);       //hide the face
+                    $('#txt3box').css('opacity', 0);        //hide the txtbox at this place
+                    
+                    //show the cards' questions 
+                    $('#Card3Flip').css('opacity', 1);  
+                    $('#Card3Flip').css('transform', 'scale(1.05)');    //increases size in scale of selected card
+
+                    //bring textbox to top of all elements 
+                    $("#txt1box").css('z-index', 9998);
+                    $("#txt1").css('z-index', 9999);
+                    $("#card1box").css('z-index', -1);
+                    //$("#card3box").css('z-index', -1);
+
+                    //increase the length of textbox and bring it on top and forward and visible.
+                    //$("#txt1").width(2.0*$('textarea').width());
+                    //$("#txt1").width('500pt');
+                    //$("#txt1").height('460pt');//$("#txt1").height(4.0*$('textarea').height());
+
+                    //$("#txt1").css('transform','translate(40%,0)');
+
+                    //show the textbox for this card 
+                    $("#txt1box").css('opacity', 1);
+                    $("#txt1").css('opacity', 1);
+                    $("#textboxArea").css('opacity', 1);
+                    
+                    //make this textbox clickable
+                    $("#txt1box").css('pointerEvents', 'auto');     
+
+                    //Makes everything except this card unclickable
+                    $('#smallContainer').css('pointerEvents', 'none');  //brings clickable events to the bigger container above
+                    $('#Card1Flip').css('pointerEvents', 'none');
+                    $('#Card2Flip').css('pointerEvents', 'none');
+                    $('#Card4Flip').css('pointerEvents', 'none');
+
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt1box").css('pointerEvents', 'auto');
+
+                    // Dim the color of other cards
+                    $('#card1box').css('opacity', 0);
+                    $('#card2box').css('opacity', 0);
+                    $('#card4box').css('opacity', 0.2);
+                });
+
+                $("#btn4").click(function()
+                {
+                    alert("Card 4 jquery was clicked!");
+                    $('#card4box').css('transform', 'rotateY(180deg)');     //turn the face
+                    $('#Card4Flip').css('transform', 'rotateY(0deg)');      //show the face of the back of the card      
+                    
+                    //Hide the card's face and textbox
+                    $('#card4box').css('opacity', 0);       //hide the face
+                    $('#txt4box').css('opacity', 0);        //hide the txtbox at this place
+                    
+                    //show the cards' questions 
+                    $('#Card4Flip').css('opacity', 1);  
+                    $('#Card4Flip').css('transform', 'scale(1.05)');    //increases size in scale of selected card
+
+                    //bring textbox to top of all elements 
+                    $("#txt2box").css('z-index', 9998);
+                    $("#txt2").css('z-index', 9999);
+                    $("#card2box").css('z-index', -1);
+                    //$("#card3box").css('z-index', -1);
+
+                    //increase the length of textbox and bring it on top and forward and visible.
+                    //$("#txt2").width(2.0*$('textarea').width());
+                    //$("#txt2").width('500pt');
+                    //$("#txt2").height('480pt');//$("#txt2").height(4.0*$('textarea').height());
+
+                    //$("#txt2").css('transform','translate(45%,0)');
+
+                    //show the textbox for this card 
+                    $("#txt2box").css('opacity', 1);
+                    $("#txt2").css('opacity', 1);
+                    $("#textboxArea").css('opacity', 1);
+                    
+                    //make this textbox clickable
+                    $("#txt2box").css('pointerEvents', 'auto');     
+
+                    //Makes everything except this card unclickable
+                    $('#smallContainer').css('pointerEvents', 'none');  //brings clickable events to the bigger container above
+                    $('#Card1Flip').css('pointerEvents', 'none');
+                    $('#Card2Flip').css('pointerEvents', 'none');
+                    $('#Card3Flip').css('pointerEvents', 'none');
+
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt2box").css('pointerEvents','auto');
+
+                    // Dim the color of other cards
+                    $('#card1box').css('opacity', 0.2);
+                    $('#card2box').css('opacity', 0);
+                    $('#card3box').css('opacity', 0);
+                });
+
+                //Methods for Flipping Cards Back 
+                $("#Card1Flip").click(function()
+                {
+                    alert("Card 1 jquery  .. !");
+                    //turn the back and turn back the face
+                    $('#Card1Flip').css('transform', 'rotateY(180deg)');
+                    $('#card1box').css('transform', 'rotateY(0deg)');
+
+                    //decrease the size of textbox and bring it on top and forward and visible.
+                    //$("#txt3").width(1*$('textarea').width());
+                    //$("#txt3").height(1*$('textarea').height());
+
+                    //send the textbox downwards and bring the card face up
+                    //$("#txt2box").css('z-index', 'auto');
+                    //$("#txt2").css('z-index', 'auto');
+                    //$("#card2box").css('z-index', 9999);
+                    //$("#card3box").css('z-index', 9999);
+
+                    //hide txtbox
+                    $("#txt3box").css('opacity', 0);
+                    $("#textboxArea").css('opacity', 0);
+                    //hide the back of the card
+                    $('#Card1Flip').css('opacity', 0);
+                
+                    //Makes everything clickable back again
+                    $('#smallContainer').css('pointerEvents', 'all');  //moves the clickables to the smaller container below
+                    $('#Card2Flip').css('pointerEvents', 'auto');
+                    $('#Card3Flip').css('pointerEvents', 'auto');
+                    $('#Card4Flip').css('pointerEvents', 'auto');
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt3box").css('pointerEvents', 'none');
+
+                    //Bring the cards colors back which were dimmed
+                    $('#card1box').css('opacity', 1);
+                    $('#card2box').css('opacity', 1);
+                    $('#card3box').css('opacity', 1);
+                    $('#card4box').css('opacity', 1);
+                    //document.getElementById('card1box').style.pointerEvents  = "auto";
+                    //document.getElementById('card2box').style.pointerEvents  = "auto";
+                    //document.getElementById('card3box').style.pointerEvents  = "inherit";
+                    //document.getElementById('card4box').style.pointerEvents  = "all";
+
+                    //change answer textbox prompt
+                    //$('CardSelected').innerHTML = "";
+                });
+
+                $("#Card2Flip").click(function()
+                {
+                    alert("Card 2 flipped jquery  .. !");
+                    //turn the back and turn back the face
+                    $('#Card2Flip').css('transform', 'rotateY(180deg)');
+                    $('#card2box').css('transform', 'rotateY(0deg)');
+
+                    //decrease the size of textbox and bring it on top and forward and visible.
+                    //$("#txt4").width(1*$('textarea').width());
+                    //$("#txt4").height(1*$('textarea').height());
+
+                    //send the textbox downwards and bring the card face up
+                    //$("#txt2box").css('z-index', 'auto');
+                    //$("#txt2").css('z-index', 'auto');
+                    //$("#card2box").css('z-index', 9999);
+                    //$("#card3box").css('z-index', 9999);
+
+                    //hide txtbox
+                    $("#txt4box").css('opacity', 0);
+                    $("#textboxArea").css('opacity', 0);
+                    //hide the back of the card
+                    $('#Card2Flip').css('opacity', 0);
+                
+                    //Makes everything clickable back again
+                    $('#smallContainer').css('pointerEvents', 'all');  //moves the clickables to the smaller container below
+                    $('#Card1Flip').css('pointerEvents', 'auto');
+                    $('#Card3Flip').css('pointerEvents', 'auto');
+                    $('#Card4Flip').css('pointerEvents', 'auto');
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt4box").css('pointerEvents', 'none');
+
+                    //Bring the cards colors back which were dimmed
+                    $('#card1box').css('opacity', 1);
+                    $('#card2box').css('opacity', 1);
+                    $('#card3box').css('opacity', 1);
+                    $('#card4box').css('opacity', 1);
+                    //document.getElementById('card1box').style.pointerEvents  = "auto";
+                    //document.getElementById('card2box').style.pointerEvents  = "auto";
+                    //document.getElementById('card3box').style.pointerEvents  = "inherit";
+                    //document.getElementById('card4box').style.pointerEvents  = "all";
+
+                    //change answer textbox prompt
+                    //$('CardSelected').innerHTML = "";
+
+                });
+
+
+                $("#Card3Flip").click(function()
+                {
+                    alert("Card 3 flip jquery  .. !");
+                    //turn the back and turn back the face
+                    $('#Card3Flip').css('transform', 'rotateY(180deg)');
+                    $('#card3box').css('transform', 'rotateY(0deg)');
+
+                    //decrease the size of textbox and bring it on top and forward and visible.
+                    //$("#txt1").width(1*$('textarea').width());
+                    //$("#txt1").height(1*$('textarea').height());
+
+                    //send the textbox downwards and bring the card face up
+                    //$("#txt2box").css('z-index', 'auto');
+                    //$("#txt2").css('z-index', 'auto');
+                    //$("#card2box").css('z-index', 9999);
+                    //$("#card3box").css('z-index', 9999);
+                    //$("#txt1").css('transform','translate(-40%,0)');
+
+                    //hide txtbox
+                    $("#txt1box").css('opacity', 0);
+                    $("#textboxArea").css('opacity', 0);
+                    //hide the back of the card
+                    $('#Card3Flip').css('opacity', 0);
+                
+                    //Makes everything clickable back again
+                    $('#smallContainer').css('pointerEvents', 'all');  //moves the clickables to the smaller container below
+                    $('#Card1Flip').css('pointerEvents', 'auto');
+                    $('#Card2Flip').css('pointerEvents', 'auto');
+                    $('#Card4Flip').css('pointerEvents', 'auto');
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt1box").css('pointerEvents', 'none');
+
+                    //Bring the cards colors back which were dimmed
+                    $('#card1box').css('opacity', 1);
+                    $('#card2box').css('opacity', 1);
+                    $('#card3box').css('opacity', 1);
+                    $('#card4box').css('opacity', 1);
+                    //document.getElementById('card1box').style.pointerEvents  = "auto";
+                    //document.getElementById('card2box').style.pointerEvents  = "auto";
+                    //document.getElementById('card3box').style.pointerEvents  = "inherit";
+                    //document.getElementById('card4box').style.pointerEvents  = "all";
+
+                    //change answer textbox prompt
+                    //$('CardSelected').innerHTML = "";
+
+                });
+
+                $("#Card4Flip").click(function()
+                {
+                    alert("Card 4 flip jquery  .. !");
+                    //turn the back and turn back the face
+                    $('#Card4Flip').css('transform', 'rotateY(180deg)');
+                    $('#card4box').css('transform', 'rotateY(0deg)');
+
+                    //decrease the size of textbox and bring it on top and forward and visible.
+                    //$("#txt2").width(1*$('textarea').width());
+                    //$("#txt2").height(1*$('textarea').height());
+
+                    //send the textbox downwards and bring the card face up
+                    //$("#txt2box").css('z-index', 'auto');
+                    //$("#txt2").css('z-index', 'auto');
+                    //$("#card2box").css('z-index', 9999);
+                    //$("#card3box").css('z-index', 9999);
+                    //$("#txt2").css('transform','translate(-45%,0)');
+
+                    //hide txtbox
+                    $("#txt2box").css('opacity', 0);
+                    $("#textboxArea").css('opacity', 0);
+                    //hide the back of the card
+                    $('#Card4Flip').css('opacity', 0);
+                
+                    //Makes everything clickable back again
+                    $('#smallContainer').css('pointerEvents', 'all');  //moves the clickables to the smaller container below
+                    $('#Card1Flip').css('pointerEvents', 'auto');
+                    $('#Card2Flip').css('pointerEvents', 'auto');
+                    $('#Card3Flip').css('pointerEvents', 'auto');
+                    $('#textboxArea').css('pointerEvents', 'none');
+                    $("#txt2box").css('pointerEvents', 'none');
+
+                    //Bring the cards colors back which were dimmed
+                    $('#card1box').css('opacity', 1);
+                    $('#card2box').css('opacity', 1);
+                    $('#card3box').css('opacity', 1);
+                    $('#card4box').css('opacity', 1);
+                    //document.getElementById('card1box').style.pointerEvents  = "auto";
+                    //document.getElementById('card2box').style.pointerEvents  = "auto";
+                    //document.getElementById('card3box').style.pointerEvents  = "inherit";
+                    //document.getElementById('card4box').style.pointerEvents  = "all";
+
+                    //change answer textbox prompt
+                    //$('CardSelected').innerHTML = "";
+                });
+
+
+                $("#btn33").click(function()
+                {
+                    $("#card1box").hide();
+                    $("#card2box").hide();
+                    $("#card3box").hide();
+                });
+
+            });
+
+            function myFunction() {
+                var x = document.getElementById("smallContainer").style.pointerEvents
+                //alert("Page is loaded");
+                //alert(x.valueOf);
+            }
+
+            //var cardName = "No Card Selected"
+            //p = document.getElementById('CardSelected');
+            //p.innerHTML = "Write your answer here for  "+cardName+" card ";
+            //document.getElementById('CardSelected').innerHTML = "Write your answer here for  "+cardName+" card ";
+
+                        //all click functions 
+            val = document.getElementById('smallContainer').style.pointerEvents;
+            alert("print this")
+
+            function card11Click() //card is Clicked 
+            {
+                alert("Card 1 was clicked!");
+                document.getElementById('card1box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card1Flip').style.transform = "rotateY(0deg)";
+                
+                //Hide the card's face and textbox
+                document.getElementById('card1box').style.opacity = 0;
+                
+                document.getElementById('Card1Flip').style.opacity = 1;
+                document.getElementById('Card1Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+
+                //Makes everything except this card unclickable
+                document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                //document.getElementById('card1box').style.pointerEvents  = "none";
+                //document.getElementById('card2box').style.pointerEvents  = "none";
+                //document.getElementById('card3box').style.pointerEvents  = "none";
+                //document.getElementById('card4box').style.pointerEvents  = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+                document.getElementById('Card3Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+
+                // Dim the color of other cards
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card3box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Mother Nature card ";
+            }
+
+            function card22Click() //card is Clicked 
+            {
+                alert("Card 2 was clicked!");
+                document.getElementById('card2box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card2Flip').style.transform = "rotateY(0deg)";
+                document.getElementById('Card2Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                
+                //Makes everything except this card unclickable
+                document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card3Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+
+                document.getElementById('card2box').style.opacity = 0;
+                document.getElementById('Card2Flip').style.opacity = 1;
+
+                // Dim the color of other cards
+                document.getElementById('card1box').style.opacity = 0.3;
+                document.getElementById('card3box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Bffs card ";
+            }
+            function card44Click() //card is Clicked 
+            {
+                alert("Card 4 was clicked!");
+                document.getElementById('card4box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card4Flip').style.transform = "rotateY(0deg)";
+
+               //Makes everything except this card unclickable
+               document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+                document.getElementById('Card3Flip').style.pointerEvents = "none";
+
+                document.getElementById('Card4Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                document.getElementById('card4box').style.opacity = 0;
+                document.getElementById('Card4Flip').style.opacity = 1;
+                // Dim the color of other cards
+                document.getElementById('card1box').style.opacity = 0.3;
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card3box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Smash Hit card ";
+            }
+            
+            function card33Click() //card is Clicked 
+            {
+                alert("Card 3 was clicked!");
+                document.getElementById('card3box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(0deg)";
+
+               //Makes everything except this card unclickable
+               document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+
+                document.getElementById('Card3Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                document.getElementById('card3box').style.opacity = 0;
+                document.getElementById('Card3Flip').style.opacity = 1;
+                // Dim the color of other cards
+                document.getElementById('card1box').style.opacity = 0.3;
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+            }
+
+           // document.getElementById("demo").onclick = function() {card3Click()};  //function for href click even 
+            function card333Click() //card is Clicked 
+            {
+                alert("Card 3 was clicked!");
+                document.getElementById('card3box').style.transform = "rotateY(180deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(0deg)";
+                
+                //Makes everything except this card unclickable
+                document.getElementById('smallContainer').style.pointerEvents = "none"; //brings clickable events to the bigger container above
+                document.getElementById('Card1Flip').style.pointerEvents = "none";
+                document.getElementById('Card2Flip').style.pointerEvents = "none";
+                document.getElementById('Card4Flip').style.pointerEvents = "none";
+
+                document.getElementById('Card3Flip').style.transform = "scale(1.1)"; //increases scale of selected card
+                document.getElementById('card3box').style.opacity = 0;
+                document.getElementById('Card3Flip').style.opacity = 1;
+                // Dim the color of other cards
+                document.getElementById('card1box').style.opacity = 0.3;
+                document.getElementById('card2box').style.opacity = 0.3;
+                document.getElementById('card4box').style.opacity = 0.3;
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "Write your answer here for The Forgotten and Backstabber card ";
+            }
+
+            //All Flip functions below
+            function card11Flip()
+            {
+                alert("Card 1 html code flipped back .. !");
+                document.getElementById('card1box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card1Flip').style.transform = "rotateY(180deg)";
+                
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('Card1Flip').style.opacity = 0;
+
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "all";  //moves the clickables to the smaller container below
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+                document.getElementById('Card3Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('card4box').style.opacity = 1;
+                //document.getElementById('card1box').style.pointerEvents  = "auto";
+                //document.getElementById('card2box').style.pointerEvents  = "auto";
+                //document.getElementById('card3box').style.pointerEvents  = "inherit";
+                //document.getElementById('card4box').style.pointerEvents  = "all";
+
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
+            }
+            function card2Flip()
+            {
+                alert("Card 2 is going to be flipped back .. !");
+                document.getElementById('card2box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card2Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('Card2Flip').style.opacity = 0;
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "auto";  //moves the clickables to the smaller container below
+                document.getElementById('Card1Flip').style.pointerEvents = "auto";
+                document.getElementById('Card3Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('card4box').style.opacity = 1;
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
+            }
+            function card3Flip()
+            {
+                alert("Card 3 is going to be flipped back .. !");
+                document.getElementById('card3box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card3Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card3box').style.opacity = 1;
+                document.getElementById('Card3Flip').style.opacity = 0;
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "auto";  //moves the clickables to the smaller container below
+                document.getElementById('Card1Flip').style.pointerEvents = "auto";
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+                document.getElementById('Card4Flip').style.pointerEvents = "auto";
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('card4box').style.opacity = 1;
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
+            }
+            function card4Flip()
+            {
+                alert("Card 4 is going to be flipped back .. !");
+                document.getElementById('card4box').style.transform = "rotateY(0deg)";
+                document.getElementById('Card4Flip').style.transform = "rotateY(180deg)";
+                document.getElementById('card4box').style.opacity = 1;
+                document.getElementById('Card4Flip').style.opacity = 0;
+                //Makes everything clickable back again
+                document.getElementById('smallContainer').style.pointerEvents = "auto";  //moves the clickables to the smaller container below
+                document.getElementById('Card1Flip').style.pointerEvents = "auto";
+                document.getElementById('Card2Flip').style.pointerEvents = "auto";
+                document.getElementById('Card3Flip').style.pointerEvents = "auto";
+                //Bring the cards colors back which were dimmed
+                document.getElementById('card1box').style.opacity = 1;
+                document.getElementById('card2box').style.opacity = 1;
+                document.getElementById('card3box').style.opacity = 1;
+                //change answer textbox prompt
+                document.getElementById('CardSelected').innerHTML = "";
+            }
+
+            
+        </script>
+        <!-- End of Scripts here -->
+        <!-- ------------ -->
+        <div>
+            <div class="instruction" style="position: relative;">
+                <h4> Click on any card to select it. Click it again to flip it back.</h4>
+
+                <h4> You can move between cards after writing on any textbox, your answers will be saved.</h4>
+                <br></br>
+            </div>
+            <!-- Big container from from of cards starts here -->
+            <div class="bigcontainer">
+                <div id="Card1Flip" class="bigbox">
+                    <!-- div id="Card1Flipper" class="bigdetails" onclick="card1Flip()"-->
+                    <div id="Card1Flipper" class="bigdetails">
+                        <h2> Mother Nature</h2>
+                        <p> If the environment was your client, how would your product change?</p>
+                        <p> What impact does [the product] have on the environment?</p>
+                        <p> What is the most unsustainable behavior your product encourages?</p>
+                    </div>
+                </div>
+                <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
+                    <div id="Card2Flipped" class="bigdetails">
+                        <h2> The Bffs </h2>
+                        <p> How does [the product] create new ways to interact? </p>
+                        <p> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </p>
+                        <p> Do you think it has the potential to enhance or detract you from your relationships in real life?</p>
+                    </div>
+                </div>
+                <div id="Card3Flip" class="bigbox">
+                    <div class="bigdetails" onclick="card3Flip()">
+                        <h2> The Forgotten and Backstabber </h2>
+                        <p> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose trust, exposed etc). </p>
+                        <p> What mechanisms are in place for listening to you as a user? </p>
+                        <p> How could a user be excluded from [the product] </p>
+                    </div>
+                </div>
+                <div id="Card4Flip" class="bigbox" onclick="card4Flip()">
+                    <div class="bigdetails">
+                        <h2> The Smash Hit </h2>
+                        <p> How might a community change if 80% of it are users of [the product]</p>
+                        <p> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)</p>
+                        <p> How can [the product] change people's habits and norms - Individual behavior question </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text container from from of cards starts here 
+            txtbox is named as txt(n)box and its text is txt(n) where n is the txtbox number
+        
+            Card1 has txtbox 2 
+            Card 2 has txtbox 3 (3 and 4 card) 
+            Card 3 has txtbox 4 
+            Card 4 has txtbox 1 ( 1 and 2 card) -->
+            <div class="txtcontainer" id="textboxArea">
+                <div class="txtbox" id="txt1box">
+                    <textarea id="txt1" style="transform: translate(5%, 10px);" placeholder="Write your answer here for The Forgotten and Backstabber card" type="text"></textarea>
+                </div>  
+                    
+                <div class="txtbox" id="txt2box">
+                    <textarea id="txt2" style="transform: translate(5%, 10px);" placeholder="Write your answer here for The Smash Hit card" type="text"></textarea>
+                </div>
+                <div class="txtbox" id="txt3box">
+                    <textarea id="txt3" style="transform: translate(-270px, 10px);" placeholder="Write Mother Nature's answer here ... " type="text"></textarea>
+                </div>
+                <div class="txtbox" id="txt4box">
+                    <textarea id="txt4" style="transform: translate(-270px, 10px);" placeholder="Write your answer here for The Bffs card " type="text"></textarea>
+                </div>    
+            </div>
+            <!-- end of text boxes container here --> 
+
+            <!-- Small container from from of cards starts here -->
+            <div class="container" id="smallContainer">
+                <div class="box" id="card1box">
+                    <div class="thumb">
+                        <img src="img/Mother.png">
+                    </div>
+                    <div id="Ndetails" class="details">
+                        <div class="content">
+                            <h3>The Mother Nature</h3>
+                            <button id="btn1" class="button" onclick="card1Click()">Select Card</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" id="card2box">
+                    <div class="thumb">
+                        <img src="img/Bff.png">
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                            <h3>The Bffs </h3>
+                            <button id="btn2" class="button" onclick="card2Click()">Select Card</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" id="card3box">
+                    <div class="thumb">
+                        <img src="img/BackStabber.png">
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                            <h3>The Forgotten and Backstabber </h3>
+                            <button id="btn3" class="button" onclick="card3Click()">Select Card</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" id="card4box">
+                    <div class="thumb">
+                        <img src="img/SmashHit.png">
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                            <h3>The Smash Hit </h3>
+                            <button id="btn4" class="button" onclick="card4Click()">Select Card</button>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <!-- end of the small container-->
+            <div class="instruction" style="position:absolute;">
+                <br></br>
+                <h4> Submit your answers for all cards by clicking Submit here <button id="btn3"> Submit </button> </h4>
+                <h4> Select another technology. Note, you cannot reselect this technology <button> Pick Technology Page </button> </ h4>
+                <h4> Go to see your Tarot Cards of Tech Prediction <button>Go to Results Page</button></h4>
+            </div>
+        </div>
+    </body>
+</html>
+<!--
+----A---- The Smash Hit 
+1. How might a community change if 80% of it are users of [the product]? - Collective behavior question - different than c!
+2. What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)
+What would you do if everyone was using Facebook marketplace?
+Would you use Facebook marketplace for 
+Would you use [product] if everyone in your circle or around you was using the [product]? 
+What would you consider if you had to use a platform e.g. [the product]? 
+How do you decide if you want to use a platform [the product]?
+3. How can [the product] change people’s habits and norms - Individual behavior question.
+
+------B------ The Bffs 
+If two friends use the product how could it enhance/ detract their relationship? 
+Do you think the [product] has enhanced or distracted you from your relationships? 
+Do you think it has the potential to enhance or detract you from your relationships in real life?
+How can Facebook enhance or detract you from your relationships? 
+2. How does [the product] create new ways to interact?
+3. Does [the product] fill or change a role previously filled by a person? If yes, who would that person be?
+
+----- C---- The Superfan 
+1. In what ways might the community of most frequent users become a liability?
+2. How would a community of your most passionate users behave to be an asset to [product]?
+3. What “rules of engagement” does FBM rely on, and how might these be subverted?
+
+------ D---- The Forgotten and Backstabber  (Combine to a new Name).
+What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose trust, exposed etc).
+make  you feel unsafe? exposed? excluded?
+Who is excluded from the user base? 
+i. How could a user be excluded from [the product]? 
+What mechanisms are in place for listening to you as a user? 
+
+--- E -- MOTHER NATURE 
+If the environment was your client, how would your product change? 
+What impact does [the product] have on the environment?
+What is the most unsustainable behavior your product encourages?
+(one more question to think about)
+
+ -->

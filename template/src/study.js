@@ -20,7 +20,7 @@ require("jquery-ui-bundle");
 var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
 var pickTechnologyTemplate = require("../templates/pickTechnology.html");
-var cardsDeckTemplate = require("../templates/cardsDeck2.html");
+var cardsDeckTemplate = require("../templates/cardSubmit4.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
