@@ -160,7 +160,7 @@ body
     background: #fff;
     color: #262626;
 }
-.container .box:nth-child(1) .details .content .button:hover
+.container .box .details .content .button:hover
 {
     background: #fff;
     color: #262626;

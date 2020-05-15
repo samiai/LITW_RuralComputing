@@ -26,5 +26,6 @@
     "litw-irb-consent": "By ticking this box, you are agreeing to be in the study. Be sure that questions you have about the study have been answered and that you understand what you are being asked to do. You may contact the researcher if you think of a question later. You are free to leave the experiment at any time, and refusing to be in the experiment or stopping participation will involve no penalty or loss of benefits to which you are otherwise entitled.",
     "litw-irb-warning": "You must check the box to continue.",
     "litw-cardsurvey-header": "Select a card to know if you are techno-optimist or techno-pessimist!",
-    "litw-cardsurvey-subheader": "Moving between cards saves answers, press Submit once done"
+    "litw-cardsurvey-subheader": "Moving between cards saves answers, press Submit once done",
+    "litw-cardsurvey-submit": "Submit answers for all cards by clicking Submit here"
 }

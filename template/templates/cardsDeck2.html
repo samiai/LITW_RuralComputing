@@ -10,9 +10,14 @@ and it attached as a slide in index.html  -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body onload="myFunction()">
+        <header>
+            <h3 class="bolded-blue" data-i18n="litw-cardsurvey-header"></h3>
+            <h4 class="bolded-blue" data-i18n="litw-cardsurvey-subheader"></h4>
+        </header>
         <script>
             $(document).ready(function()
             {
+                $('#btn-next-page').hide();
                 $("#btn1").click(function()
                 {
                     alert("Card 1 jquery was clicked!");
@@ -634,29 +639,29 @@ and it attached as a slide in index.html  -->
         <!-- End of Scripts here -->
         <!-- ------------ -->
         <div>
-            <div class="instruction" style="position:relative;">
+            <!--<div class="instruction" style="position:relative;">
                 <h4> Click on any card to select it. Click it again to flip it back.</h4>
 
                 <h4> You can move between cards after writing on any textbox, your answers will be saved.</h4>
                 <br></br>
-            </div>
+            </div>  -->
             <!-- Big container from from of cards starts here -->
             <div class="bigcontainer">
                 <div id="Card1Flip" class="bigbox">
                     <!-- div id="Card1Flipper" class="bigdetails" onclick="card1Flip()"-->
                     <div id="Card1Flipper" class="bigdetails">
                         <h2> Mother Nature</h2>
-                        <h3> If the environment was your client, how would your product change?</h3>
-                        <h3> What impact does [the product] have on the environment?</h3>
-                        <h3> What is the most unsustainable behavior your product encourages?</h3>
+                        <p> If the environment was your client, how would your product change?</p>
+                        <p> What impact does [the product] have on the environment?</p>
+                        <p> What is the most unsustainable behavior your product encourages?</p>
                     </div>
                 </div>
                 <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
                     <div id="Card2Flipped" class="bigdetails">
                         <h2> The Bffs </h2>
-                        <h3> How does [the product] create new ways to interact? </h3>
-                        <h3> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </h3>
-                        <h3> Do you think it has the potential to enhance or detract you from your relationships in real life?</h3>
+                        <p> How does [the product] create new ways to interact? </p>
+                        <p> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </p>
+                        <p> Do you think it has the potential to enhance or detract you from your relationships in real life?</p>
                     </div>
                 </div>
                 <div id="Card3Flip" class="bigbox">
@@ -752,8 +757,10 @@ and it attached as a slide in index.html  -->
             <div class="instruction" style="position:absolute;">
                 <br></br>
                 <h4> Submit your answers for all cards by clicking Submit here <button id="btn3"> Submit </button> </h4>
+                <!--
                 <h4> Select another technology. Note, you cannot reselect this technology <button> Pick Technology Page </button> </ h4>
                 <h4> Go to see your Tarot Cards of Tech Prediction <button>Go to Results Page</button></h4>
+                -->
             </div>
         </div>
     </body>

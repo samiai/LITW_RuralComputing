@@ -1,17 +1,25 @@
-<!-- This is the card flipping document that works -->
+<!-- This is the card flipping document that works
+and has original card images and css  -->
 <!DOCTYPE html>
 <html>
     <head>
         <title> Select Card to Answer </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="original.css">
+        <link rel="stylesheet" type="text/css" href="css/originalcards.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body onload="myFunction()">
+        <header>
+            <h3 class="bolded-blue" data-i18n="litw-cardsurvey-header"></h3>
+            <h4 class="bolded-blue" data-i18n="litw-cardsurvey-subheader"></h4>
+            <br></br>
+        </header>
         <script>
             $(document).ready(function()
             {
+                $('#btn-next-page').hide();
+                $('#btn-next-page').css('pointerEvents', 'none');
                 $("#btn1").click(function()
                 {
                     alert("Card 1 jquery was clicked!");
@@ -402,7 +410,8 @@
             });
 
             function myFunction() {
-                var x = document.getElementById("smallContainer").style.pointerEvents
+                //alert("Pick a card to answer, click it again to flip it back!")
+                //var x = document.getElementById("smallContainer").style.pointerEvents
                 //alert("Page is loaded");
                 //alert(x.valueOf);
             }
@@ -413,8 +422,9 @@
             //document.getElementById('CardSelected').innerHTML = "Write your answer here for  "+cardName+" card ";
 
                         //all click functions 
-            val = document.getElementById('smallContainer').style.pointerEvents;
-            alert("print this")
+            //val = document.getElementById('smallContainer').style.pointerEvents;
+            //alert("print this")
+            alert("Pick a card to answer, click it again to flip it back!")
 
             function card11Click() //card is Clicked 
             {
@@ -632,12 +642,12 @@
         <!-- End of Scripts here -->
         <!-- ------------ -->
         <div>
-            <div class="instruction" style="position: relative;">
+            <!--<div class="instruction" style="position:relative;">
                 <h4> Click on any card to select it. Click it again to flip it back.</h4>
 
                 <h4> You can move between cards after writing on any textbox, your answers will be saved.</h4>
                 <br></br>
-            </div>
+            </div>  -->
             <!-- Big container from from of cards starts here -->
             <div class="bigcontainer">
                 <div id="Card1Flip" class="bigbox">
@@ -645,32 +655,32 @@
                     <div id="Card1Flipper" class="bigdetails">
                         <h2> Mother Nature</h2>
                         <h3> If the environment was your client, how would your product change?</h3>
-                        <h3> What impact does [the product] have on the environment?</h3>
-                        <h3> What is the most unsustainable behavior your product encourages?</h3>
+                        <p> What impact does [the product] have on the environment?</p>
+                        <p> What is the most unsustainable behavior your product encourages?</p>
                     </div>
                 </div>
                 <div id="Card2Flip" class="bigbox" onclick="card2Flip()">
                     <div id="Card2Flipped" class="bigdetails">
                         <h2> The Bffs </h2>
                         <h3> How does [the product] create new ways to interact? </h3>
-                        <h3> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </h3>
-                        <h3> Do you think it has the potential to enhance or detract you from your relationships in real life?</h3>
+                        <p> Does [the product] fill or change a role previously filled by a person? If yes, who would that person be? </p>
+                        <p> Do you think it has the potential to enhance or detract you from your relationships in real life?</p>
                     </div>
                 </div>
                 <div id="Card3Flip" class="bigbox">
                     <div class="bigdetails" onclick="card3Flip()">
                         <h2> The Forgotten and Backstabber </h2>
                         <h3> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose trust, exposed etc). </h3>
-                        <h3> What mechanisms are in place for listening to you as a user? </h3>
-                        <h3> How could a user be excluded from [the product] </h3>
+                        <p> What mechanisms are in place for listening to you as a user? </p>
+                        <p> How could a user be excluded from [the product] </p>
                     </div>
                 </div>
                 <div id="Card4Flip" class="bigbox" onclick="card4Flip()">
                     <div class="bigdetails">
                         <h2> The Smash Hit </h2>
                         <h3> How might a community change if 80% of it are users of [the product]</h3>
-                        <h3> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)</h3>
-                        <h3> How can [the product] change people's habits and norms - Individual behavior question </h3>
+                        <p> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product economy ...)</h3>
+                        <p> How can [the product] change people's habits and norms - Individual behavior question </p>
                     </div>
                 </div>
             </div>
@@ -703,7 +713,7 @@
             <div class="container" id="smallContainer">
                 <div class="box" id="card1box">
                     <div class="thumb">
-                        <img src="Mother.png">
+                        <img src="img/Mother.png">
                     </div>
                     <div id="Ndetails" class="details">
                         <div class="content">
@@ -714,7 +724,7 @@
                 </div>
                 <div class="box" id="card2box">
                     <div class="thumb">
-                        <img src="Bff.png">
+                        <img src="img/Bff.png">
                     </div>
                     <div class="details">
                         <div class="content">
@@ -725,7 +735,7 @@
                 </div>
                 <div class="box" id="card3box">
                     <div class="thumb">
-                        <img src="BackStabber.png">
+                        <img src="img/BackStabber.png">
                     </div>
                     <div class="details">
                         <div class="content">
@@ -736,7 +746,7 @@
                 </div>
                 <div class="box" id="card4box">
                     <div class="thumb">
-                        <img src="SmashHit.png">
+                        <img src="img/SmashHit.png">
                     </div>
                     <div class="details">
                         <div class="content">
@@ -749,9 +759,14 @@
             <!-- end of the small container-->
             <div class="instruction" style="position:absolute;">
                 <br></br>
-                <h4> Submit your answers for all cards by clicking Submit here <button id="btn3"> Submit </button> </h4>
+                <header>
+                    <h3 class="bolded-blue" data-i18n="litw-cardsurvey-submit" ></h3></button> 
+                </header>
+               <!-- <h4> Submit your answers for all cards by clicking Submit here <button id="btn3"> Submit </button> </h4>
+                
                 <h4> Select another technology. Note, you cannot reselect this technology <button> Pick Technology Page </button> </ h4>
                 <h4> Go to see your Tarot Cards of Tech Prediction <button>Go to Results Page</button></h4>
+                -->
             </div>
         </div>
     </body>
