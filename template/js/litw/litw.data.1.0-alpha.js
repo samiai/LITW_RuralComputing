@@ -1,14 +1,14 @@
 /*************************************************************
- * litw.data.noapi.0.1.js
+ * litw.data.noapi.1.0.js
  *
- * Contains functions for writing study data via a simple
- * PHP set of calls.
+ * Contains functions for writing LITW Study data operations
+ * using the LITW REST API
  *
  * Dependencies: jQuery
  *
  * Author: LabintheWild DEV crew
  *
- * © Copyright 2018 LabintheWild
+ * © Copyright 2020 LabintheWild
  * For questions about this file and permission to use
  * the code, contact us at info@labinthewild.org
  *************************************************************/
@@ -16,29 +16,32 @@
 (function( exports ) {
     "use strict";
 
-    var version = 0.1,
+    var version = 1.0,
         params = {
+            _isInitialized: false,
             participantId: 0,
             ipCountry: "not_fetched_or_initialized",
             ipCity: "not_fetched_or_initialized",
-            _isInitialized: false
+            userAgent: "not_fetched_or_initialized"
         },
 
         initialize = function() {
-            var litw_locale = LITW.locale.getLocale() || "";
+            let litw_locale = LITW.locale.getLocale() || "";
 
             if (!params._isInitialized) {
-                params.participantId = uuidv4();
                 params._isInitialized = true;
-
-                $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+                params.participantId = uuidv4();
+                params.userAgent = navigator.userAgent;
+                let geoip_url = 'https://www.labinthewild.org/include/geoip.php';
+                $.getJSON(geoip_url, function(data) {
                     params.ipCity = data.city;
-                    params.ipCountry = data.country_name;
+                    params.ipCountry = data.country;
                 }).always(function() {
-                    var data = {
+                    let data = {
                        contentLanguage: litw_locale,
                        city: params.ipCity,
-                       country: params.ipCountry
+                       country: params.ipCountry,
+                       userAgent: params.userAgent
                     };
                     submitData(data,"litw:initialize");
                 });
@@ -51,13 +54,13 @@
         },
 
         submitComments = function(data) {
-            submitData(data,"study:comments")
+            submitData(data,"study_client:comments")
         },
         submitDemographics = function(data) {
-            submitData(data,"study:demographics")
+            submitData(data,"study_client:demographics")
         },
         submitStudyData = function(data) {
-            submitData(data,"study:data")
+            submitData(data,"study_client:data")
         },
         submitData = function(data, dataType) {
             if (!params._isInitialized) {
@@ -81,7 +84,7 @@
         },
 
         _submit = function(obj_data, finalAttempt) {
-//            console.log(JSON.stringify(obj_data));
+            //console.log(JSON.stringify(obj_data));
             $.post("include/save_data.php", JSON.stringify(obj_data) )
                 .fail(function(e) {
                     console.log(e);
