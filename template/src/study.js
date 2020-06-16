@@ -51,20 +51,20 @@ module.exports = (function() {
 	},
 
 	initJsPsych = function() {
-		// ******* BEGIN STUDY PROGRESSION ******** //
-        // timeline.push({
-        //     type: "display-slide",
-        //     template: demographicsTemplate,
-        //     display_element: $("#demographics"),
-        //     name: "demographics",
-        //     finish: function(){
-        //     	let dem_data = $('#form').alpaca().getValue();
-        //     	console.log(dem_data);
-		// 		dem_data['time_elapsed'] = getSlideTime();
-        //     	jsPsych.data.addProperties({demographics:dem_data});
-        //     	LITW.data.submitDemographics(dem_data);
-        //     }
-        // });
+
+        timeline.push({
+            type: "display-slide",
+            template: demographicsTemplate,
+            display_element: $("#demographics"),
+            name: "demographics",
+            finish: function(){
+            	let dem_data = $('#form').alpaca().getValue();
+            	console.log(dem_data);
+				dem_data['time_elapsed'] = getSlideTime();
+            	jsPsych.data.addProperties({demographics:dem_data});
+            	LITW.data.submitDemographics(dem_data);
+            }
+        });
 
 		timeline.push({
 			type: "display-slide",
@@ -90,54 +90,6 @@ module.exports = (function() {
 		//LITW.utils.showSlide("trials");
 	},
 
-	comments = function() {
-		$("#progress-header").hide();
-		LITW.utils.showSlide("comments");
-		LITW.comments.showCommentsPage(results);
-	},
-
-	results = function(commentsData) {
-
-		LITW.data.submitComments(commentsData);
-
-		// get the trial data from jsPsych
-		var studyData = jsPsych.data.getTrialsOfType("single-stim"),
-		whichCat;
-
-		// strip out the data generated from the practice trial
-		studyData.splice(0, params.practiceStims.length);
-
-		var numNiceCats = studyData.filter(function(item) {
-			
-			// the nice cats are always on the right!
-			return item.key_press === 50;
-		}).length;
-		var numMeanCats = studyData.filter(function(item) {
-			
-			// the mean cats are always on the left!
-			return item.key_press === 49;
-		}).length;
-
-		if (numNiceCats === numMeanCats) {
-			whichCat = ["cat-nice.jpg", "cat-mean.jpg"];
-		} else {
-			whichCat = (numNiceCats > numMeanCats) ? 
-				["cat-nice.jpg"] : 
-				["cat-mean.jpg"];
-		}
-
-		LITW.utils.showSlide("results");
-		$("#results").html(resultsTemplate({
-			content: C.results,
-			resultsExplanation: C.resultsExplanation,
-			citations: C.citations,
-			whichCat: whichCat,
-			bothCats: (whichCat.length === 2)
-		}));
-
-		LITW.results.insertFooter();
-	};
-
 
     getSlideTime = function() {
 		let data_size = jsPsych.data.getData().length;
@@ -146,7 +98,7 @@ module.exports = (function() {
 		} else {
 			return jsPsych.totalTime();
 		}
-	}
+	},
 
 	summaryInitialData = function(json_data){
 		var summary = {};
@@ -161,7 +113,7 @@ module.exports = (function() {
 		var data = {summary : true};
 		data.data = summary;
 		LITW.data.submitStudyData(data);
-	}
+	},
 
 	readSummaryData = function() {
 		$.getJSON( "summary.json", function( data ) {

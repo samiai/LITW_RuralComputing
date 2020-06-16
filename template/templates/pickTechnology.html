@@ -32,13 +32,15 @@
 </div>
 
 <div id="techForm" style="display: none">
-    <span>I chose the online platform, because:</span><br>
-    <input type="checkbox" id="choice1" name="option1" value="Familiar">
-    <label for="option1"> I am familiar with it</label><br>
-    <input type="checkbox" id="choice2" name="option2" value="Like2Know">
-    <label for="option2"> I am not familiar with it, and would like to know more about it </label><br>
-    <input type="checkbox" id="choice3" name="option3" value="StrongOpinion">
-    <label for="option3"> I have strong opinions about it</label><br><br>
+    <h3>I use the online platform:</h3><br>
+    <input type="radio" id="option1" name="techuse" value="daily">
+    <label for="option1">Daily</label><br>
+    <input type="radio" id="option2" name="techuse" value="often">
+    <label for="option2">Often</label><br>
+    <input type="radio" id="option3" name="techuse" value="sometimes">
+    <label for="option3">Sometimes</label><br>
+    <input type="radio" id="option4" name="techuse" value="never">
+    <label for="option4">Never</label><br><br>
     <input type="submit" value="Submit" class="btn btn-primary btn-lg" onclick="saveForm()">
 </div>
 
@@ -147,9 +149,8 @@
         $('#techChoiceMenu img').css('filter', 'grayscale(0)');
         // TODO: change form to usage question!!!
         var selected = $("#techForm input:checked");
-        for (count = 0; count < selected.length; count++) {
-            tech_answers.use.push(selected[count].value);
-        }
+        tech_answers.use = selected.val();
+
         console.log(tech_answers);
         selected.prop("checked", false);
         $('#techForm').hide();
@@ -204,7 +205,7 @@
         return {
             tech: '',
             current_card: '',
-            use: [],
+            use: '',
             card1: '',
             card2: '',
             card3: '',
