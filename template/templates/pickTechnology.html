@@ -39,8 +39,7 @@
     <label for="option2"> I am not familiar with it, and would like to know more about it </label><br>
     <input type="checkbox" id="choice3" name="option3" value="StrongOpinion">
     <label for="option3"> I have strong opinions about it</label><br><br>
-    <input id="techName" type="hidden" value="">
-    <input type="submit" value="Submit" onclick="saveForm()">
+    <input type="submit" value="Submit" class="btn btn-primary btn-lg" onclick="saveForm()">
 </div>
 
 <div id="tarotCards" style="display: none">
@@ -107,44 +106,52 @@
         </div>
     </div>
 
-    <div id="textboxArea" style="display: none">
-        <h3>Please enter you answers below:</h3>
-        <textarea id="txtAnswer" type="text" style="width: 90%"></textarea>
-        <input type="submit" value="Save" onclick="saveCardAnswer()">
+    <div id="bellowCards" style="display: flex">
+        <img src="" style="width: 20em; margin: 10px">
+        <div id="controlButtons">
+            <input type="submit" value="Change Tech" class="btn btn-primary btn-lg" onclick="changeTech()">
+            <input type="submit" value="Submit Answers" class="btn btn-primary btn-lg" onclick="submitAnswers()">
+        </div>
+        <div id="textboxArea" style="display: none">
+            <h3>Please enter you answers below:</h3>
+            <textarea id="txtAnswer" type="text" style="width: 90%"></textarea>
+            <input type="submit" value="Save" class="btn btn-primary btn-lg" onclick="saveCardAnswer()">
+        </div>
     </div>
+
 </div>
 
 <script>
 
-    var tech_answers = {
-        tech: '',
-        current_card: '',
-        use: [],
-        card1: '',
-        card2: '',
-        card3: '',
-        card4: ''
-    };
+    var all_answers = {};
+    var tech_answers = {};
 
     function selectTechnology(image) {
-        var selected = $('img[name=' + image.name + ']');
+        var technology = image.name;
+        var selected = $('#techChoiceMenu img[name=' + technology + ']');
+
         $('#techChoiceMenu img').css('filter', 'grayscale(1)');
         selected.css('filter', 'grayscale(0)');
-        //selected.prop("active", true);
-        $('#techForm #techName').val(image.name);
+
+        if(technology in all_answers) {
+            tech_answers = all_answers[technology];
+        } else {
+            tech_answers = resetAnswers();
+            tech_answers.tech = technology;
+        }
+        $('#bellowCards img').attr('src', selected.attr('src'));
         $('#techForm').show();
     }
 
     function saveForm() {
+        $('#techChoiceMenu img').css('filter', 'grayscale(0)');
         // TODO: change form to usage question!!!
         var selected = $("#techForm input:checked");
-        tech_answers.tech = $('#techForm #techName').val();
         for (count = 0; count < selected.length; count++) {
             tech_answers.use.push(selected[count].value);
         }
         console.log(tech_answers);
         selected.prop("checked", false);
-
         $('#techForm').hide();
         $('#techChoiceMenu').hide();
         $('#tarotCards').show();
@@ -162,6 +169,7 @@
         cardFlip.show();
         $('#txtAnswer').val(tech_answers[tech_answers.current_card]);
         $('#textboxArea').show();
+        $('#controlButtons').hide();
     }
 
     function cardFlip(card) {
@@ -174,6 +182,7 @@
         cardFlip.css('opacity', 0);
         cardFlip.hide();
         $('#textboxArea').hide();
+        $('#controlButtons').show();
     }
 
     function saveCardAnswer() {
@@ -188,6 +197,32 @@
         $("div[id$='Flip']").hide();
         $('#flipContainer').hide();
         $('#textboxArea').hide();
+        $('#controlButtons').show();
     }
 
+    function resetAnswers() {
+        return {
+            tech: '',
+            current_card: '',
+            use: [],
+            card1: '',
+            card2: '',
+            card3: '',
+            card4: ''
+        };
+    }
+
+    function changeTech() {
+        tech_answers = resetAnswers();
+        cardsReset();
+        $('#tarotCards').hide();
+        $('#techChoiceMenu').show();
+    }
+
+    function submitAnswers() {
+        all_answers[tech_answers.tech] = tech_answers;
+        delete tech_answers.current_card;
+        LITW.data.submitStudyData(tech_answers);
+        changeTech();
+    }
 </script>
