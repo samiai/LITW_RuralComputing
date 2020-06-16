@@ -1,16 +1,8 @@
 /*************************************************************
- * test.js
+ * study.js
  *
- * Main experiment file for the LITW demo study.
+ * Main experiment file for the LITW study.
  *
- * Author: Trevor Croxson
- *       : Nigini A. Oliveira
- * 
- * Last Modified: February 5, 2017
- * 
- * © Copyright 2017 LabintheWild.
- * For questions about this file and permission to use
- * the code, contact us at info@labinthewild.org
  *************************************************************/
 
 // load webpack modules
@@ -21,12 +13,9 @@ var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
 var demographicsTemplate = require("../templates/demographics.html");
 var pickTechnologyTemplate = require("../templates/pickTechnology.html");
-var cardsDeckTemplate = require("../templates/cardSubmit4.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
-var progressTemplate = require("../templates/progress.html");
 var i18n = require("../js/i18n");
-require("./jspsych-display-info");
 require("./jspsych-display-slide");
 
 module.exports = (function() {
@@ -63,161 +52,26 @@ module.exports = (function() {
 
 	initJsPsych = function() {
 		// ******* BEGIN STUDY PROGRESSION ******** //
-        timeline.push({
-            type: "display-slide",
-            template: demographicsTemplate,
-            display_element: $("#demographics"),
-            name: "demographics",
-            finish: function(){
-            	let dem_data = $('#form').alpaca().getValue();
-            	console.log(dem_data);
-				dem_data['time_elapsed'] = getSlideTime();
-            	jsPsych.data.addProperties({demographics:dem_data});
-            	LITW.data.submitDemographics(dem_data);
-            }
-        });
+        // timeline.push({
+        //     type: "display-slide",
+        //     template: demographicsTemplate,
+        //     display_element: $("#demographics"),
+        //     name: "demographics",
+        //     finish: function(){
+        //     	let dem_data = $('#form').alpaca().getValue();
+        //     	console.log(dem_data);
+		// 		dem_data['time_elapsed'] = getSlideTime();
+        //     	jsPsych.data.addProperties({demographics:dem_data});
+        //     	LITW.data.submitDemographics(dem_data);
+        //     }
+        // });
 
-		// 1. GENERAL INSTRUCTIONS PAGE
 		timeline.push({
 			type: "display-slide",
             display_element: $("#pickTechnology"),
 			name: "pickTechnology",
-			template: pickTechnologyTemplate
-		});
-
-		//cards deck page
-		timeline.push({
-			type: "display-slide",
-			display_element: $("#cardsDeck"),
-			name: "cardsDeck",
-			template: cardsDeckTemplate
-	    });
-
-		// 2. PRACTICE STIMS
-		// loop through all practice stims and register
-		// them with the jsPsych timeline
-		params.practiceStims.forEach(function(stim, index) {
-			
-			// record tracking information and update progress counter
-			timeline.push({
-				type: "call-function",
-				func: function() {
-					$("#progress-header").html(progressTemplate({
-						msg: C.progressMsg,
-						progress: ++params.currentProgress,
-						total: params.practiceStims.length
-					}))
-					.show();
-
-					LITW.utils.showSlide("trials");
-					LITW.tracking.recordCheckpoint("practice-" + (index + 1));
-				}
-			});
-
-			stim.withTouch = window.litwWithTouch;
-			timeline.push(stim);
-
-			// register a function to submit data as soon
-			// as this trial is completed
-			timeline.push({
-				type: "call-function",
-				func: submitData
-			});
-		});
-		
-		// 3. PRE-TRIAL BREAK
-		timeline.push({
-			type: "call-function",
-			func: function() {
-				params.currentProgress = 0;
-				$("#progress-header").hide();
-				LITW.utils.showSlide("break");
-				LITW.tracking.recordCheckpoint("pre-trial break");
-			}
-		})
-		timeline.push({
-			type: "display-info",
-			name: "preTrialBreak",
-			content: C.preTrial,
-			withTouch: window.litwWithTouch,
-			display_element: $("#break")
-		});
-		
-		// 4. TRIAL STIMS, PHASE 1
-		params.stims.forEach(function(stim, index) {
-			
-			// record tracking information and update progress counter
-			timeline.push({
-				type: "call-function",
-				func: function() {
-					$("#progress-header").html(progressTemplate({
-						msg: C.progressMsg,
-						progress: ++params.currentProgress,
-						total: params.stims.length * 2
-					}))
-					.show();
-
-					LITW.utils.showSlide("trials");
-					LITW.tracking.recordCheckpoint("trials-1-" + (index + 1));
-				}
-			});
-
-			stim.withTouch = window.litwWithTouch;
-			timeline.push(stim);
-
-			// register a function to submit data as soon
-			// as this trial is completed
-			timeline.push({
-				type: "call-function",
-				func: submitData
-			});
-		});
-
-		// 5. MID-TRIAL BREAK
-		timeline.push({
-			type: "call-function",
-			func: function() {
-				$("#progress-header").hide();
-				LITW.utils.showSlide("break");
-				LITW.tracking.recordCheckpoint("mid-trial break");
-			}
-		});
-		timeline.push({
-			type: "display-info",
-			content: C.midTrial,
-			name: "midTrialBreak",
-			display_element: $("#break")
-		});
-
-		// 6. TRIAL STIMS, PHASE 2
-		// re-shuffle stim order
-		params.stims = LITW.utils.shuffleArrays(params.stims);
-		params.stims.forEach(function(stim, index) {
-			
-			// record tracking information
-			timeline.push({
-				type: "call-function",
-				func: function() {
-					$("#progress-header").html(progressTemplate({
-						msg: C.progressMsg,
-						progress: ++params.currentProgress,
-						total: params.stims.length * 2
-					}))
-					.show();
-
-					LITW.utils.showSlide("trials");
-					LITW.tracking.recordCheckpoint("trials-2-" + (index + 1));
-				}
-			});
-
-			timeline.push(stim);
-
-			// register a function to submit data as soon
-			// as this trial is completed
-			timeline.push({
-				type: "call-function",
-				func: submitData
-			});
+			template: pickTechnologyTemplate,
+			show_next: false
 		});
 
 		// ******* END STUDY PROGRESSION ******** //
@@ -365,7 +219,8 @@ module.exports = (function() {
 			// proceed to IRB page when loading has finished
 			function() { 
 				initJsPsych();
-				irb(startStudy);
+				//irb(startStudy);
+				startStudy();
 			},
 			
 			// update loading indicator as stims preload

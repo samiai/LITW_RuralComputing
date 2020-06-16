@@ -1,124 +1,193 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+<div id="techChoiceMenu" style="text-align:center">
+    <h2>We’d like to hear your experiences with different types of online platforms. </h2>
+    <p>Click below to choose the online platform that you would like to draw tarot cards for. </p>
+    <!-- The four columns -->
+    <div class="row">
+        <div class="column">
+            <img src="img/platform1.jpg"
+                 name="Facebook"
+                 alt="Facebook Marketplace is an embedded Facebook app to buy and sell items or services."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+        <div class="column">
+            <img src="img/platform2.jpg"
+                 name="Youtube"
+                 alt="Youtube is a video- sharing platform allowing users to upload, view, rate, share, add to playlists, report, comment on videos, and subscribe to other users."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+        <div class="column">
+            <img src="img/platform3.jpg"
+                 name="Wikipedia"
+                 alt="Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by volunteer editors."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+        <div class="column">
+            <img src="img/platform4.jpg"
+                 name="Reddit"
+                 alt="Reddit is an American social news aggregation, web content rating, and discussion website."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+    </div>
 
-body {
-  margin: 0;
-  font-family: Arial;
-}
-
-/* The grid: Four equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 25%;
-  padding: 10px;
-}
-
-/* Style the images inside the grid */
-.column img {
-  opacity: 0.8; 
-  cursor: pointer; 
-}
-
-.column img:hover {
-  opacity: 1;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* The expanding image container */
-.container {
-  position: relative;
-  display: none;
-}
-
-/* Expanding image text */
-#imgtext {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  color:black;
-  font-size: 10px;
-}
-
-.bottomleft {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-  font-size: 18px;
-}
-
-/* Closable button inside the expanded image */
-.closebtn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  color: white;
-  font-size: 35px;
-  cursor: pointer;
-}
-
-</style>
-</head>
-<body>
-
-<div style="text-align:center">
-  <h2>We’d like to hear your experiences with different types of online platforms.  </h2>
-  <p>Click below to choose the online platform that you would like to draw tarot cards for. </p>
 </div>
 
-<!-- The four columns -->
-<div class="row">
-  <div class="column">
-    <img src="img/platform1.jpg" alt="Facebook Marketplace is an embedded Facebook app to buy and sell items or services." style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
-    <img src="img/platform2.jpg" alt="Youtube is a video- sharing platform allowing users to upload, view, rate, share, add to playlists, report, comment on videos, and subscribe to other users." style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
-    <img src="img/platform3.jpg" alt="Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by volunteer editors." style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
-    <img src="img/platform4.jpg" alt="Reddit is an American social news aggregation, web content rating, and discussion website." style="width:100%" onclick="myFunction(this);">
-  </div>
-</div>
-
-<div class="container">
-  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-  <img id="expandedImg" style="width:15%">
-  <div id="imgtext"></div>
-  <div class="bottomleft">I chose the online platform, because <form action="/action_page.php">
+<div id="techForm" style="display: none">
+    <span>I chose the online platform, because:</span><br>
     <input type="checkbox" id="choice1" name="option1" value="Familiar">
     <label for="option1"> I am familiar with it</label><br>
     <input type="checkbox" id="choice2" name="option2" value="Like2Know">
     <label for="option2"> I am not familiar with it, and would like to know more about it </label><br>
     <input type="checkbox" id="choice3" name="option3" value="StrongOpinion">
     <label for="option3"> I have strong opinions about it</label><br><br>
-    <input type="submit" value="Submit">
-  </form></div>
+    <input id="techName" type="hidden" value="">
+    <input type="submit" value="Submit" onclick="saveForm()">
 </div>
 
+<div id="tarotCards" style="display: none">
 
+    <div id="cardContainer" class="cardcontainer">
+        <div class="card" id="card1Box">
+            <div class="thumb">
+                <img src="img/Mother.png" onclick="cardClick('card1')">
+            </div>
+        </div>
+        <div class="card" id="card2Box">
+            <div class="thumb">
+                <img src="img/Bff.png" onclick="cardClick('card2')">
+            </div>
+        </div>
+        <div class="card" id="card3Box">
+            <div class="thumb">
+                <img src="img/BackStabber.png" onclick="cardClick('card3')">
+            </div>
+        </div>
+        <div class="card" id="card4Box">
+            <div class="thumb">
+                <img src="img/SmashHit.png" onclick="cardClick('card4')">
+            </div>
+        </div>
+    </div>
+
+    <div id="flipContainer" class="topcontainer" style="display: none">
+        <div id="card1Flip" class="flipcard" onclick="cardFlip('card1')">
+            <div id="Card1Flipper" class="card" style="background-color: #19d3c3">
+                <h2> Mother Nature</h2>
+                <h3> If the environment was your client, how would your product change?</h3>
+                <p> What impact does [the product] have on the environment?</p>
+                <p> What is the most unsustainable behavior your product encourages?</p>
+            </div>
+        </div>
+        <div id="card2Flip" class="flipcard" onclick="cardFlip('card2')">
+            <div id="Card2Flipped" class="card" style="background-color: #ff483d">
+                <h2> The Bffs </h2>
+                <h3> How does [the product] create new ways to interact? </h3>
+                <p> Does [the product] fill or change a role previously filled by a person? If yes, who would that
+                    person be? </p>
+                <p> Do you think it has the potential to enhance or detract you from your relationships in real
+                    life?</p>
+            </div>
+        </div>
+        <div id="card3Flip" class="flipcard" onclick="cardFlip('card3')">
+            <div id="Card3Flipped" class="card" style="background-color: #997dff">
+                <h2> The Forgotten and Backstabber </h2>
+                <h3> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose
+                    trust, exposed etc). </h3>
+                <p> What mechanisms are in place for listening to you as a user? </p>
+                <p> How could a user be excluded from [the product] </p>
+            </div>
+        </div>
+        <div id="card4Flip" class="flipcard" onclick="cardFlip('card4')">
+            <div id="Card4Flipped" class="card" style="background-color: #ff1c79">
+                <h2> The Smash Hit </h2>
+                <h3> How might a community change if 80% of it are users of [the product]</h3>
+                <p> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product
+                    economy ...)</h3>
+                <p> How can [the product] change people's habits and norms - Individual behavior question </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="textboxArea" style="display: none">
+        <h3>Please enter you answers below:</h3>
+        <textarea id="txtAnswer" type="text" style="width: 90%"></textarea>
+        <input type="submit" value="Save" onclick="saveCardAnswer()">
+    </div>
+</div>
 
 <script>
-function myFunction(imgs) {
-  var expandImg = document.getElementById("expandedImg");
-  var imgText = document.getElementById("imgtext");
-  expandImg.src = imgs.src;
-  imgText.innerHTML = imgs.alt;
-  expandImg.parentElement.style.display = "block";
-}
-</script>
 
-</body>
-</html>
+    var tech_answers = {
+        tech: '',
+        current_card: '',
+        use: [],
+        card1: '',
+        card2: '',
+        card3: '',
+        card4: ''
+    };
+
+    function selectTechnology(image) {
+        var selected = $('img[name=' + image.name + ']');
+        $('#techChoiceMenu img').css('filter', 'grayscale(1)');
+        selected.css('filter', 'grayscale(0)');
+        //selected.prop("active", true);
+        $('#techForm #techName').val(image.name);
+        $('#techForm').show();
+    }
+
+    function saveForm() {
+        // TODO: change form to usage question!!!
+        var selected = $("#techForm input:checked");
+        tech_answers.tech = $('#techForm #techName').val();
+        for (count = 0; count < selected.length; count++) {
+            tech_answers.use.push(selected[count].value);
+        }
+        console.log(tech_answers);
+        selected.prop("checked", false);
+
+        $('#techForm').hide();
+        $('#techChoiceMenu').hide();
+        $('#tarotCards').show();
+    }
+
+    function cardClick(card){
+        cardsReset();
+        tech_answers.current_card = card;
+        var cardBox = $('#' + card + 'Box');
+        var cardFlip = $('#' + card + 'Flip');
+
+        $('#flipContainer').css('display', 'flex');
+        cardBox.css('opacity', 0);
+        cardFlip.css('opacity', 1);
+        cardFlip.show();
+        $('#txtAnswer').val(tech_answers[tech_answers.current_card]);
+        $('#textboxArea').show();
+    }
+
+    function cardFlip(card) {
+        tech_answers.current_card = '';
+        var cardBox = $('#' + card + 'Box');
+        var cardFlip = $('#' + card + 'Flip');
+
+        $('#flipContainer').hide();
+        cardBox.css('opacity', 1);
+        cardFlip.css('opacity', 0);
+        cardFlip.hide();
+        $('#textboxArea').hide();
+    }
+
+    function saveCardAnswer() {
+        tech_answers[tech_answers.current_card] = $('#txtAnswer').val();
+        console.log('ANSWERS: ' + JSON.stringify(tech_answers));
+        cardsReset();
+    }
+
+    function cardsReset() {
+        $("div[id$='Box']").css('opacity', 1);
+        $("div[id$='Flip']").css('opacity', 0);
+        $("div[id$='Flip']").hide();
+        $('#flipContainer').hide();
+        $('#textboxArea').hide();
+    }
+
+</script>
