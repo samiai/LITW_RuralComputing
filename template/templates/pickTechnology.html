@@ -86,27 +86,47 @@
     <div id="cardContainer" class="cardcontainer">
         <div class="card" id="card1Box">
             <div class="thumb">
-                <img src="../img/card-Catalyst.png" onclick="cardClick('card1')">
+                <img src="../img/card-Catalyst.png" onclick="cardClick('card1')" style="position: absolute">
+                <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                     style="position: absolute;display: none" width="3em" height="3em">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                </svg>
             </div>
         </div>
         <div class="card" id="card2Box">
             <div class="thumb">
-                <img src="../img/card-Forgotten.png" onclick="cardClick('card2')">
+                <img src="../img/card-Forgotten.png" onclick="cardClick('card2')" style="position: absolute">
+                <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                     style="position: absolute;display: none" width="3em" height="3em">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                </svg>
             </div>
         </div>
         <div class="card" id="card3Box">
             <div class="thumb">
-                <img src="../img/card-RadioStar.png" onclick="cardClick('card3')">
+                <img src="../img/card-RadioStar.png" onclick="cardClick('card3')" style="position: absolute">
+                <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                     style="position: absolute;display: none" width="3em" height="3em">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                </svg>
             </div>
         </div>
         <div class="card" id="card4Box">
             <div class="thumb">
-                <img src="../img/card-Scandal.png" onclick="cardClick('card4')">
+                <img src="../img/card-Scandal.png" onclick="cardClick('card4')" style="position: absolute">
+                <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                     style="position: absolute;display: none" width="3em" height="3em">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                </svg>
             </div>
         </div>
         <div class="card" id="card5Box">
             <div class="thumb">
-                <img src="../img/card-ServiceDog.png" onclick="cardClick('card5')">
+                <img src="../img/card-ServiceDog.png" onclick="cardClick('card5')" style="position: absolute">
+                <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                     style="position: absolute;display: none" width="3em" height="3em">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                </svg>
             </div>
         </div>
     </div>
@@ -234,7 +254,14 @@
     }
 
     function saveCardAnswer() {
-        tech_answers[tech_answers.current_card] = $('#txtAnswer').val();
+        let answer = $('#txtAnswer').val().trim();
+        let cardCheck = $('#' + tech_answers.current_card + 'Box svg');
+        if (answer.length > 0) {
+            cardCheck.show();
+        } else {
+            cardCheck.hide();
+        }
+        tech_answers[tech_answers.current_card] = answer;
         console.log('ANSWERS: ' + JSON.stringify(tech_answers));
         cardsReset();
     }
@@ -249,6 +276,7 @@
     }
 
     function resetAnswers() {
+        $("div[id$='Box'] svg").hide();
         return {
             tech: '',
             current_card: '',
