@@ -784,6 +784,12 @@ a:active {
     cursor: pointer;
 }
 
+.card {
+    width: 300px;
+    height: 500px;
+    background: none;
+}
+
 .cardcontainer {
     position: relative;
     display: flex;
@@ -792,9 +798,6 @@ a:active {
 
 .cardcontainer .card {
     position: relative;
-    width: 300px;
-    height: 500px;
-    background: none;
     transition: 0.5s;
     margin: 20px;
     backface-visibility: hidden;

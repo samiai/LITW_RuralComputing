@@ -44,7 +44,7 @@
                  style="width:100%" onclick="selectTechnology(this);">
         </div>
     </div>
-    <div class="row">
+    <div id="tech-transportation" class="row">
         <h2 style="text-align: left">Transportation</h2>
         <div class="column">
             <img src="img/tech-lyft.png"
@@ -86,61 +86,71 @@
     <div id="cardContainer" class="cardcontainer">
         <div class="card" id="card1Box">
             <div class="thumb">
-                <img src="img/Mother.png" onclick="cardClick('card1')">
+                <img src="../img/card-Catalyst.png" onclick="cardClick('card1')">
             </div>
         </div>
         <div class="card" id="card2Box">
             <div class="thumb">
-                <img src="img/Bff.png" onclick="cardClick('card2')">
+                <img src="../img/card-Forgotten.png" onclick="cardClick('card2')">
             </div>
         </div>
         <div class="card" id="card3Box">
             <div class="thumb">
-                <img src="img/BackStabber.png" onclick="cardClick('card3')">
+                <img src="../img/card-RadioStar.png" onclick="cardClick('card3')">
             </div>
         </div>
         <div class="card" id="card4Box">
             <div class="thumb">
-                <img src="img/SmashHit.png" onclick="cardClick('card4')">
+                <img src="../img/card-Scandal.png" onclick="cardClick('card4')">
+            </div>
+        </div>
+        <div class="card" id="card5Box">
+            <div class="thumb">
+                <img src="../img/card-ServiceDog.png" onclick="cardClick('card5')">
             </div>
         </div>
     </div>
 
     <div id="flipContainer" class="topcontainer" style="display: none">
         <div id="card1Flip" class="flipcard" onclick="cardFlip('card1')">
-            <div id="Card1Flipper" class="card" style="background-color: #19d3c3">
-                <h2> Mother Nature</h2>
-                <h3> If the environment was your client, how would your product change?</h3>
-                <p> What impact does [the product] have on the environment?</p>
-                <p> What is the most unsustainable behavior your product encourages?</p>
+            <div id="Card1Flipper" class="card" style="background-color: #11f897">
+                <h2>The Catalyst</h2>
+                <h3>How might rural cultural habits change how the product is used, adapted, or repurposed?</h3>
+                <p>How bringing [the product] to a rural area would impact the rural environment and its features?</p>
+                <p>How might [the product] change the cultural habits (social norms, etiquette, or traditions) of people living in rural areas?</p>
             </div>
         </div>
         <div id="card2Flip" class="flipcard" onclick="cardFlip('card2')">
-            <div id="Card2Flipped" class="card" style="background-color: #ff483d">
-                <h2> The Bffs </h2>
-                <h3> How does [the product] create new ways to interact? </h3>
-                <p> Does [the product] fill or change a role previously filled by a person? If yes, who would that
-                    person be? </p>
-                <p> Do you think it has the potential to enhance or detract you from your relationships in real
-                    life?</p>
+            <div id="Card2Flipped" class="card" style="background-color: #ffbe9f">
+                <h2>The Forgotten</h2>
+                <h3>When you picture the user base of [the product], who do you think is excluded as a potential user?</h3>
+                <p>If [rural users] used [the product], what would their experience be like?</p>
+                <p>How can we change [the product] to better serve or design for [rural users]</p>
             </div>
         </div>
         <div id="card3Flip" class="flipcard" onclick="cardFlip('card3')">
-            <div id="Card3Flipped" class="card" style="background-color: #997dff">
-                <h2> The Forgotten and Backstabber </h2>
-                <h3> What could trigger negative experiences in users by [the product] (feel unsafe, frustrated, lose
-                    trust, exposed etc). </h3>
-                <p> What mechanisms are in place for listening to you as a user? </p>
-                <p> How could a user be excluded from [the product] </p>
+            <div id="Card3Flipped" class="card" style="background-color: #aedf2a">
+                <h2>The Radio Star</h2>
+                <h3>What social or economic interaction disappears if your product is successful in rural contexts?</h3>
+                <p>Who loses their job if [the product] is used in rural areas?</p>
+                <p>What other local products or services can be replaced by [the product]?</p>
+                <p>What rural industries, institutions, or policies would be affected if everyone used [the product]</p>
             </div>
         </div>
         <div id="card4Flip" class="flipcard" onclick="cardFlip('card4')">
-            <div id="Card4Flipped" class="card" style="background-color: #ff1c79">
-                <h2> The Smash Hit </h2>
-                <h3> How might a community change if 80% of it are users of [the product]</h3>
-                <p> What will happen if 5 billion people use [the product] (eg: create jobs, suppress jobs,new product
-                    economy ...)</h3>
-                <p> How can [the product] change people's habits and norms - Individual behavior question </p>
+            <div id="Card4Flipped" class="card" style="background-color: #15e0ff">
+                <h2>The Scandal</h2>
+                <h3>If [the product] was entirely dedicated to empowering the lives of rural area population, what kind of impact could it make?</h3>
+                <p>Would your use of [the product] make you or others vulnerable to harm or endangering rural culture?</p>
+                <p>How can the widespread use of [the product] in rural settings disrupt or endanger environmental and social sustainability in rural contexts?</p>
+            </div>
+        </div>
+        <div id="card5Flip" class="flipcard" onclick="cardFlip('card5')">
+            <div id="Card5Flipped" class="card" style="background-color: #ff9400">
+                <h2>The Service Dog</h2>
+                <h3>If [the product] was entirely dedicated to empowering the lives of rural area population, what kind of impact could it make?</h3>
+                <p>Would your use of [the product] make you or others vulnerable to harm or endangering rural culture?</p>
+                <p>How can the widespread use of [the product] in rural settings disrupt or endanger environmental and social sustainability in rural contexts?</p>
             </div>
         </div>
     </div>
