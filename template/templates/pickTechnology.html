@@ -213,8 +213,6 @@
     }
 
     function saveForm() {
-        $('#techChoiceMenu img').css('filter', 'grayscale(0)');
-        // TODO: change form to usage question!!!
         var selected = $("#techForm input:checked");
         tech_answers.use = selected.val();
 
@@ -292,6 +290,12 @@
         tech_answers = resetAnswers();
         cardsReset();
         $('#tarotCards').hide();
+
+        $('#techChoiceMenu img').css('filter', 'grayscale(0)');
+        let techs = Object.keys(all_answers);
+        for (index in techs) {
+            $('#techChoiceMenu img[name=' + techs[index] + ']').css('filter', 'grayscale(1)');
+        }
         $('#techChoiceMenu').show();
     }
 
@@ -299,6 +303,8 @@
         all_answers[tech_answers.tech] = tech_answers;
         delete tech_answers.current_card;
         LITW.data.submitStudyData(tech_answers);
+        let toDeactivate = $('#techChoiceMenu img[name=' + tech_answers.tech + ']');
+        toDeactivate.prop('onclick', null).off('click');
         changeTech();
     }
 </script>

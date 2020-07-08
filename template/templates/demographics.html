@@ -29,8 +29,7 @@
                             },
                             "demographics-age": {
                                 "title": $.i18n('litw-demographics-age'),
-                                "required":true,
-                                "minimum": 18
+                                "required":true
                             },
                             "demographics-gender": {
                                 "title": $.i18n('litw-demographics-gender'),
@@ -62,6 +61,29 @@
                             "demographics-race-other": {
                                 "title": $.i18n('litw-demographics-race-other'),
                                 "required":false
+                            },
+                            "demographics-residence": {
+                                "title": $.i18n('litw-demographics-residence'),
+                                "required": true
+                            },
+                            "demographics-residence-location": {
+                                "required": false
+                            },
+                            "demographics-residence-time": {
+                                "title": $.i18n('litw-demographics-residence-time'),
+                                "required": true,
+                                "minimum": 0,
+                                "maximum": 100
+                            },
+                            "demographics-residence-rural": {
+                                "title": $.i18n('litw-demographics-residence-rural'),
+                                "enum": ['no', 'yes'],
+                                "required": true,
+                            },
+                            "demographics-residence-rural-distance": {
+                                "title": $.i18n('litw-demographics-residence-rural-distance'),
+                                "required": false,
+                                "minimum": 0
                             }
                         }
                     },
@@ -150,6 +172,38 @@
                                 "fieldClass": "row",
                                 "showMessages": false,
                                 "hidden": true
+                            },
+                            "demographics-residence": {
+                                "type": 'text',
+                                "fieldClass": "row",
+                                "showMessages": false,
+                            },
+                            "demographics-residence-location": {
+                                "type": 'text',
+                                "fieldClass": "row",
+                                "showMessages": false,
+                                "hidden": true
+                            },
+                            "demographics-residence-time": {
+                                "type": 'integer',
+                                "fieldClass": "row",
+                                "showMessages": false
+                            },
+                            "demographics-residence-rural": {
+                                "type": 'select',
+                                "optionLabels": [$.i18n('litw-demographics-no'), $.i18n('litw-demographics-yes')],
+                                "sort": false,
+                                "fieldClass": "row",
+                                "noneLabel": "--",
+                                "removeDefaultNone": false,
+                                "showMessages": false,
+                                "default": "--"
+                            },
+                            "demographics-residence-rural-distance": {
+                                "type": 'integer',
+                                "fieldClass": "row",
+                                "showMessages": false,
+                                "hidden": true
                             }
                         }
                     },
@@ -157,19 +211,6 @@
                         $('#btn-next-page').attr('style','display:none;');
                         $(".alpaca-required-indicator").html(" *");
                         $("input[type='text']").css('width','200px');
-
-                        let age = control.childrenByPropertyId["demographics-age"];
-                        age.subscribe(age, function(ageValue) {
-                            if(ageValue !== '' && !isNaN(ageValue) && Number(ageValue)<14) {
-                                $("#litw-body").html(
-                                    "<H2>"+$.i18n('litw-demographics-minor-alert1') +"</H2>"+
-                                    "<H3>"+$.i18n('litw-demographics-minor-alert2') + "</H3>"
-                                );
-                                window.setTimeout(function(){
-                                    window.location.replace("https://www.labinthewild.org");
-                                }, 5000);
-                            }
-                        });
 
                         let gender = control.childrenByPropertyId["demographics-gender"];
                         let genderOther = control.childrenByPropertyId["demographics-gender-other"];
@@ -192,6 +233,30 @@
                             this.refresh();
                             $("input[type='text']").css('width','200px');
                         });
+
+                        //Add button to residence field
+                        $("input[name='demographics-residence']")
+                            .after('<input id="button-residence" type="submit" value="Verify!" ' +
+                                'class="btn btn-primary btn-lg" style="display: none" onclick="showMap()">');
+
+                        let residence = control.childrenByPropertyId["demographics-residence"];
+                        residence.subscribe(residence, function(val){
+                            if(val.trim().length > 0) {
+                                $("#button-residence").show();
+                            } else {
+                                $("#button-residence").hide();
+                            }
+                            this.refresh();
+                        });
+
+                        let rural = control.childrenByPropertyId["demographics-residence-rural"];
+                        let ruralDistance = control.childrenByPropertyId["demographics-residence-rural-distance"];
+                        ruralDistance.subscribe(rural, function(val){
+                            this.options.hidden = (val === 'Yes');
+                            this.refresh();
+                            $("input[type='text']").css('width','200px');
+                        });
+
                     },
                     "view": {
                         //"locale": $.i18n().locale,
@@ -207,6 +272,10 @@
                  });
         });
     });
+
+    function showMap() {
+        console.log('clicked!')
+    }
 </script>
 
 <script>
