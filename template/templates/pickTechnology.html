@@ -26,7 +26,7 @@
     <div id="tech-dating" class="row">
         <h2 style="text-align: left">Dating</h2>
         <div class="column">
-            <img src="img/tech-tinder.jpg"
+            <img src="img/tech-tinder.png"
                  name="Tinder"
                  alt="Tinder is an online dating application that allows users to anonymously swipe to like or dislike other profiles based on their photos, a small bio, and common interests."
                  style="width:100%" onclick="selectTechnology(this);">
@@ -65,20 +65,47 @@
                  style="width:100%" onclick="selectTechnology(this);">
         </div>
     </div>
+    <div id="tech-location" class="row">
+        <h2 style="text-align: left">Location-based</h2>
+        <div class="column">
+            <img src="img/tech-pokemon.jpg"
+                 name="Pokemon"
+                 alt="Pokémon Go is a 2016 augmented reality mobile game."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+        <div class="column">
+            <img src="img/tech-gmaps.png"
+                 name="GoogleMaps"
+                 alt="Google Maps is a web mapping service developed by Google."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+        <div class="column">
+            <img src="img/tech-yelp.png"
+                 name="Yelp"
+                 alt="Yelp is a website and mobile app publish crowd-sourced reviews about businesses."
+                 style="width:100%" onclick="selectTechnology(this);">
+        </div>
+    </div>
 
 </div>
 
-<div id="techForm" style="display: none">
-    <h3>I use the online platform:</h3><br>
-    <input type="radio" id="option1" name="techuse" value="daily">
-    <label for="option1">Daily</label><br>
-    <input type="radio" id="option2" name="techuse" value="often">
-    <label for="option2">Often</label><br>
-    <input type="radio" id="option3" name="techuse" value="sometimes">
-    <label for="option3">Sometimes</label><br>
-    <input type="radio" id="option4" name="techuse" value="never">
-    <label for="option4">Never</label><br><br>
-    <input type="submit" value="Submit" class="btn btn-primary btn-lg" onclick="saveForm()">
+<div id="techForm" class="modal" style="display: none">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>I use the online platform:</h3><br>
+                <input type="radio" id="option1" name="techuse" value="daily">
+                <label for="option1">Daily</label><br>
+                <input type="radio" id="option2" name="techuse" value="often">
+                <label for="option2">Often</label><br>
+                <input type="radio" id="option3" name="techuse" value="sometimes">
+                <label for="option3">Sometimes</label><br>
+                <input type="radio" id="option4" name="techuse" value="never">
+                <label for="option4">Never</label><br><br>
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg" onclick="saveForm()">
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="tarotCards" style="display: none">

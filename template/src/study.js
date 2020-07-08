@@ -52,19 +52,19 @@ module.exports = (function() {
 
 	initJsPsych = function() {
 
-        timeline.push({
-            type: "display-slide",
-            template: demographicsTemplate,
-            display_element: $("#demographics"),
-            name: "demographics",
-            finish: function(){
-            	let dem_data = $('#form').alpaca().getValue();
-            	console.log(dem_data);
-				dem_data['time_elapsed'] = getSlideTime();
-            	jsPsych.data.addProperties({demographics:dem_data});
-            	LITW.data.submitDemographics(dem_data);
-            }
-        });
+        // timeline.push({
+        //     type: "display-slide",
+        //     template: demographicsTemplate,
+        //     display_element: $("#demographics"),
+        //     name: "demographics",
+        //     finish: function(){
+        //     	let dem_data = $('#form').alpaca().getValue();
+        //     	console.log(dem_data);
+		// 		dem_data['time_elapsed'] = getSlideTime();
+        //     	jsPsych.data.addProperties({demographics:dem_data});
+        //     	LITW.data.submitDemographics(dem_data);
+        //     }
+        // });
 
 		timeline.push({
 			type: "display-slide",
