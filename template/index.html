@@ -56,6 +56,11 @@
 	   		<!--<<div id="empty" class="slide"></div>-->
 		</div>
 
+        <!-- Google Maps: KEY only works on *.labinthewild.org pages!-->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUOX2LHIHoUCpid3oVOLeuX-kODKH8XA4&libraries=&v=weekly"
+        defer></script>
+
 
 		<!-- LITW modules --> 
 		<script src="js/litw/litw.utils.0.1.js"></script>
@@ -65,10 +70,13 @@
 	 	<script src="js/litw/litw.tracking.noapi.0.1.js"></script>
 	 	<script src="js/litw/litw.comments.0.1.js"></script>
 	 	<script src="js/litw/litw.locale.0.1.js"></script>
+        <!-- TODO: Depends on Google Maps API -->
+        <script src="js/litw/litw.geocoding.0.1.js"></script>
 
  		<!-- jspsych -->
 		<script src="js/jsPsych-5.0.3/jspsych.js"></script>
 		<script src="js/jsPsych-5.0.3/plugins/jspsych-call-function.js"></script>
+
 
 		<!-- study_client code and content -->
 		<script src="dist/bundle.min.js?v=1.03"></script>

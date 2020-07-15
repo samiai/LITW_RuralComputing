@@ -11,13 +11,32 @@
 <br>
 
 <div id="form" style="text-align: left"></div>
+
+<div id="map-modal" class="modal" style="display: none">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Confirm location!</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="map" class="modal-body"></div>
+            <div id="addTechFooter" class="modal-footer">
+                <input type="submit" value="Confirm" class="btn btn-primary btn-lg" onclick="saveLocation()">
+                <input type="submit" value="Try Again" class="btn btn-primary btn-lg" onclick="hideMap()">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     $(document).ready(function() {
         var countries = {};
         $.getJSON('src/i18n/countries-en.json', function(data) { countries = data; }) //TODO: load based on language
         .done( function () {
                 $("#form").alpaca({
-                    "data": false,
+                    "data": {},
                     "schema": {
                         "description": "LITW Unintended Consequences - Demographics",
                         "type": "object",
@@ -65,9 +84,6 @@
                             "demographics-residence": {
                                 "title": $.i18n('litw-demographics-residence'),
                                 "required": true
-                            },
-                            "demographics-residence-location": {
-                                "required": false
                             },
                             "demographics-residence-time": {
                                 "title": $.i18n('litw-demographics-residence-time'),
@@ -178,12 +194,6 @@
                                 "fieldClass": "row",
                                 "showMessages": false,
                             },
-                            "demographics-residence-location": {
-                                "type": 'text',
-                                "fieldClass": "row",
-                                "showMessages": false,
-                                "hidden": true
-                            },
                             "demographics-residence-time": {
                                 "type": 'integer',
                                 "fieldClass": "row",
@@ -237,10 +247,11 @@
                         //Add button to residence field
                         $("input[name='demographics-residence']")
                             .after('<input id="button-residence" type="submit" value="Verify!" ' +
-                                'class="btn btn-primary btn-lg" style="display: none" onclick="showMap()">');
+                                'class="btn btn-primary btn-lg" style="display: none" onclick="geolocate()">');
 
                         let residence = control.childrenByPropertyId["demographics-residence"];
-                        residence.subscribe(residence, function(val){
+                        residence.subscribe(residence, function(val) {
+                            console.log(val);
                             if(val.trim().length > 0) {
                                 $("#button-residence").show();
                             } else {
@@ -252,7 +263,8 @@
                         let rural = control.childrenByPropertyId["demographics-residence-rural"];
                         let ruralDistance = control.childrenByPropertyId["demographics-residence-rural-distance"];
                         ruralDistance.subscribe(rural, function(val){
-                            this.options.hidden = (val === 'Yes');
+                            console.log(val);
+                            this.options.hidden = (val !== 'yes');
                             this.refresh();
                             $("input[type='text']").css('width','200px');
                         });
@@ -273,8 +285,31 @@
         });
     });
 
-    function showMap() {
-        console.log('clicked!')
+    function geolocate() {
+        var address = $("input[name='demographics-residence']").val();
+        LITW.geocoding.geocodeAddress(address, showMap);
+    }
+
+    function showMap(location) {
+        if(location.geolocation) {
+            LITW.geocoding.setMarkedMap(location.geolocation, 'map');
+            $('#map-modal').show();
+        } else {
+            $('#button-residence').hide();
+        }
+    }
+    
+    function hideMap() {
+        $('#map-modal').hide();
+    }
+    
+    function saveLocation() {
+        var address = $("input[name='demographics-residence']").val();
+        var location = LITW.geocoding.getResolvedLocation(address);
+        LITW.data.submitStudyData(location);
+        $("input[name='demographics-residence']").prop('disabled', true);
+        $('#button-residence').hide();
+        $('#map-modal').hide();
     }
 </script>
 
