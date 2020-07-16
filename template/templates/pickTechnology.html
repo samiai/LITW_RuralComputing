@@ -141,7 +141,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Please type in the name of the App you want to add to this category:</h3><br>
+                <h3>Please select a store and type in the name of the App you want to add:</h3><br>
                 <input type="radio" id="option1" name="addtech" value="android">
                 <label for="option1">Android</label><br>
                 <input type="radio" id="option2" name="addtech" value="iphone">
@@ -289,7 +289,7 @@
 
     function selectTechnology(image) {
         var technology = image.name;
-        var selected = $('#techChoiceMenu img[name=' + technology + ']');
+        var selected = $('#techChoiceMenu img[name="' + technology + '"]');
 
         $('#techChoiceMenu img').css('filter', 'grayscale(1)');
         selected.css('filter', 'grayscale(0)');
@@ -312,14 +312,36 @@
     }
 
     function searchNewTech() {
-        let testImage = "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/e2/33/39/e2333940-3195-3fe5-dcc4-1af853e86a42/source/512x512bb.jpg";
-        let addTechImage = $("#addTechImage");
-        addTechImage.attr('src', testImage);
-        addTechImage.attr('name', 'craigslist');
-        addTechImage.show();
-        $("#addTechFooter input").show()
+        let storeSelection = $('input[name="addtech"]:checked');
+        let searchTerm = $('#addTechName')[0].value;
+        if (storeSelection.length == 1 || searchTerm.trim() !== '') {
+            let store = storeSelection[0].value;
+            searchAppStore(searchTerm, store);
+        } else {
+            $('#addTech h3').animate({opacity:0}, 200, "linear", function(){
+                $(this).animate({opacity:1}, 200);
+            });
+        }
     }
-    
+
+    function searchAppStore(searchTerm, appStore) {
+        $.ajax({
+            url: 'http://www.tmp12345.labinthewild.org/include/get_appstore.php?search='
+                + searchTerm + '&store=' + appStore,
+            method: 'GET',
+            crossDomain: true,
+            success: function(data, status){
+                console.log(data);
+                let addTechImage = $('#addTechImage');
+                addTechImage.attr('src', data['app_image']);
+                addTechImage.attr('name', appStore + '_' + data['app_id']);
+                addTechImage.show();
+                $("#addTechFooter input").show();
+            },
+        });
+    }
+
+
     function selectNewTech() {
         let chosenTechImage = $("#addTechImage");
         let category = $('#addTech').attr('name');
@@ -330,6 +352,8 @@
         addTechImage.show();
         showTechMenu();
         //reset add new tech modal
+        $('input[name="addtech"]').prop("checked", false);
+        $('#addTechName')[0].value = '';
         $('#addTech').hide();
         $('#addTech').attr('name', '');
         chosenTechImage.attr('src', '');
@@ -423,7 +447,7 @@
         $('#techChoiceMenu img').css('filter', 'grayscale(0)');
         let techs = Object.keys(all_answers);
         for (index in techs) {
-            $('#techChoiceMenu img[name=' + techs[index] + ']').css('filter', 'grayscale(1)');
+            $('#techChoiceMenu img[name="' + techs[index] + '"]').css('filter', 'grayscale(1)');
         }
         $('#techChoiceMenu').show();
     }
@@ -432,7 +456,7 @@
         all_answers[tech_answers.tech] = tech_answers;
         delete tech_answers.current_card;
         LITW.data.submitStudyData(tech_answers);
-        let toDeactivate = $('#techChoiceMenu img[name=' + tech_answers.tech + ']');
+        let toDeactivate = $('#techChoiceMenu img[name="' + tech_answers.tech + '"]');
         toDeactivate.prop('onclick', null).off('click');
         changeTech();
     }
