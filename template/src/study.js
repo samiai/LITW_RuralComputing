@@ -14,13 +14,17 @@ var irbTemplate = require("../templates/irb.html");
 var demographicsTemplate = require("../templates/demographics.html");
 var pickTechnologyTemplate = require("../templates/pickTechnology.html");
 var loadingTemplate = require("../templates/loading.html");
+var commentsTemplate = require("../templates/comments.html");
+
 var resultsTemplate = require("../templates/results.html");
 var i18n = require("../js/i18n");
 require("./jspsych-display-slide");
+require("../js/jsPsych-5.0.3/plugins/jspsych-instructions");
 
 module.exports = (function() {
 
 	window.litwWithTouch = false;
+	window.all_answers = {};
 
 	var timeline = [],
 	self = this,
@@ -73,6 +77,25 @@ module.exports = (function() {
 			template: pickTechnologyTemplate,
 			show_next: false
 		});
+
+        timeline.push({
+            type: "display-slide",
+            template: commentsTemplate,
+            display_element: $("#comments"),
+            name: "comments",
+            finish: function(){
+            	let comments = $('#form').alpaca().getValue();
+            	if (Object.keys(comments).length > 0) {
+					comments['time_elapsed'] = getSlideTime();
+					LITW.data.submitComments(comments);
+				}
+            }
+        });
+
+        timeline.push({
+			type: "instructions",
+			pages: [JSON.stringify(window.all_answers)]
+		})
 
 		// ******* END STUDY PROGRESSION ******** //
 	},

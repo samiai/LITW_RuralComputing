@@ -1,6 +1,9 @@
 <div id="techChoiceMenu" style="text-align:center">
     <h2>We’d like to hear your experiences with different types of online platforms. </h2>
     <p>Click below to choose the online platform that you would like to draw tarot cards for. </p>
+    <p id="done-button" style="display: none">
+        <input type="submit" value="I'm done!" class="btn btn-primary btn-lg" onclick="finish()">
+    </p>
     <!-- The four columns -->
     <div id="" name="category1" class="row">
         <h2 style="text-align: left"></h2>
@@ -99,9 +102,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="modal-title">Add an App!</span>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <h3>Please select a store type and the name of the App you want to add:</h3><br>
@@ -333,6 +333,7 @@
     }
 
     function searchAppStore(searchTerm, appStore) {
+        //TODO: show loading gif!
         let searchURL = 'http://www.tmp12345.labinthewild.org/include/get_appstore.php?search='
                 + searchTerm + '&store=' + appStore;
         $.ajax({
@@ -477,7 +478,7 @@
 
     function changeTech() {
         tech_answers = resetAnswers();
-        cardsReset();
+        cardsReset2();
         $('#tarotCards').hide();
         showTechMenu();
     }
@@ -489,15 +490,23 @@
             $('#techChoiceMenu img[name="' + techs[index] + '"]').css('filter', 'grayscale(1)');
         }
         $('#techChoiceMenu').show();
+        if(techs.length > 0) {
+            $('#done-button').show().focus();
+        }
     }
 
     function submitAnswers() {
-        all_answers[tech_answers.tech] = tech_answers;
         delete tech_answers.current_card;
+        all_answers[tech_answers.tech] = tech_answers;
         LITW.data.submitStudyData(tech_answers);
         let toDeactivate = $('#techChoiceMenu img[name="' + tech_answers.tech + '"]');
         toDeactivate.prop('onclick', null).off('click');
         changeTech();
+    }
+
+    function finish() {
+        window.all_answers = all_answers;
+        jsPsych.finishTrial();
     }
 
     window.onload = function(){

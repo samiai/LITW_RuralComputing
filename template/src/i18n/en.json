@@ -70,5 +70,14 @@
   "litw-demographics-residence-rural-distance": "How far (in miles) is your place from the closest urban area?",
   "litw-cardsurvey-header": "Select a card to know if you are techno-optimist or techno-pessimist!",
   "litw-cardsurvey-subheader": "Moving between cards saves answers, press Submit once done",
-  "litw-cardsurvey-submit": "Submit answers for all cards by clicking Submit here"
+  "litw-cardsurvey-submit": "Submit answers for all cards by clicking Submit here",
+  "litw-comment-title": "Thank you for your participation!",
+  "litw-comment-subtitle": "Before you continue to your results, please let us know what you thought of the study!",
+  "litw-comment-q1": "Do you have any comments for the researcher? Questions, Suggestions, or Concerns?",
+  "litw-comment-q21": "Did you encounter any technical difficulties during this study?",
+  "litw-comment-q22": "Please specify the issue:",
+  "litw-comment-q31": "Did you cheat or in any way provide false information?",
+  "litw-comment-q32": "Please specify how:",
+  "litw-comment-email-p1": "You can also email us at",
+  "litw-comment-email-p2": "info@labinthewild.org"
 }
