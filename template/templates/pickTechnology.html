@@ -141,10 +141,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Please select a store and type in the name of the App you want to add:</h3><br>
-                <input type="radio" id="option1" name="addtech" value="android">
+                <h3>Please select a store type and the name of the App you want to add:</h3><br>
+                <input type="radio" id="option1" name="addtech" value="google">
                 <label for="option1">Android</label><br>
-                <input type="radio" id="option2" name="addtech" value="iphone">
+                <input type="radio" id="option2" name="addtech" value="apple">
                 <label for="option2">iPhone</label><br>
                 <input type="text" id="addTechName">
             </div>
@@ -182,7 +182,7 @@
     <div id="cardContainer" class="cardcontainer">
         <div class="card" id="card1Box">
             <div class="thumb">
-                <img src="../img/card-Catalyst.png" onclick="cardClick('card1')" style="position: absolute">
+                <img src="../img/card-Catalyst.png" onclick="cardClick2('card1')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute;display: none" width="3em" height="3em">
@@ -191,9 +191,17 @@
                 </svg>
             </div>
         </div>
+        <div id="card1Flip" class="card" onclick="cardFlip2('card1')" style="display: none; background-color: #11f897">
+            <h3>The Catalyst</h3>
+            <h4>How might rural cultural habits change how the product is used, adapted, or repurposed?</h4>
+            <p>How bringing [the product] to a rural area would impact the rural environment and its features?</p>
+            <p>How might [the product] change the cultural habits (social norms, etiquette, or traditions) of people
+                living in rural areas?</p>
+        </div>
+
         <div class="card" id="card2Box">
             <div class="thumb">
-                <img src="../img/card-Forgotten.png" onclick="cardClick('card2')" style="position: absolute">
+                <img src="../img/card-Forgotten.png" onclick="cardClick2('card2')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute;display: none" width="3em" height="3em">
@@ -202,9 +210,17 @@
                 </svg>
             </div>
         </div>
+        <div id="card2Flip" class="card" onclick="cardFlip2('card2')" style="display: none; background-color: #ffbe9f">
+            <h3>The Forgotten</h3>
+            <h4>When you picture the user base of [the product], who do you think is excluded as a potential
+                user?</h4>
+            <p>If [rural users] used [the product], what would their experience be like?</p>
+            <p>How can we change [the product] to better serve or design for [rural users]</p>
+        </div>
+
         <div class="card" id="card3Box">
             <div class="thumb">
-                <img src="../img/card-RadioStar.png" onclick="cardClick('card3')" style="position: absolute">
+                <img src="../img/card-RadioStar.png" onclick="cardClick2('card3')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute;display: none" width="3em" height="3em">
@@ -213,9 +229,17 @@
                 </svg>
             </div>
         </div>
+        <div id="card3Flip" class="card" onclick="cardFlip2('card3')" style="display: none; background-color: #aedf2a">
+            <h3>The Radio Star</h3>
+            <h4>What social or economic interaction disappears if your product is successful in rural contexts?</h4>
+            <p>Who loses their job if [the product] is used in rural areas?</p>
+            <p>What other local products or services can be replaced by [the product]?</p>
+            <p>What rural industries, institutions, or policies would be affected if everyone used [the product]</p>
+        </div>
+
         <div class="card" id="card4Box">
             <div class="thumb">
-                <img src="../img/card-ServiceDog.png" onclick="cardClick('card4')" style="position: absolute">
+                <img src="../img/card-ServiceDog.png" onclick="cardClick2('card4')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute;display: none" width="3em" height="3em">
@@ -224,54 +248,22 @@
                 </svg>
             </div>
         </div>
-    </div>
-
-    <div id="flipContainer" class="topcontainer" style="display: none">
-        <div id="card1Flip" class="flipcard" onclick="cardFlip('card1')">
-            <div id="Card1Flipper" class="card" style="background-color: #11f897">
-                <h2>The Catalyst</h2>
-                <h3>How might rural cultural habits change how the product is used, adapted, or repurposed?</h3>
-                <p>How bringing [the product] to a rural area would impact the rural environment and its features?</p>
-                <p>How might [the product] change the cultural habits (social norms, etiquette, or traditions) of people
-                    living in rural areas?</p>
-            </div>
-        </div>
-        <div id="card2Flip" class="flipcard" onclick="cardFlip('card2')">
-            <div id="Card2Flipped" class="card" style="background-color: #ffbe9f">
-                <h2>The Forgotten</h2>
-                <h3>When you picture the user base of [the product], who do you think is excluded as a potential
-                    user?</h3>
-                <p>If [rural users] used [the product], what would their experience be like?</p>
-                <p>How can we change [the product] to better serve or design for [rural users]</p>
-            </div>
-        </div>
-        <div id="card3Flip" class="flipcard" onclick="cardFlip('card3')">
-            <div id="Card3Flipped" class="card" style="background-color: #aedf2a">
-                <h2>The Radio Star</h2>
-                <h3>What social or economic interaction disappears if your product is successful in rural contexts?</h3>
-                <p>Who loses their job if [the product] is used in rural areas?</p>
-                <p>What other local products or services can be replaced by [the product]?</p>
-                <p>What rural industries, institutions, or policies would be affected if everyone used [the product]</p>
-            </div>
-        </div>
-        <div id="card4Flip" class="flipcard" onclick="cardFlip('card4')">
-            <div id="Card4Flipped" class="card" style="background-color: #ff9400">
-                <h2>The Service Dog</h2>
-                <h3>If [the product] was entirely dedicated to empowering the lives of rural area population, what kind
-                    of impact could it make?</h3>
-                <p>Would your use of [the product] make you or others vulnerable to harm or endangering rural
-                    culture?</p>
-                <p>How can the widespread use of [the product] in rural settings disrupt or endanger environmental and
-                    social sustainability in rural contexts?</p>
-            </div>
+        <div id="card4Flip" class="card" onclick="cardFlip2('card4')" style="display: none; background-color: #ff9400">
+            <h3>The Service Dog</h3>
+            <h4>If [the product] was entirely dedicated to empowering the lives of rural area population, what kind
+                of impact could it make?</h4>
+            <p>Would your use of [the product] make you or others vulnerable to harm or endangering rural
+                culture?</p>
+            <p>How can the widespread use of [the product] in rural settings disrupt or endanger environmental and
+                social sustainability in rural contexts?</p>
         </div>
     </div>
 
     <div id="bellowCards" style="display: flex">
         <img src="" style="width: 20em; margin: 10px">
-        <div id="controlButtons">
-            <input type="submit" value="Change Tech" class="btn btn-primary btn-lg" onclick="changeTech()">
-            <input type="submit" value="Submit Answers" class="btn btn-primary btn-lg" onclick="submitAnswers()">
+        <div id="controlButtons" style="display: grid; align-content: center">
+            <input type="submit" value="Change Tech" class="btn btn-primary btn-lg" onclick="changeTech()" style="margin: 5px">
+            <input type="submit" value="Submit Answers" class="btn btn-primary btn-lg" onclick="submitAnswers()" style="margin: 5px">
         </div>
         <div id="textboxArea" style="display: none">
             <h3>Please enter you answers below:</h3>
@@ -314,7 +306,7 @@
     function searchNewTech() {
         let storeSelection = $('input[name="addtech"]:checked');
         let searchTerm = $('#addTechName')[0].value;
-        if (storeSelection.length == 1 || searchTerm.trim() !== '') {
+        if (storeSelection.length > 0 && searchTerm.trim() !== '') {
             let store = storeSelection[0].value;
             searchAppStore(searchTerm, store);
         } else {
@@ -325,9 +317,10 @@
     }
 
     function searchAppStore(searchTerm, appStore) {
+        let searchURL = 'http://www.tmp12345.labinthewild.org/include/get_appstore.php?search='
+                + searchTerm + '&store=' + appStore;
         $.ajax({
-            url: 'http://www.tmp12345.labinthewild.org/include/get_appstore.php?search='
-                + searchTerm + '&store=' + appStore,
+            url: encodeURI(searchURL),
             method: 'GET',
             crossDomain: true,
             success: function(data, status){
@@ -388,6 +381,19 @@
         $('#controlButtons').hide();
     }
 
+    function cardClick2(card) {
+        cardsReset2();
+        tech_answers.current_card = card;
+        var cardBox = $('#' + card + 'Box');
+        var cardFlip = $('#' + card + 'Flip');
+
+        cardBox.hide()
+        cardFlip.show();
+        $('#txtAnswer').val(tech_answers[tech_answers.current_card]);
+        $('#textboxArea').show();
+        $('#controlButtons').hide();
+    }
+
     function cardFlip(card) {
         tech_answers.current_card = '';
         var cardBox = $('#' + card + 'Box');
@@ -396,6 +402,17 @@
         $('#flipContainer').hide();
         cardBox.css('opacity', 1);
         cardFlip.css('opacity', 0);
+        cardFlip.hide();
+        $('#textboxArea').hide();
+        $('#controlButtons').show();
+    }
+
+    function cardFlip2(card) {
+        tech_answers.current_card = '';
+        var cardBox = $('#' + card + 'Box');
+        var cardFlip = $('#' + card + 'Flip');
+
+        cardBox.show();
         cardFlip.hide();
         $('#textboxArea').hide();
         $('#controlButtons').show();
@@ -411,7 +428,7 @@
         }
         tech_answers[tech_answers.current_card] = answer;
         console.log('ANSWERS: ' + JSON.stringify(tech_answers));
-        cardsReset();
+        cardsReset2();
     }
 
     function cardsReset() {
@@ -419,6 +436,13 @@
         $("div[id$='Flip']").css('opacity', 0);
         $("div[id$='Flip']").hide();
         $('#flipContainer').hide();
+        $('#textboxArea').hide();
+        $('#controlButtons').show();
+    }
+
+    function cardsReset2() {
+        $("div[id$='Box']").show();
+        $("div[id$='Flip']").hide();
         $('#textboxArea').hide();
         $('#controlButtons').show();
     }
