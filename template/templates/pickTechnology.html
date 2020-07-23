@@ -145,7 +145,7 @@
     <div id="cardContainer" class="cardcontainer">
         <div class="card" id="card1Box">
             <div class="thumb">
-                <img src="../img/card-Catalyst.png" onclick="cardClick2('card1')" style="position: absolute">
+                <img src="img/card-Catalyst.png" onclick="cardClick2('card1')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute; top: 0; left: 0; margin: 10px; display: none" width="10%">
@@ -164,7 +164,7 @@
 
         <div class="card" id="card2Box">
             <div class="thumb">
-                <img src="../img/card-Forgotten.png" onclick="cardClick2('card2')" style="position: absolute">
+                <img src="img/card-Forgotten.png" onclick="cardClick2('card2')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute; top: 0; left: 0; margin: 10px; display: none" width="10%">
@@ -183,7 +183,7 @@
 
         <div class="card" id="card3Box">
             <div class="thumb">
-                <img src="../img/card-RadioStar.png" onclick="cardClick2('card3')" style="position: absolute">
+                <img src="img/card-RadioStar.png" onclick="cardClick2('card3')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute; top: 0; left: 0; margin: 10px; display: none" width="10%">
@@ -202,7 +202,7 @@
 
         <div class="card" id="card4Box">
             <div class="thumb">
-                <img src="../img/card-ServiceDog.png" onclick="cardClick2('card4')" style="position: absolute">
+                <img src="img/card-ServiceDog.png" onclick="cardClick2('card4')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute; top: 0; left: 0; margin: 10px; display: none" width="10%">
@@ -505,11 +505,11 @@
     }
 
     function finish() {
-        window.all_answers = all_answers;
+        LITW.study.sharedData.taroAnswers = all_answers;
         jsPsych.finishTrial();
     }
 
-    window.onload = function(){
+    function shuffleApps(){
         let categories = LITW.utils.shuffleArrays(Object.keys(technologies));
         for(let index = 1; index <= categories.length; index++) {
             let categoryID = 'category'+ index;
@@ -528,5 +528,7 @@
                 app.attr('alt', apps[index-1].description);
             }
         }
-    };
+    }
+
+    shuffleApps();
 </script>

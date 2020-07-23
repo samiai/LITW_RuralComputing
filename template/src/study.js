@@ -18,14 +18,14 @@ var commentsTemplate = require("../templates/comments.html");
 
 var resultsTemplate = require("../templates/results.html");
 var i18n = require("../js/i18n");
+var taroAnswers = {};
 require("./jspsych-display-slide");
-require("../js/jsPsych-5.0.3/plugins/jspsych-instructions");
+require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 
-module.exports = (function() {
+(function(exports) {
 
 	window.litwWithTouch = false;
-	window.all_answers = {};
-
+	var sharedData = {};
 	var timeline = [],
 	self = this,
 	C,
@@ -56,19 +56,19 @@ module.exports = (function() {
 
 	initJsPsych = function() {
 
-        // timeline.push({
-        //     type: "display-slide",
-        //     template: demographicsTemplate,
-        //     display_element: $("#demographics"),
-        //     name: "demographics",
-        //     finish: function(){
-        //     	let dem_data = $('#form').alpaca().getValue();
-        //     	console.log(dem_data);
-		// 		dem_data['time_elapsed'] = getSlideTime();
-        //     	jsPsych.data.addProperties({demographics:dem_data});
-        //     	LITW.data.submitDemographics(dem_data);
-        //     }
-        // });
+        timeline.push({
+            type: "display-slide",
+            template: demographicsTemplate,
+            display_element: $("#demographics"),
+            name: "demographics",
+            finish: function(){
+            	let dem_data = $('#form').alpaca().getValue();
+            	console.log(dem_data);
+				dem_data['time_elapsed'] = getSlideTime();
+            	jsPsych.data.addProperties({demographics:dem_data});
+            	LITW.data.submitDemographics(dem_data);
+            }
+        });
 
 		timeline.push({
 			type: "display-slide",
@@ -93,8 +93,11 @@ module.exports = (function() {
         });
 
         timeline.push({
-			type: "instructions",
-			pages: [JSON.stringify(window.all_answers)]
+			type: "call-function",
+			func: function () {
+				$('#results').html(JSON.stringify(sharedData.taroAnswers)).show();
+			},
+
 		})
 
 		// ******* END STUDY PROGRESSION ******** //
@@ -171,20 +174,6 @@ module.exports = (function() {
 
 		// generate unique participant id and geolocate participant
 		LITW.data.initialize();
-		LITW.share.makeButtons("#header-share");
-
-		// shortcut to access study content
-		C = LITW_STUDY_CONTENT;
-
-		// Load the trial configuration data for the practice
-		// trials and the real trials
-		params.practiceStims = C.practiceCats;
-		params.stims = C.trialCats;
-
-		// shuffle the order of the trials
-		params.practiceStims = LITW.utils.shuffleArrays(params.practiceStims);
-		params.stims = LITW.utils.shuffleArrays(params.stims);
-
 		LITW.utils.showSlide("img-loading");
 		
 		// preload images
@@ -208,6 +197,10 @@ module.exports = (function() {
 			}
 		);
 	});
-})();
+
+	exports.study = {};
+	exports.study.sharedData = sharedData;
+
+})(window.LITW = window.LITW || {});
 
 
