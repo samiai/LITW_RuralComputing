@@ -13,6 +13,7 @@ var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
 var demographicsTemplate = require("../templates/demographics.html");
 var pickTechnologyTemplate = require("../templates/pickTechnology.html");
+var useTechnologyTemplate = require("../templates/techUse.html");
 var loadingTemplate = require("../templates/loading.html");
 var commentsTemplate = require("../templates/comments.html");
 
@@ -72,13 +73,21 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 
 		timeline.push({
 			type: "display-slide",
-            display_element: $("#pickTechnology"),
+         display_element: $("#pickTechnology"),
 			name: "pickTechnology",
 			template: pickTechnologyTemplate,
 			show_next: false
 		});
 
-        timeline.push({
+		timeline.push({
+			type: "display-slide",
+        	display_element: $("#useTechnology"),
+			name: "useTechnology",
+			template: useTechnologyTemplate,
+			show_next: false
+		});
+
+		timeline.push({
             type: "display-slide",
             template: commentsTemplate,
             display_element: $("#comments"),
