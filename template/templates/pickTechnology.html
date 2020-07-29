@@ -1,5 +1,5 @@
-<div id="techChoiceMenu" style="text-align:center">
-    <h2>We’d like to hear your experiences with different types of online platforms. </h2>
+<div id="techChoiceMenu" class="techchoice">
+    <h2>We'd like to hear your experiences with different types of online platforms. </h2>
     <p>Click below to choose the online platform that you would like to draw tarot cards for. </p>
     <p id="done-button" style="display: none">
         <input type="submit" value="I'm done!" class="btn btn-primary btn-lg" onclick="finish()">
@@ -141,6 +141,13 @@
 </div>
 
 <div id="tarotCards" style="display: none">
+    <div id="topOfCards">
+        <div class="cardsheader">
+            <h2>You are reading tarot cards for:</h2>
+            <img src="">
+        </div>
+        <h4 style="text-align: center"> Click on any card to select it. Click it again to flip it back.</h4>
+    </div>
 
     <div id="cardContainer" class="cardcontainer">
         <div class="card" id="card1Box">
@@ -230,13 +237,11 @@
         </div>
     </div>
 
-    <div id="bellowCards" style="display: flex">
-        <img src="" style="width: 20%; margin: 10px">
-        <div id="controlButtons" style="display: grid; align-content: center">
-            <input type="submit" value="Change Tech" class="btn btn-primary btn-lg" onclick="changeTech()" style="margin: 5px">
+    <div id="bellowCards" class="cardbottom">
+        <div id="controlButtons" style="display: none">
             <input type="submit" value="Submit Answers" class="btn btn-primary btn-lg" onclick="submitAnswers()" style="margin: 5px">
         </div>
-        <div id="textboxArea" style="display: none">
+        <div id="textboxArea" style="display: none; padding: 10px; border-radius: 10px;">
             <h3>Please enter you answers below:</h3>
             <textarea id="txtAnswer" type="text" style="width: 90%"></textarea>
             <input type="submit" value="Save" class="btn btn-primary btn-lg" onclick="saveCardAnswer()">
@@ -316,7 +321,7 @@
             tech_answers = resetAnswers();
             tech_answers.tech = technology;
         }
-        $('#bellowCards img').attr('src', selected.attr('src'));
+        $('#topOfCards img').attr('src', selected.attr('src'));
         $('#techForm').show();
     }
 
@@ -414,7 +419,9 @@
         cardBox.hide()
         cardFlip.show();
         $('#txtAnswer').val(tech_answers[tech_answers.current_card]);
-        $('#textboxArea').show();
+        let cardColor = $('#'+card+'Flip').css('background-color');
+        $('#textboxArea').css('background-color', cardColor).show();
+
         $('#controlButtons').hide();
     }
 

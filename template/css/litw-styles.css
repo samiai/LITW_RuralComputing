@@ -24,6 +24,13 @@ html, body {
 }
 
 @media only screen and (min-width: 960px) {
+    .study-content {
+        text-align: center;
+        width: 800px;
+        height: auto;
+        margin: 0 auto;
+    }
+
     .instructions-stim-container {
         text-align: center;
         width: 800px;
@@ -738,7 +745,7 @@ a:active {
 /* The grid: Four equal columns that floats next to each other */
 .column {
     float: left;
-    width: 25%;
+    width: 20%;
     padding: 10px;
 }
 
@@ -796,6 +803,7 @@ a:active {
     height: 0;
     background: none;
     padding-top: 32%;
+    border-radius: 10px;
 }
 
 .card h3 {
@@ -836,6 +844,7 @@ a:active {
     max-height: 380px;
     max-width: 250px;
     top: 0;
+    border-radius: 10px;
 }
 
 .cardcontainer .card .flipped {
@@ -867,4 +876,37 @@ a:active {
 
 .topcontainer .flipcard .card {
     padding: 20px;
+}
+
+.techchoice {
+    text-align: center;
+}
+
+.techchoice h2 {
+    font-size: 2vw;
+}
+
+.techchoice p {
+    font-size: 1.5vw;
+}
+
+.cardsheader {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardsheader img {
+    width: 15%;
+    height: auto;
+    margin: 10px;
+}
+
+.cardbottom {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }

@@ -73,7 +73,7 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 
 		timeline.push({
 			type: "display-slide",
-         display_element: $("#pickTechnology"),
+	        display_element: $("#pickTechnology"),
 			name: "pickTechnology",
 			template: pickTechnologyTemplate,
 			show_next: false

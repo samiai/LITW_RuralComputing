@@ -38,7 +38,7 @@
                 $("#form").alpaca({
                     "data": {},
                     "schema": {
-                        "description": "LITW Unintended Consequences - Demographics",
+                        "description": "LITW Rural Computing - Demographics",
                         "type": "object",
                         "properties": {
                             "demographics-retake": {
@@ -48,12 +48,12 @@
                             },
                             "demographics-age": {
                                 "title": $.i18n('litw-demographics-age'),
-                                "required":true
+                                "required":false
                             },
                             "demographics-gender": {
                                 "title": $.i18n('litw-demographics-gender'),
                                 "enum": ['female', 'male', 'non-binary', 'no-disclosure', 'other'],
-                                "required":true
+                                "required":false
                             },
                             "demographics-gender-other": {
                                 "title": $.i18n('litw-demographics-gender-other'),
@@ -64,12 +64,12 @@
                                 "enum": ['no-formal-edu', 'incomplete-primary', 'complete-primary',
                                     'incomplete-sec-high', 'complete-sec-high', 'university-no-degree',
                                     'university-degree', 'incomplete-grad-prof', 'complete-grad-prof'],
-                                "required":true
+                                "required":false
                             },
                             "demographics-culture": {
                                 "title": $.i18n('litw-demographics-country'),
                                 "enum": Object.keys(countries),
-                                "required":true
+                                "required":false
                             },
                             "demographics-race": {
                                 "title": $.i18n('litw-demographics-race'),
@@ -94,7 +94,7 @@
                             "demographics-residence-rural": {
                                 "title": $.i18n('litw-demographics-residence-rural'),
                                 "enum": ['no', 'yes'],
-                                "required": true,
+                                "required": false,
                             },
                             "demographics-residence-rural-distance": {
                                 "title": $.i18n('litw-demographics-residence-rural-distance'),
@@ -246,7 +246,7 @@
 
                         //Add button to residence field
                         $("input[name='demographics-residence']")
-                            .after('<input id="button-residence" type="submit" value="Verify!" ' +
+                            .after('<input id="button-residence" type="submit" value="Please verify" ' +
                                 'class="btn btn-primary btn-lg" style="display: none" onclick="geolocate()">');
 
                         let residence = control.childrenByPropertyId["demographics-residence"];
@@ -262,7 +262,6 @@
                         let rural = control.childrenByPropertyId["demographics-residence-rural"];
                         let ruralDistance = control.childrenByPropertyId["demographics-residence-rural-distance"];
                         ruralDistance.subscribe(rural, function(val){
-                            console.log(val);
                             this.options.hidden = (val !== 'yes');
                             this.refresh();
                             $("input[type='text']").css('width','200px');
