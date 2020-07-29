@@ -42,7 +42,11 @@ module.exports = jsPsych.plugins["display-slide"] = (function() {
 
 
         LITW.utils.showSlide(display_element[0].id);
-        //LITW.tracking.recordCheckpoint(display_element[0].id);
+        if(trial.name) {
+            LITW.tracking.recordCheckpoint(trial.name);
+        } else {
+            LITW.tracking.recordCheckpoint(display_element[0].id);
+        }
     };
 
     return plugin;
