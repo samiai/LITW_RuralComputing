@@ -84,7 +84,7 @@
         },
 
         _submit = function(obj_data, finalAttempt) {
-            //console.log(JSON.stringify(obj_data));
+            console.log(JSON.stringify(obj_data));
             $.post("include/save_data.php", JSON.stringify(obj_data) )
                 .fail(function(e) {
                     console.log(e);
