@@ -18,6 +18,7 @@ var loadingTemplate = require("../templates/loading.html");
 var commentsTemplate = require("../templates/comments.html");
 
 var resultsTemplate = require("../templates/results.html");
+var resultsFooter = require("../templates/results-bottom.html");
 var i18n = require("../js/i18n");
 var taroAnswers = {};
 require("./jspsych-display-slide");
@@ -101,13 +102,21 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
             }
         });
 
-        timeline.push({
+		timeline.push({
 			type: "call-function",
-			func: function () {
-				$('#results').html(JSON.stringify(sharedData.taroAnswers)).show();
-			},
+			func: function(){
+				showResults(params.results);
+			}
+		});
 
-		})
+
+        // timeline.push({
+		// 	type: "call-function",
+		// 	func: function () {
+		// 		$('#results').html(JSON.stringify(sharedData.taroAnswers)).show();
+		// 	},
+		//
+		// })
 
 		// ******* END STUDY PROGRESSION ******** //
 	},
@@ -157,6 +166,41 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 			//SAMPLE: The example code gets the cities of study partcipants.
 			console.log(data);
 		});
+	},
+
+
+	showResults = function(results) {
+		$("#results").html(
+			resultsTemplate(
+				{
+					tech: 'Netflix',
+					card: 'img/card-RadioStar.png',
+					answer: 'This is a test answer for the Netflix technology considering the RadioStar card.',
+				}
+			));
+		$("#results-footer").html(
+			resultsFooter(
+			{
+				//TODO fix this before launching!
+				share_url: "http://labinthewild.org",
+				share_title: $.i18n('litw-irb-header'),
+				share_text: $.i18n('litw-template-title'),
+				more_litw_studies: [{
+					study_url: "http://labinthewild.org/studies/peripheral-vision/",
+					study_logo: "http://labinthewild.org/images/virtual-chinrest.jpg",
+					study_slogan: $.i18n('litw-more-study1-slogan'),
+					study_description: $.i18n('litw-more-study1-description'),
+				},
+				{
+					study_url: "http://labinthewild.org/studies/viz_performance/",
+					study_logo: "http://labinthewild.org/images/search-world.jpg",
+					study_slogan: $.i18n('litw-more-study2-slogan'),
+					study_description: $.i18n('litw-more-study2-description'),
+				}]
+			}
+		));
+		$("#results").i18n();
+		LITW.utils.showSlide("results");
 	}
 
 	// when the page is loaded, start the study!

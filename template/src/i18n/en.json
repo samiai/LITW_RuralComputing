@@ -64,7 +64,7 @@
   "litw-demographics-race-black": "Black or African-American",
   "litw-demographics-race-native": "American Indian or Alaska Native",
   "litw-demographics-race-white": "White",
-  "litw-demographics-residence": "Where do you live? (For example: 'Aarhus, Denmark' or 'Seattle, WA, USA')",
+  "litw-demographics-residence": "Where do you live? (For example: 'Bangkok, Thailand' or 'Seattle, WA, USA')",
   "litw-demographics-residence-time": "For how many years have you lived in the region where you are currently living?",
   "litw-demographics-residence-rural": "Would you say you live in a rural area?",
   "litw-demographics-residence-rural-distance": "How far (in miles) is your place from the closest urban area?",
@@ -79,5 +79,14 @@
   "litw-comment-q31": "Did you cheat or in any way provide false information?",
   "litw-comment-q32": "Please specify how:",
   "litw-comment-email-p1": "You can also email us at",
-  "litw-comment-email-p2": "info@labinthewild.org"
+  "litw-comment-email-p2": "info@labinthewild.org",
+  "litw-more-title": "If you enjoyed this study, there's more!",
+  "litw-more-step1": "Visit and follow us on Facebook to learn about new studies:",
+  "litw-more-step2": "Share this study with your friends!",
+  "litw-more-step3": "And consider participating in some of our other studies:",
+  "litw-more-participate": "Participate now!",
+  "litw-more-study1-slogan": "How accurate is your peripheral vision?",
+  "litw-more-study1-description": "Are you curious about how accurate your peripheral vision is compared to others? Learn more about your visual perception by doing these fun tasks! This test takes around 8 minutes.",
+  "litw-more-study2-slogan": "How fast can you scan websites?",
+  "litw-more-study2-description": "How quickly do you find information on websites? Compare your speed to others! This study takes around 10 minutes."
 }

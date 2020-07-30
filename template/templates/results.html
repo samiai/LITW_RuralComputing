@@ -1,27 +1,13 @@
-
-<!-- Template for the results page -->
-<h2 class="bolded-blue">{{content.header}}</h2>
-
-{{#if bothCats}}
-	<p>{{content.predictionMsgBoth}}</p>
-{{else}}
-	<p>{{content.predictionMsg}}</p>
-{{/if}}
-
-<div class="prediction-img-container">
-	{{#each whichCat}}
-		<img class="prediction-img" src="img/{{this}}" />
-	{{/each}}
+<h2 class="bolded-blue">Thanks for your effort!</h2>
+<h3>We hope the Taro cards of technology helped you think a bit deeper about the technologies you use.</h3>
+<h3>Here, you can read what another person thought about a technology you considered:</h3>
+<br>
+<div id="result-some-answer" style="display: flex">
+    <img src="{{ card }}" style="width: 20%"/>
+    <div style="display: block">
+        <h3>{{ tech }}</h3>
+        <p>{{ answer }}</p>
+    </div>
 </div>
-
-<div class="results-explanation">
-	{{#each resultsExplanation}}
-		<p>{{this}}</p>
-	{{/each}}
-</div>
-
-<div class="citations">
-	{{#each citations}}
-		<p>{{this}}</p>
-	{{/each}}
-</div>
+<br>
+<div id="results-footer"></div>
