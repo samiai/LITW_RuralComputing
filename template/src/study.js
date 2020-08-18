@@ -51,9 +51,6 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 				$("#approve-irb").show();
 			}
 		});
-
-		// show the introductory splash screen
-		//$("#splash-screen").modal({backdrop: "static"});
 	},
 
 	initJsPsych = function() {

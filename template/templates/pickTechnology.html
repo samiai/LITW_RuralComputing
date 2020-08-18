@@ -144,12 +144,13 @@
 </div>
 
 <div id="tarotCards" style="display: none">
-    <div id="topOfCards">
+    <div id="topOfCards" style="padding-bottom: 10px">
         <div class="cardsheader">
             <h2>You are reading tarot cards for:</h2>
             <img src="">
         </div>
         <h4 style="text-align: center"> Click on any card to select it. Click it again to flip it back.</h4>
+        <h4 style="text-align: center; font-weight: bold"> Use card questions as prompts, so answer as many or as feel as you like.</h4>
     </div>
 
     <div id="cardContainer" class="cardcontainer">
@@ -165,12 +166,7 @@
             </div>
         </div>
         <div id="card1Flip" class="card" onclick="cardFlip2('card1')" style="display: none; background-color: #11f897">
-            <div class="flipped">
-                <h3>The Catalyst</h3>
-                <h4>Do you think any habits or culture change how this product is used, adapted or repurposed?</h4>
-                <p>How bringing or introducing this product changes the environment and its features?</p>
-                <p>Can this product change or is changing the cultural habits (social norms, etiquette, or traditions) of people?</p>
-            </div>
+            <div class="flipped"></div>
         </div>
 
         <div class="card" id="card2Box">
@@ -185,12 +181,7 @@
             </div>
         </div>
         <div id="card2Flip" class="card" onclick="cardFlip2('card2')" style="display: none; background-color: #ffbe9f">
-            <div class="flipped">
-                <h3>The Forgotten</h3>
-                <h4>Who is excluded as a current or potential user when you think of its user base?</h4>
-                <p>Does the experience of this product change based on where you are located?</p>
-                <p>How can we change the product to better serve all users, especially any unserved users?</p>
-            </div>
+            <div class="flipped"></div>
         </div>
 
         <div class="card" id="card3Box">
@@ -205,12 +196,7 @@
             </div>
         </div>
         <div id="card3Flip" class="card" onclick="cardFlip2('card3')" style="display: none; background-color: #aedf2a">
-            <div class="flipped">
-                <h3>The Radio Star</h3>
-                <h4>Who or what will disappear if this product is successful?</h4>
-                <p>Would anyone lose their job or any product or service will be replaced?</p>
-                <p>What local products or services can be replaced by this product?</p>
-            </div>
+            <div class="flipped"></div>
         </div>
 
         <div class="card" id="card4Box">
@@ -225,12 +211,7 @@
             </div>
         </div>
         <div id="card4Flip" class="card" onclick="cardFlip2('card4')" style="display: none; background-color: #ff9400">
-            <div class="flipped">
-                <h3>The Service Dog</h3>
-                <h4>If this product was entirely dedicated to empowering the lives of people, what kind of impact could it make?</h4>
-                <p>Would your use of this product make you or others vulnerable to harm or endangering culture?</p>
-                <p>How can the widespread use of this product in rural settings disrupt or endanger environmental and social sustainability in rural contexts?</p>
-            </div>
+            <div class="flipped"></div>
         </div>
     </div>
 
@@ -248,6 +229,42 @@
 </div>
 
 <script>
+
+    var cards_info = [
+        {
+            name:"The Catalyst",
+            questions:[
+                "How has your culture affected how [THE_PRODUCT] is used? How has it changed your culture?",
+                "How has [THE_PRODUCT] changed your environment and its features?",
+                "How has [THE_PRODUCT] changed  the cultural habits (social norms, etiquette, or traditions) of your communities?"
+            ]
+        },
+        {
+            name:"The Forgotten",
+            questions:[
+                "Who can't use [THE_PRODUCT]?",
+                "Do people in different areas experience [THE_PRODUCT] differently?",
+                "How could [THE_PRODUCT] be changed to better serve all users? Especially any unserved users?"
+            ]
+        },
+        {
+            name:"The Radio Star",
+            questions:[
+                "Who or what disappears when [THE_PRODUCT] is successful?",
+                "Who lost their job because of [THE_PRODUCT]? What other products or services have been replaced? ",
+                "What industries, institutions or policies have been affected by [THE_PRODUCT]?"
+            ]
+        },
+        {
+            name:"The Service Dog",
+            questions:[
+                "What's the worst headline about [THE_PRODUCT] you can imagine happening? What about it concerns you the most?",
+                "Imagine scenarios, including use entirely opposite of the designer's intentions, where [THE_PRODUCT] harmed or endangered people.",
+                "How could [THE_PRODUCT] be designed to empower you and your community?",
+                "Who could most benefit from the use of [THE_PRODUCT]? How could it be redesigned to serve them?"
+            ]
+        },
+    ];
 
     var technologies = {
         commerce: {
@@ -309,6 +326,7 @@
         var technology = image.name;
         var selected = $('#techChoiceMenu img[name="' + technology + '"]');
 
+        setupCards(technology);
         $('#techChoiceMenu img').css('filter', 'grayscale(1)');
         selected.css('filter', 'grayscale(0)');
 
@@ -320,6 +338,21 @@
         }
         $('#topOfCards img').attr('src', selected.attr('src'));
         $('#techForm').show();
+    }
+
+    function setupCards(technologyName) {
+        var flippedCards = $("[id^=card] [id$=Flip]");
+        var currentHTML = "";
+        for(card=0; card<4; card++){
+            currentHTML += "<div class='flipped'>";
+            currentHTML += "<h3>" + cards_info[card].name + "</h3>";
+            for(question of cards_info[card].questions) {
+                currentHTML += "<p>" + question.replace("[THE_PRODUCT]", technologyName) + "</p><br>";
+            }
+            currentHTML += "</div>";
+            flippedCards[card].innerHTML = currentHTML;
+            currentHTML = "";
+        }
     }
 
     function showAddTech(techCategorykey) {
