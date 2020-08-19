@@ -151,12 +151,15 @@
         </div>
         <h4 style="text-align: center"> Click on any card to select it. Click it again to flip it back.</h4>
         <h4 style="text-align: center; font-weight: bold"> Use card questions as prompts, so answer as many or as feel as you like.</h4>
+        <div id="submitAnswersDiv" style="display: none; justify-content: center">
+            <input type="submit" value="Submit Answers" class="btn btn-primary btn-lg" onclick="submitAnswers()" style="margin: 5px">
+        </div>
     </div>
 
     <div id="cardContainer" class="cardcontainer">
         <div class="card" id="card1Box">
             <div class="thumb">
-                <img src="img/card-Catalyst.png" onclick="cardClick2('card1')" style="position: absolute">
+                <img src="img/card-Catalyst.png" onclick="cardClick('card1')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute; top: 0; left: 0; margin: 10px; display: none" width="10%">
@@ -171,7 +174,7 @@
 
         <div class="card" id="card2Box">
             <div class="thumb">
-                <img src="img/card-Forgotten.png" onclick="cardClick2('card2')" style="position: absolute">
+                <img src="img/card-Forgotten.png" onclick="cardClick('card2')" style="position: absolute">
                 <svg viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg"
                      style="position: absolute; top: 0; left: 0; margin: 10px; display: none" width="10%">
@@ -216,17 +219,36 @@
     </div>
 
     <div id="bellowCards" class="cardbottom">
-        <div id="controlButtons" style="display: none">
-            <input type="submit" value="Submit Answers" class="btn btn-primary btn-lg" onclick="submitAnswers()" style="margin: 5px">
-        </div>
         <div id="textboxArea" style="display: none; padding: 10px; border-radius: 10px;">
             <h3>Please enter you answers below:</h3>
             <textarea id="txtAnswer" type="text" style="width: 90%"></textarea>
-            <input type="submit" value="Save" class="btn btn-primary btn-lg" onclick="saveCardAnswer()">
+            <input type="submit" value="Save" class="btn btn-primary btn-lg" onclick="saveCardAnswer()" style="margin: 5px">
         </div>
     </div>
 
 </div>
+
+<div id="tarotAnswer" class="modal" style="display: none">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Answer as many questions you want!</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeCardAnswer()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="cardAnswerBody" class="modal-body">
+                <div id="cardAnswerQuestions" style="display: block"></div>
+                <textarea id="cardAnswerTxt" type="text" style="width: 90%"></textarea>
+            </div>
+            <div id="cardAnswerFooter" class="modal-footer">
+                <input type="submit" value="Cancel" class="btn btn-primary btn-lg" onclick="closeCardAnswer()">
+                <input type="submit" value="Save" class="btn btn-primary btn-lg" onclick="saveCardAnswer2()">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
 
@@ -237,7 +259,8 @@
                 "How has your culture affected how [THE_PRODUCT] is used? How has it changed your culture?",
                 "How has [THE_PRODUCT] changed your environment and its features?",
                 "How has [THE_PRODUCT] changed  the cultural habits (social norms, etiquette, or traditions) of your communities?"
-            ]
+            ],
+            color: "#11f897"
         },
         {
             name:"The Forgotten",
@@ -245,7 +268,8 @@
                 "Who can't use [THE_PRODUCT]?",
                 "Do people in different areas experience [THE_PRODUCT] differently?",
                 "How could [THE_PRODUCT] be changed to better serve all users? Especially any unserved users?"
-            ]
+            ],
+            color: "#ffbe9f"
         },
         {
             name:"The Radio Star",
@@ -253,7 +277,8 @@
                 "Who or what disappears when [THE_PRODUCT] is successful?",
                 "Who lost their job because of [THE_PRODUCT]? What other products or services have been replaced? ",
                 "What industries, institutions or policies have been affected by [THE_PRODUCT]?"
-            ]
+            ],
+            color: "#aedf2a"
         },
         {
             name:"The Service Dog",
@@ -262,7 +287,8 @@
                 "Imagine scenarios, including use entirely opposite of the designer's intentions, where [THE_PRODUCT] harmed or endangered people.",
                 "How could [THE_PRODUCT] be designed to empower you and your community?",
                 "Who could most benefit from the use of [THE_PRODUCT]? How could it be redesigned to serve them?"
-            ]
+            ],
+            color: "#ff9400"
         },
     ];
 
@@ -441,18 +467,17 @@
     }
 
     function cardClick(card) {
-        cardsReset();
         tech_answers.current_card = card;
-        var cardBox = $('#' + card + 'Box');
-        var cardFlip = $('#' + card + 'Flip');
-
-        $('#flipContainer').css('display', 'flex');
-        cardBox.css('opacity', 0);
-        cardFlip.css('opacity', 1);
-        cardFlip.show();
-        $('#txtAnswer').val(tech_answers[tech_answers.current_card]);
-        $('#textboxArea').show();
-        $('#controlButtons').hide();
+        var cardIndex = Number(card[card.length-1]);
+        var cardInfo = cards_info[cardIndex-1];
+        var cardQuestionsHTML = "";
+        for (question of cardInfo.questions) {
+            cardQuestionsHTML += "<p>" + question + "</p><br>";
+        }
+        $('#tarotAnswer .modal-content').css("background-color", cardInfo.color);
+        $('#cardAnswerQuestions').html(cardQuestionsHTML);
+        $('#cardAnswerTxt').val(tech_answers[tech_answers.current_card]);
+        $('#tarotAnswer').show();
     }
 
     function cardClick2(card) {
@@ -494,6 +519,21 @@
         $('#controlButtons').show();
     }
 
+    function closeCardAnswer() {
+        $('#tarotAnswer').hide();
+    }
+
+    function showSubmitAnswers() {
+        var showDiv = $("#submitAnswersDiv");
+        showDiv.hide();
+        for (cardName of ['card1', 'card2', 'card3', 'card4']) {
+            if(tech_answers[cardName].trim() !== '') {
+                showDiv.css("display", "flex");
+                break;
+            }
+        }
+    }
+
     function saveCardAnswer() {
         let answer = $('#txtAnswer').val().trim();
         let cardCheck = $('#' + tech_answers.current_card + 'Box svg');
@@ -505,6 +545,21 @@
         tech_answers[tech_answers.current_card] = answer;
         console.log('ANSWERS: ' + JSON.stringify(tech_answers));
         cardsReset2();
+        showSubmitAnswers();
+    }
+
+    function saveCardAnswer2() {
+        let answer = $('#cardAnswerTxt').val().trim();
+        let cardCheck = $('#' + tech_answers.current_card + 'Box svg');
+        if (answer.length > 0) {
+            cardCheck.show();
+        } else {
+            cardCheck.hide();
+        }
+        tech_answers[tech_answers.current_card] = answer;
+        console.log('ANSWERS: ' + JSON.stringify(tech_answers));
+        closeCardAnswer();
+        showSubmitAnswers();
     }
 
     function cardsReset() {
