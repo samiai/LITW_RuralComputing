@@ -335,6 +335,12 @@
         } else {
             tech_answers = resetAnswers();
             tech_answers.tech = technology;
+            tech_answers.category = selected.parent().parent().attr('id');
+            //IF app was added by user
+            if(selected.parent().attr('name') === 'tech4') {
+                tech_answers['app_code'] = selected.attr('app_code');
+                tech_answers['app_search'] = selected.attr('app_search');
+            }
         }
         $('#topOfCards img').attr('src', selected.attr('src'));
         $('#techForm').show();
@@ -347,7 +353,8 @@
             currentHTML += "<div class='flipped'>";
             currentHTML += "<h3>" + cards_info[card].name + "</h3>";
             for(question of cards_info[card].questions) {
-                currentHTML += "<p>" + question.replace("[THE_PRODUCT]", technologyName) + "</p><br>";
+                //TODO Substitute for real APP name when coming from STORE search (i.e., for 'tech4')
+                currentHTML += "<p>" + question.replace("[THE_PRODUCT]", "\"" + technologyName + "\"") + "</p><br>";
             }
             currentHTML += "</div>";
             flippedCards[card].innerHTML = currentHTML;
@@ -387,7 +394,9 @@
                 console.log(data);
                 let addTechImage = $('#addTechImage');
                 addTechImage.attr('src', data['app_image']);
-                addTechImage.attr('name', appStore + '_' + data['app_id']);
+                addTechImage.attr('name', data['app_name']);
+                addTechImage.attr('app_code', appStore + '_' + data['app_id']);
+                addTechImage.attr('app_search', searchTerm);
                 addTechImage.show();
                 $("#addTechFooter input").show();
             },
@@ -414,6 +423,8 @@
         let addTechImage = $('#addTech-'+ category +' img');
         addTechImage.attr('src', chosenTechImage.attr('src'));
         addTechImage.attr('name', chosenTechImage.attr('name'));
+        addTechImage.attr('app_code', chosenTechImage.attr('app_code'));
+        addTechImage.attr('app_search', chosenTechImage.attr('app_search'));
         addTechImage.show();
         closeAddTech();
     }
@@ -516,6 +527,7 @@
         $("div[id$='Box'] svg").hide();
         return {
             tech: '',
+            category: '',
             current_card: '',
             use: '',
             card1: '',
