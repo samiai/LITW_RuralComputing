@@ -127,17 +127,29 @@
 <div id="techForm" class="modal" style="display: none">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Please, answer the questions below!</span>
+            </div>
             <div class="modal-body">
-                <h3>I use the online platform:</h3><br>
-                <input type="radio" id="option1" name="techuse" value="daily">
-                <label for="option1">Daily</label><br>
-                <input type="radio" id="option2" name="techuse" value="often">
-                <label for="option2">Often</label><br>
-                <input type="radio" id="option3" name="techuse" value="sometimes">
-                <label for="option3">Sometimes</label><br>
-                <input type="radio" id="option4" name="techuse" value="never">
-                <label for="option4">Never</label><br><br>
-                <input type="submit" value="Submit" class="btn btn-primary btn-lg" onclick="saveForm()">
+                <h4>I use this product:</h4>
+                <div id="techFormUse" data-toggle="buttons" class="btn-group">
+                    <label class="btn btn-primary active"><input type="radio" name="techuse" value="daily"> Daily</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techuse" value="often"> Often</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techuse" value="sometimes"> Sometimes</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techuse" value="never"> Never</label>
+                </div>
+                <hr>
+                <h4>What is your general feeling about this technology?</h4>
+                <div id="techFormFeeling" data-toggle="buttons" class="btn-group">
+                    <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="-2"> Very negative</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="-1"> Negative</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="0"> Neutral</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="1"> Positive</label>
+                    <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="2"> Very positive</label>
+                </div>
+            </div>
+            <div id="addTechFooter" class="modal-footer">
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg" onclick="saveTechForm()">
             </div>
         </div>
     </div>
@@ -370,6 +382,7 @@
         }
         $('#topOfCards img').attr('src', selected.attr('src'));
         $('#techForm').show();
+        showSubmitAnswers();
     }
 
     function setupCards(technologyName) {
@@ -455,15 +468,26 @@
         closeAddTech();
     }
 
-    function saveForm() {
-        var selected = $("#techForm input:checked");
-        tech_answers.use = selected.val();
-
+    function saveTechForm() {
+        var selectedUse = $("#techFormUse input:checked");
+        var selectedFeeling = $("#techFormFeeling input:checked");
+        tech_answers.use = selectedUse.val();
+        tech_answers.feeling = selectedFeeling.val();
         console.log(tech_answers);
-        selected.prop("checked", false);
-        $('#techForm').hide();
-        $('#techChoiceMenu').hide();
-        $('#tarotCards').show();
+
+        if( tech_answers.use && tech_answers.feeling) {
+            selectedUse.prop("checked", false);
+            $("#techFormUse label").addClass('active');
+            selectedFeeling.prop("checked", false);
+            $("#techFormFeeling label").addClass('active');
+            $('#techForm').hide();
+            $('#techChoiceMenu').hide();
+            $('#tarotCards').show();
+        } else {
+            $('#techForm .modal-title').animate({opacity:0}, 200, "linear", function(){
+                $(this).animate({opacity:1}, 200);
+            });
+        }
     }
 
     function cardClick(card) {
@@ -585,6 +609,7 @@
             category: '',
             current_card: '',
             use: '',
+            feeling: '',
             card1: '',
             card2: '',
             card3: '',
