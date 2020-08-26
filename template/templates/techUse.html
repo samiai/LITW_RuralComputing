@@ -1,5 +1,6 @@
-<h2 class="bolded-blue">Before we go to the answers page...</h2>
-<h3>Can you tell us what are certain Apps that you have heard or thought about that you would like to use?</h3>
+<h2>Before we take you to other people's answers...</h2>
+<h4>Can you tell us about any apps that you have not been able to use even though you would like to or that you use in different ways than what they were intended for?</h4>
+<p>For example, are there any apps that do not work where you live or apps that you have started to use for different purposes?</p>
 
 <ul id="tech-list" class="list-group">
 </ul>
@@ -16,7 +17,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Please select a store type and the name of the App you want to add:</h3><br>
+                <h4>Please select a store type and the name of the App you want to add:</h4><br>
                 <input type="radio" id="option1" name="addtech" value="google">
                 <label for="option1">Android</label><br>
                 <input type="radio" id="option2" name="addtech" value="apple">
@@ -54,7 +55,7 @@
             let store = storeSelection[0].value;
             searchAppStore(searchTerm, store);
         } else {
-            $('#addTech h3').animate({opacity:0}, 200, "linear", function(){
+            $('#addTech h4').animate({opacity:0}, 200, "linear", function(){
                 $(this).animate({opacity:1}, 200);
             });
         }

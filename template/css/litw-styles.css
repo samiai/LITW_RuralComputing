@@ -24,6 +24,13 @@ html, body {
 }
 
 @media only screen and (min-width: 960px) {
+    #logo {
+        float: left;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 300px;
+    }
+
     .study-content {
         text-align: center;
         width: 800px;
@@ -41,9 +48,51 @@ html, body {
         width: 800px;
         margin: 0 auto;
     }
+
+    #pickTechnology h2, #useTechnology h2 {
+        font-size: xx-large;
+    }
+
+    #pickTechnology h4, #useTechnology h4 {
+        font-size: x-large;
+    }
+
+    #pickTechnology p, #useTechnology p {
+        font-size: medium;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    #pickTechnology .column {
+        float: left;
+        width: 20%;
+        padding: 10px;
+    }
+
+    #pickTechnology .card {
+        width: 20%;
+        height: 0;
+        background: none;
+        padding-top: 32%;
+        border-radius: 10px;
+    }
+
+    .cardsheader img {
+        width: 150px;
+        height: auto;
+        margin: 10px;
+    }
+
 }
 
 @media only screen and (max-width: 960px) {
+    #logo {
+        float: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 200px;
+    }
+
     .instructions-stim-container {
         text-align: center;
     }
@@ -51,6 +100,41 @@ html, body {
     #comments {
         margin: 0 auto;
     }
+
+    #pickTechnology h2, #useTechnology h2 {
+        font-size: x-large;
+    }
+
+    #pickTechnology h4, #useTechnology h4 {
+        font-size: medium;
+    }
+
+    #pickTechnology p, #useTechnology p {
+        font-size: small;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    #pickTechnology .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    #pickTechnology .card {
+        width: 25%;
+        height: 0;
+        background: none;
+        padding-top: 32%;
+        border-radius: 10px;
+    }
+
+    .cardsheader img {
+        width: 100px;
+        height: auto;
+        margin: 10px;
+    }
+
 }
 
 /* styles for the entire page */
@@ -377,13 +461,6 @@ textarea.comments-box, textarea.comments_box {
 /********************************************
  * IMAGES
  *******************************************/
-
-#logo {
-    float: left;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    width: 300px;
-}
 
 .img-logo {
     height: 75px;
@@ -745,12 +822,6 @@ a:active {
 
 
 /** STUDY SPECIFIC **/
-/* The grid: Four equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 20%;
-    padding: 10px;
-}
 
 /* Style the images inside the grid */
 .column img {
@@ -885,25 +956,26 @@ a:active {
     text-align: center;
 }
 
-.techchoice h2 {
-    font-size: 2vw;
+.techchoice .categorytitle {
+    text-align: left;
+    padding-bottom: 5px;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
 }
 
-.techchoice p {
-    font-size: 1.5vw;
-}
+/*.techchoice h2 {*/
+/*    font-size: 2vw;*/
+/*}*/
+
+/*.techchoice p {*/
+/*    font-size: 1.5vw;*/
+/*}*/
 
 .cardsheader {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
-}
-
-.cardsheader img {
-    width: 15%;
-    height: auto;
-    margin: 10px;
 }
 
 .cardbottom {
