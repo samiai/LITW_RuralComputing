@@ -1,6 +1,6 @@
 <div id="techChoiceMenu" class="techchoice">
-    <h2>We'd like to hear your experiences with different types of online platforms. </h2>
-    <p>Click below to choose the online platform that you would like to draw tarot cards for. </p>
+    <h2>We'd like to hear your experiences with different technologies. </h2>
+    <p>Click below to choose the ones you would like to draw tarot cards for. </p>
     <p id="done-button" style="display: none">
         <input type="submit" value="I'm done!" class="btn btn-primary btn-lg" onclick="finish()">
     </p>
@@ -128,10 +128,10 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title">Please, answer the questions below!</span>
+                <span class="modal-title" onclick="showTechMenu()">Click here to change the technology selection</span>
             </div>
             <div class="modal-body">
-                <h4>I use this product:</h4>
+                <h4 id="techFormQ1"></h4>
                 <div id="techFormUse" data-toggle="buttons" class="btn-group">
                     <label class="btn btn-primary active"><input type="radio" name="techuse" value="daily"> Daily</label>
                     <label class="btn btn-primary active"><input type="radio" name="techuse" value="often"> Often</label>
@@ -139,7 +139,7 @@
                     <label class="btn btn-primary active"><input type="radio" name="techuse" value="never"> Never</label>
                 </div>
                 <hr>
-                <h4>What is your general feeling about this technology?</h4>
+                <h4 id="techFormQ2"></h4>
                 <div id="techFormFeeling" data-toggle="buttons" class="btn-group">
                     <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="-2"> Very negative</label>
                     <label class="btn btn-primary active"><input type="radio" name="techfeeling" value="-1"> Negative</label>
@@ -381,6 +381,9 @@
             }
         }
         $('#topOfCards img').attr('src', selected.attr('src'));
+
+        $('#techFormQ1').text("How often do you use " + technology + "?");
+        $('#techFormQ2').text("What is your general feeling about " + technology + "?");
         $('#techForm').show();
         showSubmitAnswers();
     }
@@ -484,7 +487,7 @@
             $('#techChoiceMenu').hide();
             $('#tarotCards').show();
         } else {
-            $('#techForm .modal-title').animate({opacity:0}, 200, "linear", function(){
+            $('#techForm h4').animate({opacity:0}, 200, "linear", function(){
                 $(this).animate({opacity:1}, 200);
             });
         }
@@ -625,6 +628,7 @@
     }
 
     function showTechMenu() {
+        $('#techForm').hide();
         $('#techChoiceMenu svg').attr('fill','black');
         $('#techChoiceMenu img').css('filter', 'grayscale(0)');
         let techs = Object.keys(all_answers);

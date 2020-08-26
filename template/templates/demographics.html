@@ -250,7 +250,8 @@
 
                         //Add button to residence field
                         $("input[name='demographics-residence']")
-                            .after('<input id="button-residence" type="submit" value="Please verify" ' +
+                            .after('<input id="button-residence" type="submit" value="' +
+                                $.i18n('litw-demographics-residence-verify') + '" ' +
                                 'class="btn btn-primary btn-lg" style="display: none" onclick="geolocate()">');
 
                         let residence = control.childrenByPropertyId["demographics-residence"];
