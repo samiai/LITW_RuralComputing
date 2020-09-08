@@ -1,0 +1,82 @@
+{
+  "cardImages": {
+    "RadioStar": "img/card-RadioStar.png",
+    "Catalyst": "img/card-Catalyst.png",
+    "Forgotten": "img/card-Forgotten.png",
+    "ServiceDog": "img/card-ServiceDog.png"
+  },
+  "answers": {
+    "Facebook" : {
+      "RadioStar": "I think local second-hand businesses can be negatively impacted as people would not leave their house to sell things. For instance, Goodwill.",
+      "Catalyst": "I probably started considering buying second-hand stuff more often. I actually bought a lot of things there when I moved a couple of years ago. I guess that, even already having options like Craigslist available, having something on Facebook brought the concept closer to my reality.\n\nI guess it could also create a better sense of local community (which did not really happend to me) and bring people into areas they wouldn't normally go (which happened to me).",
+      "Forgotten": "I guess larger cities will always benefit more of these type of online marketplaces, as, based on my use, you are not willing to go too far from home to collect the items. For example, one of the first filters of the search tool is a location and radius of search.\n\nMaybe the marketplace could provide an easy to use shipping service that could help people from remote/small localities to participate.",
+      "ServiceDog": "\"Local small businesses are closing their doors because of Facebook Market.\" - Although I can think that people could use that for selling illegal or dangerous stuff, I think damaging local communities is nor a problem online businesses (like Facebook) are concerned with. Instead, they are being pressed to do a better job on filtering out illegal or damaging content from their platforms."
+    },
+    "OfferUp": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "Nextdoor": {
+      "RadioStar": "I found Nextdoor to be helpful for referrals. If you want a recommendation on someone to build you a fence or a dog walking service, it's a great resource. In this way, it also helps small and local businesses. People can advertise their services, too. (I think people can advertise anyway! By saying \"hey, I cut hair. Does anyone need a haircut?\")",
+      "Catalyst": "Nextdoor has helpful features, but I don't log on anymore because every time I do someone is complaining - about the dog owners who don't pick up poop, the black kids who walked into the culdesac, the car that parks across the street from the park at noon everyday. These are all real complaints! It changes how I see my neighborhood because I'm used to see smiling neighbors in person, and it makes me worry that people are more bigoted than I know. It makes me worry for people who don't \"look like they belong to the neighborhood.\" And the racism is particularly bad on this last point.",
+      "Forgotten": "I would guess that the platform favors homeowners or at least people with more stable living and life style. Renters or other short-term residents are less likely to be invited to join. That gives more power to the older, more stable generation. Plus, I feel like the biggest users are nosy retired people who can stare out their window all day. =P",
+      "ServiceDog": "Nextdoor has a problem users othering people, like threatening to call the cops of an unfamiliar person or car is on the neighborhood. A bad headline would be \"Homeless family's van gets towed while the mom was walking her kids to school.\" I could see that happening. Devastating stuff. I don't know what Nextdoor could do to rid the site of paranoia, xenophobia, racism, etc. Which is really sad because the platform is supposed to bring people together."
+    },
+    "Tinder": {
+      "RadioStar": "I believe that what is affected  the most is the human's ability to create real bonds.  This requires much more dedication, patience and time. With this app you can skip all this difficult but important part and go straight to the finals, sex.  So the whole work to build maturity and emotional responsibility can be shaken. Anyone who wants to quickly have casual sex can benefit from using the app, but in the long run there is a significant price to be paid.",
+      "Catalyst": "This kind of app was widely accepted by the gay community for several reasons, including the ease of satisfying desires more anonymously, without exposure in public environments, for example.  However, it significantly affects the way gays start to relate.  Everyone is much less open to investing in offline relationships and what they demand, creating a community that is less and less accustomed to intimacy, affection and love.",
+      "Forgotten": "Anyone who isn't comfortable with casual sex, without intimacy and knowledge of the partner will not be comfortable using the app.  The feeling of being used and discarded usually happens with people who are not comfortable with this type of relationship.  There is a possibility to try to use the app in a less \"straight to the point\" way but as it's not the main purpose of the app other users may not like this type of approach.",
+      "ServiceDog": "What concerns me most is the trivialization of sex and affective relationships.  It meets a human need, sex, excluding any need for bonds and intimacy, which in the long run I believe is harmful for building true relations. Plus, I don't feel comfortable being reduced to photos and a quick chat just to make sex easier.  Not to mention the risks involved in hooking up with people you don't know well."
+    },
+    "Grindr": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "FarmersOnly": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "Lyft": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "Uber": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "LibreTaxi": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "Pokemon": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "GoogleMaps": {
+      "RadioStar": "",
+      "Catalyst": "",
+      "Forgotten": "",
+      "ServiceDog": ""
+    },
+    "Yelp": {
+      "RadioStar": "I believe printed advertising who did not manage to switch to online advertising and maybe Tourist information staff were affected by the success of Yelp.\n\nYelp alse forces businesses to cater to the average consumer. For example, no one here has any idea what good Indian food is so the reviews are of the places that are least offensive.",
+      "Catalyst": "I explore less on my own and I already decide where to go on the basis on an online research before I go out of my house. It made us lazier!",
+      "Forgotten": "I think people who are digitally illiterate or who cannot afford having data on their phones are excluded. Also, people that live in areas with poor internet connection and that do not know how to set up an account for their business.\n\nIn terms of differences of use, I think Yelp is mostly used by North Americans. In Europe, people don't use it as much. In Italy, for example, it is more common to choose a place to go eat because it looks nice when you walk in front of it, not because you found it online.",
+      "ServiceDog": "It doesn't concern me directly as I don't own a business, but the worst case scenario would be that someone wants to hurt my business and develops a bot to leave a number of bad reviews and low rating to it. If it is possible to have a number of false twitter accounts to spread fake news, this is also possible, however difficult.\n\nBetter serve my community? More checks on false accounts and against discrimination (e.g.: towards businesses owned by people of color). Maybe also indicating whether a business is a small business (with a badge or something of the kind), so people might choose to go there instead of a bigger venue."
+    }
+  }
+}

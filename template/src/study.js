@@ -29,12 +29,11 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	window.litwWithTouch = false;
 	var sharedData = {};
 	var timeline = [],
-	self = this,
-	C,
 	params = {
-		stims: [],
-		practiceStims: [],
-		currentProgress: 0
+		languageFiles: {
+				'en': 'src/i18n/en.json?v=1.02',
+			},
+		preload: ['src/i18n/results-en.json', 'src/i18n/countries-en.json']
 	},
 
 	irb = function(nextStepFn) {
@@ -99,10 +98,11 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
             }
         });
 
+
 		timeline.push({
 			type: "call-function",
 			func: function(){
-				showResults(params.results);
+				showResults();
 			}
 		});
 
@@ -125,10 +125,7 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	startStudy = function() {
 		jsPsych.init({
 		  timeline: timeline,
-		  //on_finish: comments,
-		  //display_element: $("#trials")
 		});
-		//LITW.utils.showSlide("trials");
 	},
 
 
@@ -165,85 +162,99 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 		});
 	},
 
+	pickRandomResult = function(storedResults) {
+		//DEFAULT+TEST
+		let answers = {
+			Facebook: {},
+			Nextdoor: {},
+			Yelp: {}
+		};
 
-	showResults = function(results) {
-		$("#results").html(
-			resultsTemplate(
+		//Pre-loaded file!
+		if (sharedData.taroAnswers) {
+			answers = sharedData.taroAnswers;
+		}
+		let result = {};
+		result.tech = LITW.utils.shuffleArrays(Object.keys(answers))[0];
+		let possibleCards = Object.keys(storedResults['answers'][result.tech]);
+		let pickedCard = LITW.utils.shuffleArrays(possibleCards)[0];
+		result.card = storedResults['cardImages'][pickedCard];
+		result.answer = storedResults['answers'][result.tech][pickedCard];
+		console.log('PICKED RESULT: ' + JSON.stringify(result));
+		return result;
+	},
+
+	showResults = function() {
+		$.getJSON('src/i18n/results-en.json', function(data) {
+			$("#results").html(
+				resultsTemplate(pickRandomResult(data)));
+			$("#results-footer").html(
+				resultsFooter(
 				{
-					tech: 'Netflix',
-					card: 'img/card-RadioStar.png',
-					answer: 'This is a test answer for the Netflix technology considering the RadioStar card.',
+					//TODO fix this before launching!
+					share_url: "http://labinthewild.org",
+					share_title: $.i18n('litw-irb-header'),
+					share_text: $.i18n('litw-template-title'),
+					more_litw_studies: [{
+						study_url: "http://labinthewild.org/studies/peripheral-vision/",
+						study_logo: "http://labinthewild.org/images/virtual-chinrest.jpg",
+						study_slogan: $.i18n('litw-more-study1-slogan'),
+						study_description: $.i18n('litw-more-study1-description'),
+					},
+					{
+						study_url: "http://labinthewild.org/studies/viz_performance/",
+						study_logo: "http://labinthewild.org/images/search-world.jpg",
+						study_slogan: $.i18n('litw-more-study2-slogan'),
+						study_description: $.i18n('litw-more-study2-description'),
+					}]
 				}
 			));
-		$("#results-footer").html(
-			resultsFooter(
-			{
-				//TODO fix this before launching!
-				share_url: "http://labinthewild.org",
-				share_title: $.i18n('litw-irb-header'),
-				share_text: $.i18n('litw-template-title'),
-				more_litw_studies: [{
-					study_url: "http://labinthewild.org/studies/peripheral-vision/",
-					study_logo: "http://labinthewild.org/images/virtual-chinrest.jpg",
-					study_slogan: $.i18n('litw-more-study1-slogan'),
-					study_description: $.i18n('litw-more-study1-description'),
-				},
-				{
-					study_url: "http://labinthewild.org/studies/viz_performance/",
-					study_logo: "http://labinthewild.org/images/search-world.jpg",
-					study_slogan: $.i18n('litw-more-study2-slogan'),
-					study_description: $.i18n('litw-more-study2-description'),
-				}]
-			}
-		));
-		$("#results").i18n();
-		LITW.utils.showSlide("results");
+			$("#results").i18n();
+			LITW.utils.showSlide("results");
+		});
 	}
 
 	// when the page is loaded, start the study!
 	$(document).ready(function() {
 		// get initial data from database (nmaybe needed for the results page!?)
-		readSummaryData();
+		//readSummaryData();
 
 		// detect touch devices
-		window.litwWithTouch = ("ontouchstart" in window);
+		//window.litwWithTouch = ("ontouchstart" in window);
 
 		// determine and set the study language
 		//$.i18n().locale = i18n.getLocale();
 
 		$.i18n().load(
-			{
-				'en': 'src/i18n/en.json?v=1.02',
-			}
+			params.languageFiles
 		).done(
 			function(){
 				$('head').i18n();
 				$('body').i18n();
-			}
-		);
 
-		// generate unique participant id and geolocate participant
-		LITW.data.initialize();
-		LITW.utils.showSlide("img-loading");
-		
-		// preload images
-		jsPsych.pluginAPI.preloadImages(params.stims,
-			
-			// initialize the jsPsych timeline and
-			// proceed to IRB page when loading has finished
-			function() { 
-				initJsPsych();
-				//irb(startStudy);
-				startStudy();
-			},
-			
-			// update loading indicator as stims preload
-			function(numLoaded) { 
-				$("#img-loading").html(loadingTemplate({
-					msg: C.loadingMsg,
-					numLoaded: numLoaded,
-					total: params.stims.length
-				}));
+				// generate unique participant id and geolocate participant
+				LITW.data.initialize();
+				LITW.utils.showSlide("img-loading");
+
+				// preload images
+				jsPsych.pluginAPI.preloadImages(params.preload,
+					// initialize the jsPsych timeline and
+					// proceed to IRB page when loading has finished
+					function() {
+						initJsPsych();
+						//irb(startStudy);
+						startStudy();
+					},
+
+					// update loading indicator as files preload
+					function(numLoaded) {
+						$("#img-loading").html(loadingTemplate({
+							msg: "Loading ...",
+							numLoaded: numLoaded,
+							total: params.preload.length
+						}));
+					}
+				);
 			}
 		);
 	});
