@@ -1,8 +1,10 @@
 <div id="techChoiceMenu" class="techchoice">
-    <h2>We'd like to hear your experiences with different technologies. </h2>
-    <p>Click below to choose the ones you would like to draw tarot cards for. </p>
-    <div id="done-button" style="display: none">
-        <input type="submit" value="Take me to the final page" class="btn btn-primary btn-lg" onclick="finish()">
+    <div id="techChoiceHeader">
+        <h2>We'd like to hear your experiences with different technologies. </h2>
+        <p>Click below to choose the ones you would like to draw tarot cards for. </p>
+        <div id="done-button" style="display: none">
+            <input type="submit" value="Take me to the final page" class="btn btn-primary btn-lg" onclick="finish()">
+        </div>
     </div>
     <!-- The four columns -->
     <div id="" name="category1" class="row">
@@ -116,6 +118,7 @@
             </div>
             <div id="addTechFooter" class="modal-footer">
                 <img id="addTechImage" src="" name="" style="display: none; float: left; width: 100px">
+                <span id="addTechImageName" style="float: left;margin: 5px;"></span>
                 <input type="submit" value="Confirm" class="btn btn-primary btn-lg" onclick="selectNewTech()"
                        style="display: none">
                 <input type="submit" value="Search" class="btn btn-primary btn-lg" onclick="searchNewTech()">
@@ -263,7 +266,7 @@
 
 
 <script>
-
+    const NOT_FOUND_IMG = 'img/bullhorn.svg';
     var cards_info = [
         {
             name:"The Catalyst",
@@ -277,8 +280,8 @@
         {
             name:"The Forgotten",
             questions:[
-                "Who can't use [THE_PRODUCT]?",
                 "Do people in different areas experience [THE_PRODUCT] differently?",
+                "Who can't use [THE_PRODUCT]?",
                 "How could [THE_PRODUCT] be changed to better serve all users? Especially any unserved users?"
             ],
             color: "#ffbe9f"
@@ -287,7 +290,7 @@
             name:"The Radio Star",
             questions:[
                 "Who or what disappears when [THE_PRODUCT] is successful?",
-                "Who lost their job because of [THE_PRODUCT]? What other products or services have been replaced? ",
+                "Who lost their job because of [THE_PRODUCT]? What other products or services have been replaced?",
                 "What industries, institutions or policies have been affected by [THE_PRODUCT]?"
             ],
             color: "#aedf2a"
@@ -295,10 +298,9 @@
         {
             name:"The Service Dog",
             questions:[
-                "What's the worst headline about [THE_PRODUCT] you can imagine happening? What about it concerns you the most?",
-                "Imagine scenarios, including use entirely opposite of the designer's intentions, where [THE_PRODUCT] harmed or endangered people.",
+                "If [THE_PRODUCT] was entirely dedicated to empowering the lives of an underserved population, what kind of impact could you make?",
                 "How could [THE_PRODUCT] be designed to empower you and your community?",
-                "Who could most benefit from the use of [THE_PRODUCT]? How could it be redesigned to serve them?"
+                "Who could most benefit from the use of [THE_PRODUCT]? How could it be redesigned to serve them?",
             ],
             color: "#ff9400"
         },
@@ -380,7 +382,10 @@
                 tech_answers['app_search'] = selected.attr('app_search');
             }
         }
-        $('#topOfCards img').attr('src', selected.attr('src'));
+        if (selected.attr('src') !== NOT_FOUND_IMG) {
+            $('#topOfCards img').attr('src', selected.attr('src'));
+        }
+        $('#topOfCards img').attr('alt', selected.attr('name'));
 
         $('#techFormQ1').text("How often do you use " + technology + "?");
         $('#techFormQ2').text("What is your general feeling about " + technology + "?");
@@ -425,23 +430,39 @@
     }
 
     function searchAppStore(searchTerm, appStore) {
-        //TODO: show loading gif!
         let searchURL = 'http://www.tmp12345.labinthewild.org/include/get_appstore.php?search='
                 + searchTerm + '&store=' + appStore;
+        let addTechImage = $('#addTechImage');
+        let addTechImageName = $('#addTechImageName');
         $.ajax({
             url: encodeURI(searchURL),
             method: 'GET',
             crossDomain: true,
+            beforeSend: function() {
+                addTechImage.attr('src', 'img/ajax-loader.gif');
+                addTechImage.show();
+            },
             success: function(data, status){
                 console.log(data);
-                let addTechImage = $('#addTechImage');
                 addTechImage.attr('src', data['app_image']);
                 addTechImage.attr('name', data['app_name']);
                 addTechImage.attr('app_code', appStore + '_' + data['app_id']);
                 addTechImage.attr('app_search', searchTerm);
                 addTechImage.show();
+                addTechImageName.text(data['app_name']);
                 $("#addTechFooter input").show();
             },
+            error: function (data, status, error) {
+                console.log(data);
+                let addTechImage = $('#addTechImage');
+                addTechImage.attr('src', 'img/x.svg');
+                addTechImage.attr('name', searchTerm);
+                addTechImage.attr('app_code', appStore);
+                addTechImage.attr('app_search', searchTerm);
+                addTechImage.show();
+                addTechImageName.text('Sorry! Could not find it. You can try again or confirm it as it is!');
+                $("#addTechFooter input").show();
+            }
         });
     }
 
@@ -454,16 +475,21 @@
         chosenTechImage.attr('src', '');
         chosenTechImage.attr('name', '');
         chosenTechImage.hide();
+        $("#addTechImageName").text('');
         $('#addTechFooter input[value="Confirm"]').hide();
         showTechMenu();
     }
 
     function selectNewTech() {
         let chosenTechImage = $("#addTechImage");
+        let techImage = chosenTechImage.attr('src');
+        if (techImage.includes('x.svg')) {
+            techImage = NOT_FOUND_IMG;
+        }
         let category = $('#addTech').attr('name');
         $('#addTech-'+ category +' svg').hide();
         let addTechImage = $('#addTech-'+ category +' img');
-        addTechImage.attr('src', chosenTechImage.attr('src'));
+        addTechImage.attr('src', techImage);
         addTechImage.attr('name', chosenTechImage.attr('name'));
         addTechImage.attr('app_code', chosenTechImage.attr('app_code'));
         addTechImage.attr('app_search', chosenTechImage.attr('app_search'));
@@ -499,7 +525,9 @@
         var cardInfo = cards_info[cardIndex-1];
         var cardQuestionsHTML = "";
         for (question of cardInfo.questions) {
-            cardQuestionsHTML += "<p>" + question.replace("[THE_PRODUCT]", "\"" + tech_answers.tech + "\"") + "</p>";
+            if (cardQuestionsHTML.length == 0) cardQuestionsHTML += "<p style='font-weight: bold;'>";
+            else cardQuestionsHTML += "<p>"
+            cardQuestionsHTML += question.replace("[THE_PRODUCT]", "\"" + tech_answers.tech + "\"") + "</p>";
         }
         $('#tarotAnswer .modal-content').css("background-color", cardInfo.color);
         $('#cardAnswerQuestions').html(cardQuestionsHTML);
@@ -637,13 +665,13 @@
         }
         $('#techChoiceMenu').show();
         if(techs.length > 0) {
-            $('#techChoiceMenu h2').text("Congrats! You've completed your first technology tarot card session!");
-            $('#techChoiceMenu p').text("If you would like to participate in another session for a different technology, " +
+            $('#techChoiceHeader h2').text("Congrats! You've completed your first technology tarot card session!");
+            $('#techChoiceHeader p').text("If you would like to participate in another session for a different technology, " +
                 "go ahead and select one below! OR Short on time? Feel free to check out what others have said!");
             $('#done-button').show().focus();
         }
         if(techs.length > 1) {
-            $('#techChoiceMenu h2').text("Awesome! You've completed another technology tarot card session!");
+            $('#techChoiceHeader     h2').text("Awesome! You've completed another technology tarot card session!");
         }
     }
 
