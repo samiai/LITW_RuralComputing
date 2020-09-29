@@ -823,6 +823,15 @@ a:active {
 
 /** STUDY SPECIFIC **/
 
+.modal-dialog{
+    overflow-y: initial !important
+}
+
+.modal-body{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
 /* Style the images inside the grid */
 .column img {
     opacity: 0.8;
@@ -963,13 +972,6 @@ a:active {
     border-bottom-style: dotted;
 }
 
-/*.techchoice h2 {*/
-/*    font-size: 2vw;*/
-/*}*/
-
-/*.techchoice p {*/
-/*    font-size: 1.5vw;*/
-/*}*/
 
 .cardsheader {
     display: flex;

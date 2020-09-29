@@ -4,8 +4,10 @@
 
 <ul id="tech-list" class="list-group">
 </ul>
-<input type="submit" value="ADD" class="btn btn-primary btn-lg" onclick="openDialog()">
-<input type="submit" value="DONE" class="btn btn-primary btn-lg" onclick="saveAndFinish()">
+
+<h4>Would you like to add technologies to this list?</h4>
+<input id="buttonAdd" type="submit" value="YES" class="btn btn-primary btn-lg" onclick="openDialog()">
+<input id="buttonFinish" type="submit" value="NO" class="btn btn-primary btn-lg" onclick="saveAndFinish()">
 
 <div id="addTech" class="modal" style="display: none">
     <div class="modal-dialog" role="document">
@@ -26,6 +28,7 @@
             </div>
             <div id="addTechFooter" class="modal-footer">
                 <img id="addTechImage" src="" name="" style="display: none; float: left; width: 100px">
+                <span id="addTechImageName" style="float: left;margin: 5px;"></span>
                 <input type="submit" value="Confirm" class="btn btn-primary btn-lg" onclick="addTech()"
                        style="display: none">
                 <input type="submit" value="Search" class="btn btn-primary btn-lg" onclick="searchNewTech()">
@@ -62,22 +65,40 @@
     }
 
     function searchAppStore(searchTerm, appStore) {
-        //TODO: show loading gif!
         let searchURL = 'http://www.tmp12345.labinthewild.org/include/get_appstore.php?search='
                 + searchTerm + '&store=' + appStore;
+        let addTechImage = $('#addTechImage');
+        let addTechImageName = $('#addTechImageName');
         $.ajax({
             url: encodeURI(searchURL),
             method: 'GET',
             crossDomain: true,
+            beforeSend: function() {
+                addTechImage.attr('src', 'img/ajax-loader.gif');
+                addTechImage.show();
+            },
             success: function(data, status){
                 console.log(data);
                 currentTech = data;
-                let addTechImage = $('#addTechImage');
                 addTechImage.attr('src', data['app_image']);
                 addTechImage.attr('name', appStore + '_' + data['app_id']);
                 addTechImage.show();
+                addTechImageName.text(data['app_name']);
                 $("#addTechFooter input").show();
             },
+            error: function (data, status, error) {
+                console.log(data);
+                currentTech = {
+                    store: appStore,
+                    search_term: searchTerm,
+                    app_name: searchTerm
+                };
+                addTechImage.attr('src', 'img/x.svg');
+                addTechImage.attr('name', appStore + '_' + searchTerm);
+                addTechImage.show();
+                addTechImageName.text('Sorry! Could not find it. You can try again or confirm it as it is!');
+                $("#addTechFooter input").show();
+            }
         });
     }
 
@@ -105,6 +126,7 @@
         chosenTechImage.attr('src', '');
         chosenTechImage.attr('name', '');
         chosenTechImage.hide();
+        $("#addTechImageName").text('');
         $('#addTechFooter input[value="Confirm"]').hide();
     }
 
