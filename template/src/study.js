@@ -165,17 +165,35 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	pickRandomResult = function(storedResults) {
 		//DEFAULT+TEST
 		let answers = {
-			Facebook: {},
-			Nextdoor: {},
-			Yelp: {}
+			// Facebook: {},
+			// Nextdoor: {},
+			Grindr: {},
+			// Yelp: {},
+			yada: {}
 		};
 
 		//Pre-loaded file!
 		if (sharedData.taroAnswers) {
 			answers = sharedData.taroAnswers;
 		}
+		//Pick random tech: first try participants' answers then any from the list.
 		let result = {};
-		result.tech = LITW.utils.shuffleArrays(Object.keys(answers))[0];
+		let participant_tech = Object.keys(answers);
+		let existing_tech = Object.keys(storedResults['answers']);
+		for (tech of Object.keys(answers)) {
+			if (!existing_tech.includes(tech)) {
+				participant_tech = participant_tech.filter(item => item !== tech)
+			}
+		}
+		if(participant_tech.length > 0) {
+			result.tech = LITW.utils.shuffleArrays(participant_tech)[0];
+			result.personal_tech = true;
+		} else {
+			result.tech = LITW.utils.shuffleArrays(existing_tech)[0];
+			result.personal_tech = false;
+		}
+
+		//Pick a random card to return
 		let possibleCards = Object.keys(storedResults['answers'][result.tech]);
 		let pickedCard = LITW.utils.shuffleArrays(possibleCards)[0];
 		result.card = storedResults['cardImages'][pickedCard];
@@ -185,7 +203,7 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	},
 
 	showResults = function() {
-		$.getJSON('src/i18n/results-en.json', function(data) {
+		$.getJSON('src/i18n/results-en.json?v=1.01', function(data) {
 			$("#results").html(
 				resultsTemplate(pickRandomResult(data)));
 			$("#results-footer").html(
