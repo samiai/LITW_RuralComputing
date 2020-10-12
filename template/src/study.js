@@ -31,28 +31,21 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	var timeline = [],
 	params = {
 		languageFiles: {
-				'en': 'src/i18n/en.json?v=1.02',
+				'en': 'src/i18n/en.json?v=1.03',
 			},
-		preload: ['src/i18n/results-en.json', 'src/i18n/countries-en.json']
-	},
-
-	irb = function(nextStepFn) {
-		LITW.tracking.recordCheckpoint("irb");
-		$("#irb").html(irbTemplate());
-		$("#irb").i18n();
-		LITW.utils.showSlide("irb");
-		$("#agree-to-study").on("click", function() {
-			if ($(this).prop("checked")) {
-				LITW.utils.showNextButton(nextStepFn);
-				$("#approve-irb").hide();
-			} else {
-				LITW.utils.hideNextButton();
-				$("#approve-irb").show();
-			}
-		});
+		preload: []
 	},
 
 	initJsPsych = function() {
+
+        timeline.push({
+			type: "display-slide",
+			template: irbTemplate,
+			display_element: $("#irb"),
+			name: "irb",
+			show_next: false
+		});
+
 
         timeline.push({
             type: "display-slide",
