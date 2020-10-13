@@ -196,7 +196,7 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	},
 
 	showResults = function() {
-		$.getJSON('src/i18n/results-en.json?v=1.01', function(data) {
+		$.getJSON('src/i18n/results-en.json?v=1.02', function(data) {
 			$("#results").html(
 				resultsTemplate(pickRandomResult(data)));
 			$("#results-footer").html(
