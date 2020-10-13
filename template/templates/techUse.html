@@ -47,7 +47,7 @@
     }
 
     function saveAndFinish() {
-        LITW.data.submitStudyData(technologies);
+        LITW.data.submitStudyData({want_tech: technologies});
         jsPsych.finishTrial();
     }
 
