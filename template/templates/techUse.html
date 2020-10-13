@@ -47,7 +47,12 @@
     }
 
     function saveAndFinish() {
-        LITW.data.submitData({want_tech: technologies}, 'study_data:other_tech');
+        let KEY_NAME = 'wanted_tech';
+        let data = {};
+        for(let count = 0; count < technologies.length; count++){
+            data[KEY_NAME+count] = technologies[count];
+        }
+        LITW.data.submitData(data, 'study_data:other_tech');
         jsPsych.finishTrial();
     }
 
