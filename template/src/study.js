@@ -31,7 +31,7 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	var timeline = [],
 	params = {
 		languageFiles: {
-				'en': 'src/i18n/en.json?v=1.03',
+				'en': 'src/i18n/en.json?v=1.04',
 			},
 		preload: []
 	},
