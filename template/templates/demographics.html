@@ -309,7 +309,7 @@
     function saveLocation() {
         var address = $("input[name='demographics-residence']").val();
         var geolocation = LITW.geocoding.getResolvedLocation(address);
-        LITW.data.submitStudyData(geolocation);
+        LITW.data.submitDemographics(geolocation);
         $("input[name='demographics-residence']").prop('disabled', true);
         $('#button-residence').hide();
         $('#map-modal').hide();

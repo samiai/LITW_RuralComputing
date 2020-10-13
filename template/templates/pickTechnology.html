@@ -677,7 +677,7 @@
     function submitAnswers() {
         delete tech_answers.current_card;
         all_answers[tech_answers.tech] = tech_answers;
-        LITW.data.submitStudyData(tech_answers);
+        LITW.data.submitData(tech_answers,'study_data:cards');
         let toDeactivate = $('#techChoiceMenu img[name="' + tech_answers.tech + '"]');
         toDeactivate.prop('onclick', null).off('click');
         changeTech();
