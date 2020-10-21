@@ -48,7 +48,9 @@
                             },
                             "demographics-age": {
                                 "title": $.i18n('litw-demographics-age'),
-                                "required":false
+                                "required":false,
+                                "minimum": 0,
+                                "maximum": 100
                             },
                             "demographics-gender": {
                                 "title": $.i18n('litw-demographics-gender'),
@@ -119,7 +121,7 @@
                             "demographics-age": {
                                 "type": 'integer',
                                 "fieldClass": "row",
-                                "showMessages": false
+                                "showMessages": true
                             },
                             "demographics-gender": {
                                 "type": 'select',
@@ -200,7 +202,7 @@
                             "demographics-residence-time": {
                                 "type": 'integer',
                                 "fieldClass": "row",
-                                "showMessages": false
+                                "showMessages": true
                             },
                             "demographics-residence-rural": {
                                 "type": 'select',
