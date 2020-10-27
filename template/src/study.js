@@ -31,7 +31,7 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 	var timeline = [],
 	params = {
 		languageFiles: {
-				'en': 'src/i18n/en.json?v=1.04',
+				'en': 'src/i18n/en.json?v=1.05',
 			},
 		preload: []
 	},
@@ -174,18 +174,18 @@ require("../js/jsPsych-5.0.3/plugins/jspsych-call-function");
 				resultsFooter(
 				{
 					//TODO fix this before launching!
-					share_url: "http://labinthewild.org",
+					share_url: "https://labinthewild.org",
 					share_title: $.i18n('litw-irb-header'),
 					share_text: $.i18n('litw-template-title'),
 					more_litw_studies: [{
-						study_url: "http://labinthewild.org/studies/peripheral-vision/",
-						study_logo: "http://labinthewild.org/images/virtual-chinrest.jpg",
+						study_url: "https://labinthewild.org/studies/newsletters/",
+						study_logo: "http://labinthewild.org/studies/newsletters/img/newsletter-icon.png",
 						study_slogan: $.i18n('litw-more-study1-slogan'),
 						study_description: $.i18n('litw-more-study1-description'),
 					},
 					{
-						study_url: "http://labinthewild.org/studies/viz_performance/",
-						study_logo: "http://labinthewild.org/images/search-world.jpg",
+						study_url: "https://labinthewild.org/studies/formality-security/",
+						study_logo: "http://labinthewild.org/images/formality-logo.jpg",
 						study_slogan: $.i18n('litw-more-study2-slogan'),
 						study_description: $.i18n('litw-more-study2-description'),
 					}]

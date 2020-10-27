@@ -6,8 +6,8 @@
     "locale": "en",
     "message-documentation": "qqq"
   },
-  "litw-template-title": "What the Taro Cards of tech can tell you about your technology use?",
-  "litw-irb-header": "What the Taro Cards of tech can tell you about your technology use?",
+  "litw-template-title": "What do the Tarot Cards of Tech say about your technology use?",
+  "litw-irb-header": "What do the Tarot Cards of Tech say about your technology use?",
   "litw-irb-subheader-1": "You're about to take a test on LabintheWild. Your contribution to our research allows us to learn more about online platforms that are widely used around the world. The results from your test will also tell you something about yourself!",
   "litw-irb-subheader-2": "Please read the following information carefully before proceeding.",
   "litw-irb-body-1-p1": "Why we are doing this research?",
@@ -90,8 +90,8 @@
   "litw-more-step2": "Share this study with your friends!",
   "litw-more-step3": "And consider participating in some of our other studies:",
   "litw-more-participate": "Participate now!",
-  "litw-more-study1-slogan": "How accurate is your peripheral vision?",
-  "litw-more-study1-description": "Are you curious about how accurate your peripheral vision is compared to others? Learn more about your visual perception by doing these fun tasks! This test takes around 8 minutes.",
-  "litw-more-study2-slogan": "How fast can you scan websites?",
-  "litw-more-study2-description": "How quickly do you find information on websites? Compare your speed to others! This study takes around 10 minutes."
+  "litw-more-study1-slogan": "You've got email: Discover what email look will move you!",
+  "litw-more-study1-description": "Tell us your opinion about some real-world email designs and you will learn what looks will tend to make you click! This test takes around 7 minutes.",
+  "litw-more-study2-slogan": "Amazon, Apple, Facebook, Google: Can you tell the difference?",
+  "litw-more-study2-description": "Test how well you know how big tech talks. This study takes 5 minutes."
 }
